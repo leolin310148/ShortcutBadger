@@ -33,6 +33,7 @@ HOW TO USE
         <uses-permission android:name="com.sec.android.provider.badge.permission.READ"/>
         <uses-permission android:name="com.sec.android.provider.badge.permission.WRITE"/>
 <br/>4. Add the codes below:
+
         int badgeCount = 1;
         try {
             ShortcutBadger.setBadge(getApplicationContext(), badgeCount);
