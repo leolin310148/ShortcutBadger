@@ -1,18 +1,19 @@
 ShortcutBadger:
+===================================
 The ShortcutBadger makes your Android App showing the count of unread messages as a badge on your App shortcut!
-
+-----------------------------------
 Currently support these launchers:
 
-Android native Launcher
+# Android native Launcher
 ![ScreenShot](https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_android.png)
 
-Sony Home Launcher
+# Sony Home Launcher
 ![ScreenShot](https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_sony.png)
 
-Samsung Touchwiz
+# Samsung Touchwiz
 ![ScreenShot](https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_samsung.png)
 
-LG Launcher
+# LG Launcher
 ![ScreenShot](https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_lg.png)
 
 
