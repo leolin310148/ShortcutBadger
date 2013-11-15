@@ -4,7 +4,7 @@ import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.net.Uri;
-import com.shortcutBadger.ImageUtil;
+import com.shortcutBadger.util.ImageUtil;
 import com.shortcutBadger.ShortcutBadgeException;
 import com.shortcutBadger.ShortcutBadger;
 
