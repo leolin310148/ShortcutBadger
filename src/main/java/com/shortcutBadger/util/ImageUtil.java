@@ -74,7 +74,7 @@ public class ImageUtil {
 
         float width = appIcon.getWidth();
         float height = appIcon.getHeight();
-        float radius = ((width > height ? width : height) / 6);
+        float radius = ((width > height ? width : height) / 4);
         float cx = appIcon.getWidth() - radius;
         float cy = radius;
 
@@ -87,27 +87,27 @@ public class ImageUtil {
         canvas.drawCircle(cx, cy, radius, paint_white);
 
 
-        canvas.drawCircle(cx, cy, radius * 5 / 6, paint_red);
+        canvas.drawCircle(cx, cy, radius * 6 / 7, paint_red);
 
 
         // new antialised Paint
         Paint paint_text = new Paint(Paint.ANTI_ALIAS_FLAG);
         // text color - #3D3D3D
         paint_text.setColor(Color.WHITE);
-        paint_text.setFakeBoldText(true);
         // text size in pixels
-        int textSize = 12;
+        int textSize = (int)(radius*0.7);
         if (gText.length() > 1) {
-            textSize = 8;
+            textSize =  (int)(radius*0.5);
         }
         paint_text.setTextSize((int) (textSize * scale));
-        // text shadow
-        paint_text.setShadowLayer(1f, 0f, 1f, Color.WHITE);
-
+        paint_text.setFakeBoldText(true);
         // draw text to the Canvas center
         Rect bounds = new Rect();
         paint_text.getTextBounds(gText, 0, gText.length(), bounds);
         float bw = bounds.width() / 2;
+        if (gText.endsWith("1")) {
+            bw *= 1.25;
+        }
         float bh = bounds.height() / 2;
         canvas.drawText(gText, cx - bw, cy + bh, paint_text);
 

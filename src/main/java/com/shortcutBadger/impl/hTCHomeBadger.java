@@ -3,10 +3,11 @@ package com.shortcutBadger.impl;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.net.Uri;
-import com.shortcutBadger.util.ImageUtil;
 import com.shortcutBadger.ShortcutBadgeException;
 import com.shortcutBadger.ShortcutBadger;
+import com.shortcutBadger.util.ImageUtil;
 
 /**
  * Created with IntelliJ IDEA.
@@ -24,16 +25,33 @@ public class hTCHomeBadger extends ShortcutBadger {
 
     @Override
     protected void executeBadge(int badgeCount) throws ShortcutBadgeException {
-        byte[] bytes = ImageUtil.drawBadgeOnAppIcon(mContext, badgeCount);
+        ContentResolver contentResolver = mContext.getContentResolver();
+        Uri mUri = Uri.parse(CONTENT_URI);
         String appName = mContext.getResources().getText(mContext.getResources().getIdentifier("app_name",
                 "string", getContextPackageName())).toString();
 
-        Uri mUri = Uri.parse(CONTENT_URI);
-        ContentResolver contentResolver = mContext.getContentResolver();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("iconType", 1);
-        contentValues.put("itemType", 1);
-        contentValues.put("icon", bytes);
-        contentResolver.update(mUri, contentValues, "title=?", new String[]{appName});
+        boolean supportNotifyCount = true;
+        try {
+            Cursor cursor = contentResolver.query(mUri, new String[]{"notifyCount"}, "title=?", new String[]{appName}, null);
+        } catch (Throwable e) {
+            supportNotifyCount = false;
+        }
+
+        if (supportNotifyCount) {
+            ContentValues contentValues = new ContentValues();
+            contentValues.put("notifyCount", badgeCount);
+            contentResolver.update(mUri, contentValues, "title=?", new String[]{appName});
+        } else {
+            byte[] bytes = ImageUtil.drawBadgeOnAppIcon(mContext, badgeCount);
+
+
+            ContentValues contentValues = new ContentValues();
+            contentValues.put("iconType", 1);
+            contentValues.put("itemType", 1);
+            contentValues.put("icon", bytes);
+            contentResolver.update(mUri, contentValues, "title=?", new String[]{appName});
+        }
+
+
     }
 }

@@ -42,3 +42,6 @@ HOW TO USE
         }
 <br/>5. If you want to remove the badge, just set the badgeCount as 0.
 <br/>
+<br/>
+<br/>
+Email: leolin310148@gmail.com
