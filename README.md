@@ -44,7 +44,9 @@ HOW TO USE
 <br/>
 <br/>
 <br/>
-<br/>LICENSE
+<br/>
+LICENSE
+===================================
 <br/>
         
         Copyright 2014 Leo Lin
