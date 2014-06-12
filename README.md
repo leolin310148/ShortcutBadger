@@ -44,8 +44,9 @@ HOW TO USE
 <br/>
 <br/>
 <br/>
+<br/>LICENSE
 <br/>
-LICENSE
+        
         Copyright 2014 Leo Lin
         
         Licensed under the Apache License, Version 2.0 (the "License");
