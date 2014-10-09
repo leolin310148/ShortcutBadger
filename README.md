@@ -19,6 +19,13 @@ LG Launcher<br/>
 
 
 
+HOW TO ASSEMBLE
+===================================
+Run 'gradlew assemble' to get ShortcutBadger.aar in directory ./build/outputs/aar
+
+Run 'gradlew jarRelease' to get ShortcutBadger.jar in directory ./build/libs
+
+
 HOW TO USE
 ===================================
 <br/>1. Download the jar file named ShortcutBadger-X.X.jar in the target folder.
