@@ -61,7 +61,8 @@ public abstract class ShortcutBadger {
         } else if (HOME_PACKAGE_LG.equals(currentHomePackage)) {
             mShortcutBadger = new LGHomeBadger(context);
         } else if (HOME_PACKAGE_HTC.equals(currentHomePackage)) {
-            mShortcutBadger = new hTCHomeBadger(context);
+//            mShortcutBadger = new hTCHomeBadger(context);
+            mShortcutBadger = new NewHtcHomeBadger(context);
         } else if (HOME_PACKAGE_ANDROID.equals(currentHomePackage)) {
             mShortcutBadger = new AndroidHomeBadger(context);
         }
