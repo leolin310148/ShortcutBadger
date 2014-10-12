@@ -1,12 +1,3 @@
-buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:0.12.2'
-    }
-}
-
 apply plugin: 'android-library'
 apply plugin: 'maven'
 group = 'me.leolin'
@@ -14,11 +5,12 @@ version = '1.0.1'
 
 
 android {
+
     compileSdkVersion 19
     buildToolsVersion "20.0.0"
 
     defaultConfig {
-        applicationId "com.shortcutBadger"
+        applicationId 'me.leolin.shortcutbadger'
         minSdkVersion 8
         targetSdkVersion 19
         versionCode 1
@@ -32,18 +24,6 @@ android {
     }
 
 }
-
-android.libraryVariants.all { variant ->
-    def name = variant.buildType.name
-    if (name.equals(com.android.builder.core.BuilderConstants.DEBUG)) {
-        return; // Skip debug builds.
-    }
-    def task = project.tasks.create "jar${name.capitalize()}", Jar
-    task.dependsOn variant.javaCompile
-    task.from variant.javaCompile.destinationDir
-    artifacts.add('archives', task);
-}
-
 
 uploadArchives {
     repositories {

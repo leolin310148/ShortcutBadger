@@ -24,15 +24,16 @@ public class NewHtcHomeBadger extends ShortcutBadger {
 
     @Override
     protected void executeBadge(int badgeCount) throws ShortcutBadgeException {
-        Intent intent = new Intent(INTENT_UPDATE_SHORTCUT);
-        intent.putExtra(PACKAGENAME, getContextPackageName());
-        intent.putExtra(COUNT, badgeCount);
-        mContext.sendBroadcast(intent);
+
         Intent intent1 = new Intent(INTENT_SET_NOTIFICATION);
         ComponentName localComponentName = new ComponentName(getContextPackageName(), getEntryActivityName());
         intent1.putExtra(EXTRA_COMPONENT, localComponentName.flattenToShortString());
         intent1.putExtra(EXTRA_COUNT, badgeCount);
         mContext.sendBroadcast(intent1);
 
+        Intent intent = new Intent(INTENT_UPDATE_SHORTCUT);
+        intent.putExtra(PACKAGENAME, getContextPackageName());
+        intent.putExtra(COUNT, badgeCount);
+        mContext.sendBroadcast(intent);
     }
 }

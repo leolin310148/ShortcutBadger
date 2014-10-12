@@ -1,4 +1,4 @@
-apply plugin: 'com.android.application'
+apply plugin: 'android'
 
 repositories {
     jcenter()
@@ -29,5 +29,5 @@ android {
 
 
 dependencies {
-    compile 'me.leolin:ShortcutBadger:1.0.1'
+    compile 'me.leolin:ShortcutBadger:1.0.1@aar'
 }

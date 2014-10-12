@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.shortcutBadger"
-          android:versionCode="3"
-          android:versionName="1.1">
+        package="me.leolin.shortcutbadger"
+        >
 
     <!--for android-->
     <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/>
     <uses-permission android:name="com.android.launcher.permission.WRITE_SETTINGS"/>
-
 
     <!--for Samsung-->
     <uses-permission android:name="com.sec.android.provider.badge.permission.READ"/>

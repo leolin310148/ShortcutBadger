@@ -23,7 +23,7 @@ LG Launcher<br/>
 HOW TO USE
 ===================================
 <br/>1. Download the ShortcutBadger-aar.zip and put it into your project.
-<br/>2. Add the repositories path in your build.gradle "lib" in your Android project.
+<br/>2. Add the repositories path in your build.gradle.
 
         repositories {
             jcenter()
@@ -34,7 +34,7 @@ HOW TO USE
 <br/>3. Add dependencies for Shortcutbadger
         
         dependencies {
-            compile 'me.leolin:ShortcutBadger:1.0.1'
+            compile 'me.leolin:ShortcutBadger:1.0.1@aar'
         }
 
 <br/>4. Add the codes below:
