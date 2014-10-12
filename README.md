@@ -19,26 +19,24 @@ LG Launcher<br/>
 
 
 
-HOW TO ASSEMBLE
-===================================
-Run 'gradlew assemble' to get ShortcutBadger.aar in directory ./build/outputs/aar
-
-Run 'gradlew jarRelease' to get ShortcutBadger.jar in directory ./build/libs
-
 
 HOW TO USE
 ===================================
-<br/>1. Download the jar file named ShortcutBadger-X.X.jar in the target folder.
-<br/>2. Add the jar file into the folder "lib" in your Android project.
-<br/>3. Do not forget to add these permissions to your Androidmanifest.xml.
+<br/>1. Download the ShortcutBadger-aar.zip and put it into your project.
+<br/>2. Add the repositories path in your build.gradle "lib" in your Android project.
 
-        <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/>
-        <uses-permission android:name="com.android.launcher.permission.WRITE_SETTINGS"/>
-        <uses-permission android:name="com.sonyericsson.home.permission.BROADCAST_BADGE"/>
-        <uses-permission android:name="com.htc.launcher.permission.WRITE_SETTINGS"/>
-        <uses-permission android:name="com.htc.launcher.permission.READ_SETTINGS"/>
-        <uses-permission android:name="com.sec.android.provider.badge.permission.READ"/>
-        <uses-permission android:name="com.sec.android.provider.badge.permission.WRITE"/>
+        repositories {
+            jcenter()
+            maven {
+                url 'file://'+project.rootDir+"/ShortcutBadger-aar"
+            }
+        }
+<br/>3. Add dependencies for Shortcutbadger
+        
+        dependencies {
+            compile 'me.leolin:ShortcutBadger:1.0.1'
+        }
+
 <br/>4. Add the codes below:
 
         int badgeCount = 1;
@@ -70,4 +68,3 @@ LICENSE
         See the License for the specific language governing permissions and
         limitations under the License.
 <br/>       
- Email: leolin310148@gmail.com
