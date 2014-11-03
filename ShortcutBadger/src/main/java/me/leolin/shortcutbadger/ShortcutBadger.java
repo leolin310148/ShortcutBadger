@@ -23,7 +23,8 @@ public abstract class ShortcutBadger {
     private static final String HOME_PACKAGE_APEX = "com.anddoes.launcher";
     private static final String HOME_PACKAGE_ADW = "org.adw.launcher";
     private static final String HOME_PACKAGE_ADW_EX = "org.adwfreak.launcher";
-    
+    private static final String HOME_PACKAGE_NOVA = "com.teslacoilsw.launcher";
+
     private static final String MESSAGE_NOT_SUPPORT_BADGE_COUNT = "ShortBadger is currently not support the badgeCount \"%d\"";
     private static final String MESSAGE_NOT_SUPPORT_THIS_HOME = "ShortcutBadger is currently not support the home launcher package \"%s\"";
 
@@ -72,6 +73,8 @@ public abstract class ShortcutBadger {
         } else if (HOME_PACKAGE_ADW.equals(currentHomePackage)
                 || HOME_PACKAGE_ADW_EX.equals(currentHomePackage)) {
             mShortcutBadger = new AdwHomeBadger(context);
+        } else if (HOME_PACKAGE_NOVA.equals(currentHomePackage)) {
+            mShortcutBadger = new NovaHomeBadger(context);
         }
 
         //not support this home launcher package
