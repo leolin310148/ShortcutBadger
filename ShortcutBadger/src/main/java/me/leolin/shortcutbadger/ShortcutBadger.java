@@ -20,6 +20,7 @@ public abstract class ShortcutBadger {
     private static final String HOME_PACKAGE_LG = "com.lge.launcher2";
     private static final String HOME_PACKAGE_HTC = "com.htc.launcher";
     private static final String HOME_PACKAGE_ANDROID = "com.android.launcher";
+    private static final String HOME_PACKAGE_APEX = "com.anddoes.launcher";
 
 
     private static final String MESSAGE_NOT_SUPPORT_BADGE_COUNT = "ShortBadger is currently not support the badgeCount \"%d\"";
@@ -65,6 +66,8 @@ public abstract class ShortcutBadger {
             mShortcutBadger = new NewHtcHomeBadger(context);
         } else if (HOME_PACKAGE_ANDROID.equals(currentHomePackage)) {
             mShortcutBadger = new AndroidHomeBadger(context);
+        } else if (HOME_PACKAGE_APEX.equals(currentHomePackage)) {
+            mShortcutBadger = new ApexHomeBadger(context);
         }
 
         //not support this home launcher package
