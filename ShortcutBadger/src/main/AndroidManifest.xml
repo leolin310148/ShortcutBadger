@@ -17,4 +17,8 @@
 
     <!--for sony-->
     <uses-permission android:name="com.sonyericsson.home.permission.BROADCAST_BADGE"/>
+
+    <!--for apex-->
+    <uses-permission android:name="com.anddoes.launcher.permission.UPDATE_COUNT" />
+
 </manifest>
