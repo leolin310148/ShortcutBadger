@@ -1,7 +1,7 @@
 apply plugin: 'android-library'
 apply plugin: 'maven'
 group = 'me.leolin'
-version = '1.0.1'
+version = '1.0.2'
 
 
 android {
@@ -19,7 +19,6 @@ android {
     buildTypes {
         release {
             runProguard false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 
