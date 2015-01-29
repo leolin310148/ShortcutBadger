@@ -30,11 +30,14 @@ public class hTCHomeBadger extends ShortcutBadger {
         String appName = mContext.getResources().getText(mContext.getResources().getIdentifier("app_name",
                 "string", getContextPackageName())).toString();
 
+        Cursor cursor = null;
         boolean supportNotifyCount = true;
         try {
-            Cursor cursor = contentResolver.query(mUri, new String[]{"notifyCount"}, "title=?", new String[]{appName}, null);
+            cursor = contentResolver.query(mUri, new String[]{"notifyCount"}, "title=?", new String[]{appName}, null);
         } catch (Throwable e) {
             supportNotifyCount = false;
+        } finally {
+            CloseHelper.close(cursor);
         }
 
         if (supportNotifyCount) {
@@ -51,7 +54,5 @@ public class hTCHomeBadger extends ShortcutBadger {
             contentValues.put("icon", bytes);
             contentResolver.update(mUri, contentValues, "title=?", new String[]{appName});
         }
-
-
     }
 }
