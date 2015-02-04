@@ -16,10 +16,10 @@ import com.shortcutBadger.util.ImageUtil;
  * Time: 下午7:15
  * To change this template use File | Settings | File Templates.
  */
-public class hTCHomeBadger extends ShortcutBadger {
+public class HTCHomeBadger extends ShortcutBadger {
     private static final String CONTENT_URI = "content://com.htc.launcher.settings/favorites?notify=true";
 
-    public hTCHomeBadger(Context context) {
+    public HTCHomeBadger(Context context) {
         super(context);
     }
 
