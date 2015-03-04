@@ -9,11 +9,7 @@ import me.leolin.shortcutbadger.ShortcutBadgeException;
 import me.leolin.shortcutbadger.ShortcutBadger;
 
 /**
- * Created with IntelliJ IDEA.
- * User: leolin
- * Date: 2013/11/14
- * Time: 下午7:15
- * To change this template use File | Settings | File Templates.
+ * @author Leo Lin
  */
 public class AndroidHomeBadger extends ShortcutBadger {
     private static final String CONTENT_URI = "content://com.android.launcher2.settings/favorites?notify=true";

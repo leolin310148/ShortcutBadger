@@ -10,17 +10,12 @@ android {
     buildToolsVersion "20.0.0"
 
     defaultConfig {
-        applicationId 'me.leolin.shortcutbadger'
         minSdkVersion 8
         targetSdkVersion 19
         versionCode 1
         versionName "1.0"
     }
-    buildTypes {
-        release {
-            runProguard false
-        }
-    }
+    
 
 }
 

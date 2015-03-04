@@ -7,7 +7,7 @@ import me.leolin.shortcutbadger.ShortcutBadgeException;
 import me.leolin.shortcutbadger.ShortcutBadger;
 
 /**
- * @author Leolin
+ * @author Leo Lin
  */
 public class NewHtcHomeBadger extends ShortcutBadger {
 
