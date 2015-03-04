@@ -39,7 +39,7 @@ HOW TO USE
 <br/>3. Add dependencies for Shortcutbadger
         
         dependencies {
-            compile 'me.leolin:ShortcutBadger:1.0.1@aar'
+            compile 'me.leolin:ShortcutBadger:1.0.3@aar'
         }
 
 <br/>4. Add the codes below:

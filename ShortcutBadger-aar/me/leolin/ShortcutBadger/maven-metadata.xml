@@ -2,12 +2,11 @@
 <metadata>
   <groupId>me.leolin</groupId>
   <artifactId>ShortcutBadger</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.3</version>
   <versioning>
     <versions>
-      <version>1.0.1</version>
-      <version>1.0.2</version>
+      <version>1.0.3</version>
     </versions>
-    <lastUpdated>20141116135629</lastUpdated>
+    <lastUpdated>20150304021027</lastUpdated>
   </versioning>
 </metadata>
