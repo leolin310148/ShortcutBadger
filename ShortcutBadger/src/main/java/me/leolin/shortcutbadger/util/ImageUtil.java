@@ -1,7 +1,7 @@
 package me.leolin.shortcutbadger.util;
 
 import android.content.Context;
-import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.graphics.*;
 import android.graphics.drawable.Drawable;
 import me.leolin.shortcutbadger.ShortcutBadgeException;
@@ -41,19 +41,18 @@ public class ImageUtil {
 
     public static byte[] drawBadgeOnAppIcon(Context context, int badgeCount) throws ShortcutBadgeException {
 
-        Bitmap appIcon = null;
+        Bitmap appIcon;
         String gText = String.valueOf(badgeCount);
 
-        List<PackageInfo> packages = context.getPackageManager().getInstalledPackages(0);
-        for (PackageInfo packageInfo : packages) {
-            if (context.getPackageName().equals(packageInfo.packageName)) {
-                Drawable drawable = packageInfo.applicationInfo.loadIcon(context.getPackageManager());
-                appIcon = drawableToBitmap(drawable);
-            }
+        try {
+            Drawable iconDrawable = context.getPackageManager().getApplicationIcon(context.getPackageName());
+            appIcon = drawableToBitmap(iconDrawable);
+        } catch (PackageManager.NameNotFoundException e) {
+            throw new ShortcutBadgeException("Could not load the app Icon");
         }
 
         if (appIcon == null) {
-            throw new ShortcutBadgeException("count not load the app Icon");
+            throw new ShortcutBadgeException("Could not load the app Icon");
         }
 
         if (badgeCount == 0) {
@@ -78,38 +77,31 @@ public class ImageUtil {
         float cx = appIcon.getWidth() - radius;
         float cy = radius;
 
-
-        Paint paint_red = new Paint();
-        paint_red.setColor(Color.RED);
-        Paint paint_white = new Paint();
-        paint_white.setColor(Color.WHITE);
         Canvas canvas = new Canvas(appIcon);
-        canvas.drawCircle(cx, cy, radius, paint_white);
-
-
-        canvas.drawCircle(cx, cy, radius * 6 / 7, paint_red);
-
-
-        // new antialised Paint
-        Paint paint_text = new Paint(Paint.ANTI_ALIAS_FLAG);
-        // text color - #3D3D3D
-        paint_text.setColor(Color.WHITE);
+        //ANTI_ALIAS to avoid glitched circles
+        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        paint.setColor(Color.WHITE);
+        canvas.drawCircle(cx, cy, radius, paint);
+        paint.setColor(Color.RED);
+        canvas.drawCircle(cx, cy, radius * 6 / 7, paint);
+        
+        paint.setColor(Color.WHITE);
         // text size in pixels
         int textSize = (int)(radius*0.7);
         if (gText.length() > 1) {
             textSize =  (int)(radius*0.5);
         }
-        paint_text.setTextSize((int) (textSize * scale));
-        paint_text.setFakeBoldText(true);
+        paint.setTextSize((int) (textSize * scale));
+        paint.setFakeBoldText(true);
         // draw text to the Canvas center
         Rect bounds = new Rect();
-        paint_text.getTextBounds(gText, 0, gText.length(), bounds);
+        paint.getTextBounds(gText, 0, gText.length(), bounds);
         float bw = bounds.width() / 2;
         if (gText.endsWith("1")) {
             bw *= 1.25;
         }
         float bh = bounds.height() / 2;
-        canvas.drawText(gText, cx - bw, cy + bh, paint_text);
+        canvas.drawText(gText, cx - bw, cy + bh, paint);
 
         return bitmapToByteArray(appIcon);
     }

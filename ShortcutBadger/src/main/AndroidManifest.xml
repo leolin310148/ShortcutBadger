@@ -23,4 +23,7 @@
     <!--for apex-->
     <uses-permission android:name="com.anddoes.launcher.permission.UPDATE_COUNT"/>
 
+    <!--for solid-->
+    <uses-permission android:name="com.majeur.launcher.permission.UPDATE_BADGE"/>
+
 </manifest>

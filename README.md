@@ -21,7 +21,8 @@ HTC Launcher<br/>
 ![ScreenShot](https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_htc.png)
 
 
-Nova launcher with TeslaUnread,Apex launcher,Adw Launcher provided by <a href="https://github.com/notz"/>notz</a>
+Nova launcher with TeslaUnread,Apex launcher,Adw Launcher provided by <a href="https://github.com/notz"/>notz</a><br/>
+Solid launcher provided by <a href="https://github.com/MajeurAndroid"/>MajeurAndroid</a>
 
 
 
