@@ -1,7 +1,7 @@
 apply plugin: 'android-library'
 apply plugin: 'maven'
 group = 'me.leolin'
-version = '1.0.3'
+version = '1.0.4'
 
 
 android {

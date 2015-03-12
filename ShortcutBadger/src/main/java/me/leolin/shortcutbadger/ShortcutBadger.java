@@ -79,7 +79,6 @@ public abstract class ShortcutBadger {
         } catch (Throwable e) {
             throw new ShortcutBadgeException("Unable to execute badge:" + e.getMessage());
         }
-        shortcutBadger.executeBadge(badgeCount);
 
     }
 
