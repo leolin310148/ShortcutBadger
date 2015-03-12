@@ -44,9 +44,13 @@ public class SamsungHomeBadger extends ShortcutBadger {
 
     private ContentValues getContentValues(int badgeCount) {
         ContentValues contentValues = new ContentValues();
-        contentValues.put("package", getContextPackageName());
-        contentValues.put("class", getEntryActivityName());
+        if (isInsert) {
+            contentValues.put("package", getContextPackageName());
+            contentValues.put("class", getEntryActivityName());
+        }
+
         contentValues.put("badgecount", badgeCount);
+
         return contentValues;
     }
 }
