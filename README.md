@@ -21,28 +21,26 @@ HTC Launcher<br/>
 ![ScreenShot](https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_htc.png)
 
 
-Nova launcher with TeslaUnread,Apex launcher,Adw Launcher provided by <a href="https://github.com/notz"/>notz</a>
+Nova launcher with TeslaUnread,Apex launcher,Adw Launcher provided by notz</br/></br/>
 
+Solid launcher provided by MajeurAndroid
 
 
 HOW TO USE
 ===================================
-<br/>1. Download the ShortcutBadger-aar.zip and put it into your project.
-<br/>2. Add the repositories path in your build.gradle.
+<br/>1. Add mavenCentral to your build script.
 
         repositories {
-            jcenter()
-            maven {
-                url 'file://'+project.rootDir+"/ShortcutBadger-aar"
-            }
+            mavenCentral()
         }
-<br/>3. Add dependencies for Shortcutbadger
+    
+<br/>2. Add dependencies for ShortcutBadger, it's available from maven now.
         
         dependencies {
-            compile 'me.leolin:ShortcutBadger:1.0.3@aar'
+            compile 'me.leolin:ShortcutBadger:1.0.+@aar'
         }
 
-<br/>4. Add the codes below:
+<br/>3. Add the codes below:
 
         int badgeCount = 1;
         try {
@@ -50,7 +48,7 @@ HOW TO USE
         } catch (ShortcutBadgeException e) {
             //handle the Exception
         }
-<br/>5. If you want to remove the badge, just set the badgeCount as 0.
+<br/>4. If you want to remove the badge, just set the badgeCount as 0.
 <br/>
 <br/>
 <br/>

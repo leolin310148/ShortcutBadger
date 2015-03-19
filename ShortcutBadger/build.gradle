@@ -1,9 +1,4 @@
-apply plugin: 'android-library'
-apply plugin: 'maven'
-group = 'me.leolin'
-version = '1.0.3'
-
-
+apply plugin: 'com.android.library'
 android {
 
     compileSdkVersion 19
@@ -19,10 +14,4 @@ android {
 
 }
 
-uploadArchives {
-    repositories {
-        mavenDeployer {
-            repository(url: 'file://' + project.rootDir + '/ShortcutBadger-aar')
-        }
-    }
-}
+apply from: 'https://raw.github.com/chrisbanes/gradle-mvn-push/master/gradle-mvn-push.gradle'

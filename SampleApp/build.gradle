@@ -1,12 +1,5 @@
 apply plugin: 'android'
 
-repositories {
-    jcenter()
-    maven {
-        url 'file://'+project.rootDir+"/ShortcutBadger-aar"
-    }
-}
-
 android {
     compileSdkVersion 19
     buildToolsVersion "20.0.0"
@@ -24,5 +17,5 @@ android {
 
 
 dependencies {
-    compile 'me.leolin:ShortcutBadger:1.0.3@aar'
+    compile 'me.leolin:ShortcutBadger:1.0.+@aar'
 }

@@ -1,7 +1,6 @@
 buildscript {
     repositories {
-        mavenLocal()
-        jcenter()
+        mavenCentral()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:1.0.+'
@@ -13,13 +12,15 @@ buildscript {
 subprojects{
     buildscript {
         repositories {
-            mavenLocal()
-            jcenter()
+            mavenCentral()
         }
         dependencies {
             classpath 'com.android.tools.build:gradle:1.0.+'
             classpath 'com.jakewharton.sdkmanager:gradle-plugin:0.12.+'
         }
+    }
+    repositories {
+        mavenCentral()
     }
 
     apply plugin: 'android-sdk-manager'
