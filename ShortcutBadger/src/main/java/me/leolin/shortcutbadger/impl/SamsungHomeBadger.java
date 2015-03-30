@@ -9,6 +9,9 @@ import me.leolin.shortcutbadger.ShortcutBadgeException;
 import me.leolin.shortcutbadger.ShortcutBadger;
 import me.leolin.shortcutbadger.util.CloseHelper;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * @author Leo Lin
  */
@@ -59,5 +62,13 @@ public class SamsungHomeBadger extends ShortcutBadger {
         contentValues.put("badgecount", badgeCount);
 
         return contentValues;
+    }
+
+    @Override
+    public List<String> getSupportLaunchers() {
+        return Arrays.asList(
+                "com.sec.android.app.launcher",
+                "com.sec.android.app.twlauncher"
+        );
     }
 }

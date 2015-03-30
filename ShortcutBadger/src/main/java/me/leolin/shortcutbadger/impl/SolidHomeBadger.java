@@ -6,6 +6,9 @@ import android.content.Intent;
 import me.leolin.shortcutbadger.ShortcutBadgeException;
 import me.leolin.shortcutbadger.ShortcutBadger;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * @author MajeurAndroid
  */
@@ -27,5 +30,10 @@ public class SolidHomeBadger extends ShortcutBadger {
         intent.putExtra(COUNT, badgeCount);
         intent.putExtra(CLASS, getEntryActivityName());
         mContext.sendBroadcast(intent);
+    }
+
+    @Override
+    public List<String> getSupportLaunchers() {
+        return Arrays.asList("com.majeur.launcher");
     }
 }

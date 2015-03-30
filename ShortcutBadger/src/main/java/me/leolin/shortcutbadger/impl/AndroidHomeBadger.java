@@ -4,9 +4,12 @@ import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.net.Uri;
-import me.leolin.shortcutbadger.util.ImageUtil;
 import me.leolin.shortcutbadger.ShortcutBadgeException;
 import me.leolin.shortcutbadger.ShortcutBadger;
+import me.leolin.shortcutbadger.util.ImageUtil;
+
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author Leo Lin
@@ -31,5 +34,14 @@ public class AndroidHomeBadger extends ShortcutBadger {
         contentValues.put("itemType", 1);
         contentValues.put("icon", bytes);
         contentResolver.update(mUri, contentValues, "title=?", new String[]{appName});
+    }
+
+    @Override
+    public List<String> getSupportLaunchers() {
+        return Arrays.asList(
+                "com.android.launcher",
+                "com.android.launcher2",
+                "com.google.android.googlequicksearchbox"
+        );
     }
 }

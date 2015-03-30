@@ -6,6 +6,9 @@ import android.content.Intent;
 import me.leolin.shortcutbadger.ShortcutBadgeException;
 import me.leolin.shortcutbadger.ShortcutBadger;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * @author Leo Lin
  */
@@ -35,5 +38,10 @@ public class NewHtcHomeBadger extends ShortcutBadger {
         intent.putExtra(PACKAGENAME, getContextPackageName());
         intent.putExtra(COUNT, badgeCount);
         mContext.sendBroadcast(intent);
+    }
+
+    @Override
+    public List<String> getSupportLaunchers() {
+        return Arrays.asList("com.htc.launcher");
     }
 }

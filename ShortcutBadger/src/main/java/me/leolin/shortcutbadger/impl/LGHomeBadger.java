@@ -4,6 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import me.leolin.shortcutbadger.ShortcutBadger;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * @author Leo Lin
  */
@@ -25,5 +28,13 @@ public class LGHomeBadger extends ShortcutBadger {
         intent.putExtra(INTENT_EXTRA_PACKAGENAME, getContextPackageName());
         intent.putExtra(INTENT_EXTRA_ACTIVITY_NAME, getEntryActivityName());
         mContext.sendBroadcast(intent);
+    }
+
+    @Override
+    public List<String> getSupportLaunchers() {
+        return Arrays.asList(
+                "com.lge.launcher",
+                "com.lge.launcher2"
+        );
     }
 }

@@ -1,10 +1,14 @@
 package me.leolin.shortcutbadger.example;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import me.leolin.shortcutbadger.ShortcutBadgeException;
 import me.leolin.shortcutbadger.ShortcutBadger;
@@ -41,6 +45,16 @@ public class MainActivity extends Activity {
                 }
             }
         });
+
+
+        //find the home launcher Package
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        ResolveInfo resolveInfo = getPackageManager().resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY);
+        String currentHomePackage = resolveInfo.activityInfo.packageName;
+
+        TextView textViewHomePackage = (TextView) findViewById(R.id.textViewHomePackage);
+        textViewHomePackage.setText("launcher:" + currentHomePackage);
     }
 
 
