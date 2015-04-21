@@ -55,6 +55,16 @@ HOW TO USE
 <br/>
 
 
+ABOUT Google Play Developer Term Violation
+===================================
+If you receive mail from Google contents message like : REASON FOR WARNING: Violation of section 4.4 of the Developer Distribution Agreement.
+Please add permissions to your manifest.
+
+        <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/>
+        <uses-permission android:name="com.android.launcher.permission.WRITE_SETTINGS"/>
+        <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+        <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT" />
+
 LICENSE
 ===================================
 <br/>

@@ -14,10 +14,10 @@ import java.util.List;
 /**
  * @author Leo Lin
  */
-public class AndroidHomeBadger extends ShortcutBadger {
-    private static final String CONTENT_URI = "content://com.android.launcher.settings/favorites?notify=true";
+public class Android2HomeBadger extends ShortcutBadger {
+    private static final String CONTENT_URI = "content://com.android.launcher2.settings/favorites?notify=true";
 
-    public AndroidHomeBadger(Context context) {
+    public Android2HomeBadger(Context context) {
         super(context);
     }
 
@@ -39,7 +39,8 @@ public class AndroidHomeBadger extends ShortcutBadger {
     @Override
     public List<String> getSupportLaunchers() {
         return Arrays.asList(
-                "com.android.launcher"
+                "com.android.launcher2",
+                "com.google.android.googlequicksearchbox"
         );
     }
 }

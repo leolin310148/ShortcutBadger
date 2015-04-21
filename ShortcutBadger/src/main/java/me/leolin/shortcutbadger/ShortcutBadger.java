@@ -24,6 +24,7 @@ public abstract class ShortcutBadger {
     static {
         BADGERS.add(AdwHomeBadger.class);
         BADGERS.add(AndroidHomeBadger.class);
+        BADGERS.add(Android2HomeBadger.class);
         BADGERS.add(ApexHomeBadger.class);
         BADGERS.add(LGHomeBadger.class);
         BADGERS.add(NewHtcHomeBadger.class);
