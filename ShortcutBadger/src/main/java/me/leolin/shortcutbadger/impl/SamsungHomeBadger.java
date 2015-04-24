@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class SamsungHomeBadger extends ShortcutBadger {
     private static final String CONTENT_URI = "content://com.sec.badge/apps?notify=true";
-    private static final String[] CONTENT_PROJECTION = new String[]{"_id",};
+    private static final String[] CONTENT_PROJECTION = new String[]{"_id","class"};
 
     public SamsungHomeBadger(Context context) {
         super(context);
