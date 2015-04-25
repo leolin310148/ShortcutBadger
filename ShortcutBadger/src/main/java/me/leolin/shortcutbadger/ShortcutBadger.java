@@ -32,6 +32,7 @@ public abstract class ShortcutBadger {
         BADGERS.add(SamsungHomeBadger.class);
         BADGERS.add(SolidHomeBadger.class);
         BADGERS.add(SonyHomeBadger.class);
+        BADGERS.add(XiaomiHomeBadger.class);
     }
 
     private static final String MESSAGE_NOT_SUPPORT_BADGE_COUNT = "ShortBadger is currently not support the badgeCount \"%d\"";
@@ -95,6 +96,10 @@ public abstract class ShortcutBadger {
             return null;
         }
 
+        if (Build.MANUFACTURER.equalsIgnoreCase("Xiaomi")) {
+            mShortcutBadger = new XiaomiHomeBadger(context);
+            return mShortcutBadger;
+        }
 
         for (Class<? extends ShortcutBadger> badger : BADGERS) {
             Constructor<? extends ShortcutBadger> constructor = badger.getConstructor(Context.class);

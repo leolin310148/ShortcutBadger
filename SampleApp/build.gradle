@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "me.leolin.shortcutbadger.example"
-        minSdkVersion 14
+        minSdkVersion 10
         targetSdkVersion 19
         versionCode 1
         versionName "1.0"
