@@ -20,13 +20,16 @@ LG Launcher<br/>
 HTC Launcher<br/>
 ![ScreenShot](https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_htc.png)
 
-
-Nova launcher with TeslaUnread,Apex launcher,Adw Launcher provided by notz</br/></br/>
-
-Solid launcher provided by MajeurAndroid
+Xiaomi Launcher<br/>
+![ScreenShot](https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_xiaomi.png)
 
 
-HOW TO USE
+Nova launcher with TeslaUnread,Apex launcher,Adw Launcher provided by [notz](https://github.com/notz)</br/></br/>
+
+Solid launcher provided by [MajeurAndroid](https://github.com/MajeurAndroid)
+
+
+USAGE
 ===================================
 <br/>1. Add mavenCentral to your build script.
 
@@ -55,15 +58,32 @@ HOW TO USE
 <br/>
 
 
+DEVELOP BY
+===================================
+[Leo Lin](https://github.com/leolin310148)
+
+
 ABOUT Google Play Developer Term Violation
 ===================================
-If you receive mail from Google contents message like : REASON FOR WARNING: Violation of section 4.4 of the Developer Distribution Agreement.
+If you receive mail from Google contains message like :<br/> 
+
+        REASON FOR WARNING: Violation of section 4.4 of the Developer Distribution Agreement.
+        
+        
 Please add permissions to your manifest.
 
         <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/>
         <uses-permission android:name="com.android.launcher.permission.WRITE_SETTINGS"/>
         <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
         <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT" />
+
+
+CHANGE LOG
+===================================
+1.0.9<br/>
+Add xiaomi launcher support.
+
+
 
 LICENSE
 ===================================
