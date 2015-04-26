@@ -9,7 +9,7 @@ The ShortcutBadger makes your Android App showing the count of unread messages a
 <tr>
 <td width="130">
 <h3>Android</h3>
-<h3>(before 4.4)</h3>
+<h5>(before 4.4)</h5>
 <br>
 <img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_android.png"/>
 </td>
