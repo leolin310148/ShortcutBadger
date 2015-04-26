@@ -3,31 +3,57 @@ ShortcutBadger:
 
 The ShortcutBadger makes your Android App showing the count of unread messages as a badge on your App shortcut!
 
-# Currently support launchers:<br/>
+# Support launchers:<br/>
 
-Android native Launcher(Not support Android L)<br/>
-![ScreenShot](https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_android.png)
+<table>
+<tr>
+<td width="130">
+<h3>Android(before 4.4)</h3>
+<br>
+<img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_android.png"/>
+</td>
+<td width="130">
+<h3>Sony</h3>
+<br>
+<img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_sony.png"/>
+</td>
+<td width="130">
+<h3>Samsung</h3>
+<br>
+<img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_samsung.png"/>
+</td>
+</tr>
+<tr>
+<td width="130">
+<h3>LG</h3>
+<br>
+<img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_lg.png"/>
+</td>
+<td width="130">
+<h3>HTC</h3>
+<br>
+<img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_htc.png"/>
+</td>
+<td width="130">
+<h3>Xiaomi</h3>
+<br>
+<img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_xiaomi.png"/>
+</td>
+</tr>
+<tr>
+<td width="130">
+<h3>ASUS</h3>
+<br>
+<img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_asus.png"/>
+</td>
+<td width="130">
+</td>
+<td width="130">
+</td>
+</tr>
+</table> 
 
-Sony Home Launcher<br/>
-![ScreenShot](https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_sony.png)
-
-Samsung Touchwiz<br/>
-![ScreenShot](https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_samsung.png)
-
-LG Launcher<br/>
-![ScreenShot](https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_lg.png)
-
-HTC Launcher<br/>
-![ScreenShot](https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_htc.png)
-
-Xiaomi Launcher<br/>
-![ScreenShot](https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_xiaomi.png)
-
-Asus Launcher<br/>
-![ScreenShot](https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_asus.png)
-
-Nova launcher with TeslaUnread,Apex launcher,Adw Launcher provided by [notz](https://github.com/notz)</br/></br/>
-
+Nova launcher with TeslaUnread,Apex launcher,Adw Launcher provided by [notz](https://github.com/notz)</br/>
 Solid launcher provided by [MajeurAndroid](https://github.com/MajeurAndroid)
 
 
