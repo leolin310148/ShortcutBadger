@@ -23,6 +23,8 @@ HTC Launcher<br/>
 Xiaomi Launcher<br/>
 ![ScreenShot](https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_xiaomi.png)
 
+Asus Launcher<br/>
+![ScreenShot](https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_asus.png)
 
 Nova launcher with TeslaUnread,Apex launcher,Adw Launcher provided by [notz](https://github.com/notz)</br/></br/>
 
@@ -40,7 +42,7 @@ USAGE
 <br/>2. Add dependencies for ShortcutBadger, it's available from maven now.
         
         dependencies {
-            compile 'me.leolin:ShortcutBadger:1.0.+@aar'
+            compile 'me.leolin:ShortcutBadger:1.0.10@aar'
         }
 
 <br/>3. Add the codes below:
@@ -80,9 +82,11 @@ Please add permissions to your manifest.
 
 CHANGE LOG
 ===================================
-1.0.9<br/>
+1.0.10:<br/>
+Add Asus launcher support.
+<br/><br/>
+1.0.9:<br/>
 Add xiaomi launcher support.
-
 
 
 LICENSE

@@ -33,6 +33,7 @@ public abstract class ShortcutBadger {
         BADGERS.add(SolidHomeBadger.class);
         BADGERS.add(SonyHomeBadger.class);
         BADGERS.add(XiaomiHomeBadger.class);
+        BADGERS.add(AsusHomeLauncher.class);
     }
 
     private static final String MESSAGE_NOT_SUPPORT_BADGE_COUNT = "ShortBadger is currently not support the badgeCount \"%d\"";
