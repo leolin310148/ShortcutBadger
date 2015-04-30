@@ -30,9 +30,6 @@ public class AsusHomeLauncher extends ShortcutBadger {
         intent.putExtra(INTENT_EXTRA_ACTIVITY_NAME, getEntryActivityName());
         intent.putExtra("badge_vip_count", 0);
         mContext.sendBroadcast(intent);
-
-
-        mContext.sendBroadcast(intent);
     }
 
     @Override
