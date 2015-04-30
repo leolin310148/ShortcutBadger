@@ -1,5 +1,6 @@
 package me.leolin.shortcutbadger.impl;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import me.leolin.shortcutbadger.ShortcutBadger;
@@ -19,8 +20,8 @@ public class SonyHomeBadger extends ShortcutBadger {
     private static final String INTENT_EXTRA_SHOW_MESSAGE = "com.sonyericsson.home.intent.extra.badge.SHOW_MESSAGE";
 
 
-    public SonyHomeBadger(Context context) {
-        super(context);
+    public SonyHomeBadger(Context context, Class<? extends Activity> activityToBadge) {
+        super(context, activityToBadge);
     }
 
     @Override

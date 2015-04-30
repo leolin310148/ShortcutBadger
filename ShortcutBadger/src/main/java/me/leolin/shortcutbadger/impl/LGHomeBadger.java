@@ -1,5 +1,6 @@
 package me.leolin.shortcutbadger.impl;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import me.leolin.shortcutbadger.ShortcutBadger;
@@ -17,8 +18,8 @@ public class LGHomeBadger extends ShortcutBadger {
     private static final String INTENT_EXTRA_PACKAGENAME = "badge_count_package_name";
     private static final String INTENT_EXTRA_ACTIVITY_NAME = "badge_count_class_name";
 
-    public LGHomeBadger(Context context) {
-        super(context);
+    public LGHomeBadger(Context context, Class<? extends Activity> activityToBadge) {
+        super(context, activityToBadge);
     }
 
     @Override

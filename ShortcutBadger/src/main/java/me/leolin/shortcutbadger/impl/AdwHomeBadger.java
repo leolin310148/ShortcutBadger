@@ -1,5 +1,6 @@
 package me.leolin.shortcutbadger.impl;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import me.leolin.shortcutbadger.ShortcutBadgeException;
@@ -17,8 +18,8 @@ public class AdwHomeBadger extends ShortcutBadger {
     public static final String PACKAGENAME = "PNAME";
     public static final String COUNT = "COUNT";
 
-    public AdwHomeBadger(Context context) {
-        super(context);
+    public AdwHomeBadger(Context context, Class<? extends Activity> activityToBadge) {
+        super(context, activityToBadge);
     }
 
     @Override

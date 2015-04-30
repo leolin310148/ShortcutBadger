@@ -1,5 +1,6 @@
 package me.leolin.shortcutbadger.impl;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import me.leolin.shortcutbadger.ShortcutBadgeException;
@@ -18,8 +19,8 @@ public class AsusHomeLauncher extends ShortcutBadger {
     private static final String INTENT_EXTRA_PACKAGENAME = "badge_count_package_name";
     private static final String INTENT_EXTRA_ACTIVITY_NAME = "badge_count_class_name";
 
-    public AsusHomeLauncher(Context context) {
-        super(context);
+    public AsusHomeLauncher(Context context, Class<? extends Activity> activityToBadge) {
+        super(context, activityToBadge);
     }
 
     @Override

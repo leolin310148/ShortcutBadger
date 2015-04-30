@@ -1,5 +1,6 @@
 package me.leolin.shortcutbadger.impl;
 
+import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -21,8 +22,8 @@ public class NewHtcHomeBadger extends ShortcutBadger {
     public static final String EXTRA_COMPONENT = "com.htc.launcher.extra.COMPONENT";
     public static final String EXTRA_COUNT = "com.htc.launcher.extra.COUNT";
 
-    public NewHtcHomeBadger(Context context) {
-        super(context);
+    public NewHtcHomeBadger(Context context, Class<? extends Activity> activityToBadge) {
+        super(context, activityToBadge);
     }
 
     @Override

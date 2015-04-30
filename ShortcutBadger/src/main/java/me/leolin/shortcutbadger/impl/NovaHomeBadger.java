@@ -1,5 +1,6 @@
 package me.leolin.shortcutbadger.impl;
 
+import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.net.Uri;
@@ -22,8 +23,8 @@ public class NovaHomeBadger extends ShortcutBadger {
     private static final String COUNT = "count";
     private static final String TAG = "tag";
 
-    public NovaHomeBadger(final Context context) {
-        super(context);
+    public NovaHomeBadger(Context context, Class<? extends Activity> activityToBadge) {
+        super(context, activityToBadge);
     }
 
     @Override
