@@ -35,9 +35,6 @@ public class SonyHomeBadger extends ShortcutBadger {
 
     @Override
     public List<String> getSupportLaunchers() {
-        return Arrays.asList(
-                "com.sonyericsson.home",
-                "com.anddoes.launcher"
-        );
+        return Arrays.asList("com.sonyericsson.home");
     }
 }
