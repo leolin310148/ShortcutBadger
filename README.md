@@ -10,6 +10,7 @@ The ShortcutBadger makes your Android App showing the count of unread messages a
 <td width="130">
 <h3>Android</h3>
 <h5>(before 4.4)</h5>
+<h5>(Deprecated since 1.1.0)</h5>
 <br>
 <img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_android.png"/>
 </td>
@@ -69,7 +70,7 @@ USAGE
 <br/>2. Add dependencies for ShortcutBadger, it's available from maven now.
         
         dependencies {
-            compile 'me.leolin:ShortcutBadger:1.0.10@aar'
+            compile 'me.leolin:ShortcutBadger:1.1.0@aar'
         }
 
 <br/>3. Add the codes below:
@@ -98,17 +99,15 @@ If you receive mail from Google contains message like :<br/>
 
         REASON FOR WARNING: Violation of section 4.4 of the Developer Distribution Agreement.
         
-        
-Please add permissions to your manifest.
+Please use version 1.1.0+
 
-        <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/>
-        <uses-permission android:name="com.android.launcher.permission.WRITE_SETTINGS"/>
-        <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
-        <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT" />
 
 
 CHANGE LOG
 ===================================
+1.1.0:<br/>
+Remove Android Launcher support due to  Google Play Developer Term Violation since 4.4 
+<br/><br/>
 1.0.10:<br/>
 Add Asus launcher support.
 <br/><br/>

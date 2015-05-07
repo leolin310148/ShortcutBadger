@@ -14,6 +14,7 @@ import java.util.List;
 /**
  * @author Leo Lin
  */
+@Deprecated
 public class Android2HomeBadger extends ShortcutBadger {
     private static final String CONTENT_URI = "content://com.android.launcher2.settings/favorites?notify=true";
 
