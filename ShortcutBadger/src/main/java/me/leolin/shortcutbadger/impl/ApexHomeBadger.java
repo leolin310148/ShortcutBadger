@@ -1,5 +1,6 @@
 package me.leolin.shortcutbadger.impl;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
@@ -19,8 +20,8 @@ public class ApexHomeBadger extends ShortcutBadger {
     private static final String COUNT = "count";
     private static final String CLASS = "class";
 
-    public ApexHomeBadger(Context context) {
-        super(context);
+    public ApexHomeBadger(Context context, Class<? extends Activity> activityToBadge) {
+        super(context, activityToBadge);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package me.leolin.shortcutbadger.impl;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import me.leolin.shortcutbadger.ShortcutBadgeException;
@@ -18,8 +19,8 @@ public class XiaomiHomeBadger extends ShortcutBadger {
     public static final String EXTRA_UPDATE_APP_COMPONENT_NAME = "android.intent.extra.update_application_component_name";
     public static final String EXTRA_UPDATE_APP_MSG_TEXT = "android.intent.extra.update_application_message_text";
 
-    public XiaomiHomeBadger(Context context) {
-        super(context);
+    public XiaomiHomeBadger(Context context, Class<? extends Activity> activityToBadge) {
+        super(context, activityToBadge);
     }
 
     @Override

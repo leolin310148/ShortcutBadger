@@ -1,5 +1,6 @@
 package me.leolin.shortcutbadger.impl;
 
+import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
@@ -18,8 +19,8 @@ import java.util.List;
 public class AndroidHomeBadger extends ShortcutBadger {
     private static final String CONTENT_URI = "content://com.android.launcher2.settings/favorites?notify=true";
 
-    public AndroidHomeBadger(Context context) {
-        super(context);
+    public AndroidHomeBadger(Context context, Class<? extends Activity> activityToBadge) {
+        super(context, activityToBadge);
     }
 
     @Override

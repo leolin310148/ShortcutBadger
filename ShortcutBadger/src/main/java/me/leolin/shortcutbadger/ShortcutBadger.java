@@ -1,11 +1,13 @@
 package me.leolin.shortcutbadger;
 
+import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Build;
+
 import me.leolin.shortcutbadger.impl.*;
 
 import java.lang.reflect.Constructor;
@@ -48,14 +50,20 @@ public abstract class ShortcutBadger {
     }
 
     protected Context mContext;
+    private Class<? extends Activity> activityToBadge;
 
-    protected ShortcutBadger(Context context) {
+    protected ShortcutBadger(Context context, Class<? extends Activity> activityToBadge) {
         this.mContext = context;
+        this.activityToBadge = activityToBadge;
     }
 
     protected abstract void executeBadge(int badgeCount) throws ShortcutBadgeException;
 
     public static void setBadge(Context context, int badgeCount) throws ShortcutBadgeException {
+        setBadge(context, badgeCount, null);
+    }
+
+    public static void setBadge(Context context, int badgeCount, Class<? extends Activity> activityToBadge) throws ShortcutBadgeException {
         //badgeCount should between 0 to 99
         if (badgeCount < MIN_BADGE_COUNT || badgeCount > MAX_BADGE_COUNT) {
             String exceptionMessage = String.format(MESSAGE_NOT_SUPPORT_BADGE_COUNT, badgeCount);
@@ -70,7 +78,7 @@ public abstract class ShortcutBadger {
 
 
         try {
-            ShortcutBadger shortcutBadger = getShortcutBadger(currentHomePackage, context);
+            ShortcutBadger shortcutBadger = getShortcutBadger(currentHomePackage, context, activityToBadge);
 
             //not support this home launcher package
             if (shortcutBadger == null) {
@@ -85,11 +93,10 @@ public abstract class ShortcutBadger {
 
     }
 
-    private static ShortcutBadger getShortcutBadger(String currentHomePackage, Context context) throws IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
+    private static ShortcutBadger getShortcutBadger(String currentHomePackage, Context context, Class<? extends Activity> activityToBadge) throws IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
         if (mShortcutBadger != null) {
             return mShortcutBadger;
         }
-
         // Workaround for Meizu:
         // Meizu declare 'com.android.launcher', but hold something else
         // Icons get duplicated on restart after badge change
@@ -98,13 +105,13 @@ public abstract class ShortcutBadger {
         }
 
         if (Build.MANUFACTURER.equalsIgnoreCase("Xiaomi")) {
-            mShortcutBadger = new XiaomiHomeBadger(context);
+            mShortcutBadger = new XiaomiHomeBadger(context, activityToBadge);
             return mShortcutBadger;
         }
 
         for (Class<? extends ShortcutBadger> badger : BADGERS) {
-            Constructor<? extends ShortcutBadger> constructor = badger.getConstructor(Context.class);
-            ShortcutBadger shortcutBadger = constructor.newInstance(context);
+            Constructor<? extends ShortcutBadger> constructor = badger.getConstructor(Context.class, activityToBadge.getClass());
+            ShortcutBadger shortcutBadger = constructor.newInstance(context, activityToBadge);
             if (shortcutBadger.getSupportLaunchers().contains(currentHomePackage)) {
                 mShortcutBadger = shortcutBadger;
                 break;
@@ -118,8 +125,12 @@ public abstract class ShortcutBadger {
     public abstract List<String> getSupportLaunchers();
 
     protected String getEntryActivityName() {
-        ComponentName componentName = mContext.getPackageManager().getLaunchIntentForPackage(mContext.getPackageName()).getComponent();
-        return componentName.getClassName();
+        if (activityToBadge == null) {
+            ComponentName componentName = mContext.getPackageManager().getLaunchIntentForPackage(mContext.getPackageName()).getComponent();
+            return componentName.getClassName();
+        } else {
+            return activityToBadge.getName();
+        }
     }
 
     protected String getContextPackageName() {

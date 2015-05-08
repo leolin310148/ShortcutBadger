@@ -1,5 +1,6 @@
 package me.leolin.shortcutbadger.impl;
 
+import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
@@ -19,8 +20,8 @@ public class SamsungHomeBadger extends ShortcutBadger {
     private static final String CONTENT_URI = "content://com.sec.badge/apps?notify=true";
     private static final String[] CONTENT_PROJECTION = new String[]{"_id","class"};
 
-    public SamsungHomeBadger(Context context) {
-        super(context);
+    public SamsungHomeBadger(Context context, Class<? extends Activity> activityToBadge) {
+        super(context, activityToBadge);
     }
 
     @Override

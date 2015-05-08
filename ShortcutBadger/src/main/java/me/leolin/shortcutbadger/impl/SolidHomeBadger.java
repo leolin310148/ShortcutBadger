@@ -1,5 +1,6 @@
 package me.leolin.shortcutbadger.impl;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
@@ -19,8 +20,8 @@ public class SolidHomeBadger extends ShortcutBadger {
     private static final String COUNT = "com.majeur.launcher.intent.extra.BADGE_COUNT";
     private static final String CLASS = "com.majeur.launcher.intent.extra.BADGE_CLASS";
 
-    public SolidHomeBadger(Context context) {
-        super(context);
+    public SolidHomeBadger(Context context, Class<? extends Activity> activityToBadge) {
+        super(context, activityToBadge);
     }
 
     @Override
