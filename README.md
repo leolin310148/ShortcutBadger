@@ -7,6 +7,57 @@ The ShortcutBadger makes your Android App showing the count of unread messages a
 
 <table>
 <tr>
+        <td width="130">
+                <h3>Sony</h3>
+                <br>
+                <img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_sony.png"/>
+        </td>
+        <td width="130">
+                <h3>Samsung</h3>
+                <br>
+                <img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_samsung.png"/>
+        </td>
+        <td width="130">
+                <h3>LG</h3>
+                <br>
+                <img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_lg.png"/>
+        </td>
+</tr>
+<tr>
+        <td width="130">
+                <h3>HTC</h3>
+                <br>
+                <img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_htc.png"/>
+        </td>
+        <td width="130">
+                <h3>Xiaomi</h3>
+                <br>
+                <img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_xiaomi.png"/>
+        </td>
+        <td width="130">
+                <h3>ASUS</h3>
+                <br>
+                <img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_asus.png"/>
+        </td>
+<tr>        
+        <td width="130">
+                <h3>ADW</h3>
+                <br>
+                <img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_adw.png"/>
+        </td>
+        <td width="130">
+                <h3>APEX</h3>
+                <br>
+                <img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_apex.png"/>
+        </td>
+        <td width="130">
+                <h3>NOVA</h3>
+                <br>
+                <img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_nova.png"/>
+        </td>
+</tr>
+
+<tr>
 <td width="130">
 <h3>Android</h3>
 <h5>(before 4.4)</h5>
@@ -14,46 +65,10 @@ The ShortcutBadger makes your Android App showing the count of unread messages a
 <br>
 <img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_android.png"/>
 </td>
-<td width="130">
-<h3>Sony</h3>
-<br>
-<img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_sony.png"/>
-</td>
-<td width="130">
-<h3>Samsung</h3>
-<br>
-<img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_samsung.png"/>
-</td>
 </tr>
-<tr>
-<td width="130">
-<h3>LG</h3>
-<br>
-<img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_lg.png"/>
-</td>
-<td width="130">
-<h3>HTC</h3>
-<br>
-<img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_htc.png"/>
-</td>
-<td width="130">
-<h3>Xiaomi</h3>
-<br>
-<img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_xiaomi.png"/>
-</td>
-</tr>
-<tr>
-<td width="130">
-<h3>ASUS</h3>
-<br>
-<img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_asus.png"/>
-</td>
-<td width="130">
-</td>
-<td width="130">
-</td>
-</tr>
+
 </table> 
+
 
 Nova launcher with TeslaUnread,Apex launcher,Adw Launcher provided by [notz](https://github.com/notz)</br/>
 Solid launcher provided by [MajeurAndroid](https://github.com/MajeurAndroid)
@@ -70,18 +85,17 @@ USAGE
 <br/>2. Add dependencies for ShortcutBadger, it's available from maven now.
         
         dependencies {
-            compile 'me.leolin:ShortcutBadger:1.1.0@aar'
+            compile 'me.leolin:ShortcutBadger:1.1.1@aar'
         }
 
 <br/>3. Add the codes below:
 
         int badgeCount = 1;
-        try {
-            ShortcutBadger.setBadge(getApplicationContext(), badgeCount);
-        } catch (ShortcutBadgeException e) {
-            //handle the Exception
-        }
-<br/>4. If you want to remove the badge, just set the badgeCount as 0.
+        ShortcutBadger.with(getApplicationContext()).count(badgeCount);
+        
+<br/>4. If you want to remove the badge
+        
+        ShortcutBadger.with(getApplicationContext()).remove();
 <br/>
 <br/>
 <br/>
@@ -105,6 +119,11 @@ Please use version 1.1.0+
 
 CHANGE LOG
 ===================================
+1.1.1:<br/>
+Add DefaultBadger because some launchers use android.intent.action.BADGE_COUNT_UPDATE to update count.
+<br/>
+Since the ShortcutBadgerException is helpless. So change api to set badge and never have to handle the exception again. 
+<br/><br/>
 1.1.0:<br/>
 Remove Android Launcher support due to  Google Play Developer Term Violation since 4.4 
 <br/><br/>

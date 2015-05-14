@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import me.leolin.shortcutbadger.ShortcutBadgeException;
 import me.leolin.shortcutbadger.ShortcutBadger;
 
 
@@ -29,20 +28,17 @@ public class MainActivity extends Activity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int badgeCount = 0;
                 try {
-                    int badgeCount = 0;
-                    try {
-                        badgeCount = Integer.parseInt(numInput.getText().toString());
-                    } catch (NumberFormatException e) {
-                        Toast.makeText(getApplicationContext(), "Error input", Toast.LENGTH_SHORT).show();
-                    }
-
-                    ShortcutBadger.setBadge(getApplicationContext(), badgeCount);
-
-                    Toast.makeText(getApplicationContext(), "Set count=" + badgeCount, Toast.LENGTH_SHORT).show();
-                } catch (ShortcutBadgeException e) {
-                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                    badgeCount = Integer.parseInt(numInput.getText().toString());
+                } catch (NumberFormatException e) {
+                    Toast.makeText(getApplicationContext(), "Error input", Toast.LENGTH_SHORT).show();
                 }
+
+//                    ShortcutBadger.setBadge(getApplicationContext(), badgeCount);
+                ShortcutBadger.with(getApplicationContext()).count(badgeCount);
+
+                Toast.makeText(getApplicationContext(), "Set count=" + badgeCount, Toast.LENGTH_SHORT).show();
             }
         });
 
