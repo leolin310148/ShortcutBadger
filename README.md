@@ -22,13 +22,13 @@ The ShortcutBadger makes your Android App showing the count of unread messages a
                 <br>
                 <img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_lg.png"/>
         </td>
-</tr>
-<tr>
         <td width="130">
                 <h3>HTC</h3>
                 <br>
                 <img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_htc.png"/>
         </td>
+</tr>
+<tr>        
         <td width="130">
                 <h3>Xiaomi</h3>
                 <br>
@@ -39,7 +39,6 @@ The ShortcutBadger makes your Android App showing the count of unread messages a
                 <br>
                 <img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_asus.png"/>
         </td>
-<tr>        
         <td width="130">
                 <h3>ADW</h3>
                 <br>
@@ -50,6 +49,7 @@ The ShortcutBadger makes your Android App showing the count of unread messages a
                 <br>
                 <img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_apex.png"/>
         </td>
+<tr>        
         <td width="130">
                 <h3>NOVA</h3>
                 <br>
