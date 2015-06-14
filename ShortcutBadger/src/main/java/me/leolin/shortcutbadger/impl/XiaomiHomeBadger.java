@@ -41,6 +41,13 @@ public class XiaomiHomeBadger extends ShortcutBadger {
 
     @Override
     public List<String> getSupportLaunchers() {
-        return Arrays.asList("com.miui.miuilite","com.miui.miuihome","com.miui.miuihome2");
+        return Arrays.asList(
+                "com.miui.miuilite",
+                "com.miui.home",
+                "com.miui.miuihome",
+                "com.miui.miuihome2",
+                "com.miui.mihome",
+                "com.miui.mihome2"
+        );
     }
 }

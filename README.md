@@ -85,7 +85,7 @@ USAGE
 <br/>2. Add dependencies for ShortcutBadger, it's available from maven now.
         
         dependencies {
-            compile 'me.leolin:ShortcutBadger:1.1.1@aar'
+            compile 'me.leolin:ShortcutBadger:1.1.2@aar'
         }
 
 <br/>3. Add the codes below:
@@ -96,6 +96,9 @@ USAGE
 <br/>4. If you want to remove the badge
         
         ShortcutBadger.with(getApplicationContext()).remove();
+or
+        
+        ShortcutBadger.with(getApplicationContext()).count(0);
 <br/>
 <br/>
 <br/>
@@ -104,7 +107,7 @@ USAGE
 
 DEVELOP BY
 ===================================
-[Leo Lin](https://github.com/leolin310148)
+[Leo Lin](https://github.com/leolin310148) - leolin310148@gmail.com
 
 
 ABOUT Google Play Developer Term Violation
@@ -119,17 +122,27 @@ Please use version 1.1.0+
 
 CHANGE LOG
 ===================================
+1.1.2:<br/>
+Add support for 'com.miui.mihome2'<br/>
+<br/>
+
 1.1.1:<br/>
 Add DefaultBadger because some launchers use android.intent.action.BADGE_COUNT_UPDATE to update count.
 <br/>
 Since the ShortcutBadgerException is helpless. So change api to set badge and never have to handle the exception again. 
-<br/><br/>
+<br/>
+<br/>
+
 1.1.0:<br/>
 Remove Android Launcher support due to  Google Play Developer Term Violation since 4.4 
-<br/><br/>
+<br/>
+<br/>
+
 1.0.10:<br/>
 Add Asus launcher support.
-<br/><br/>
+<br/>
+<br/>
+
 1.0.9:<br/>
 Add xiaomi launcher support.
 
