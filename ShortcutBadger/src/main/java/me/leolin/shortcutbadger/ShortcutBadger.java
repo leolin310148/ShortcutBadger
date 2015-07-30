@@ -26,14 +26,14 @@ public abstract class ShortcutBadger {
     static {
         BADGERS.add(AdwHomeBadger.class);
         BADGERS.add(ApexHomeBadger.class);
-        BADGERS.add(LGHomeBadger.class);
         BADGERS.add(NewHtcHomeBadger.class);
         BADGERS.add(NovaHomeBadger.class);
-        BADGERS.add(SamsungHomeBadger.class);
         BADGERS.add(SolidHomeBadger.class);
         BADGERS.add(SonyHomeBadger.class);
         BADGERS.add(XiaomiHomeBadger.class);
         BADGERS.add(AsusHomeLauncher.class);
+//        BADGERS.add(LGHomeBadger.class);
+//        BADGERS.add(SamsungHomeBadger.class);
     }
 
     private static ShortcutBadger mShortcutBadger;

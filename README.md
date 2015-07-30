@@ -85,7 +85,7 @@ USAGE
 <br/>2. Add dependencies for ShortcutBadger, it's available from maven now.
         
         dependencies {
-            compile 'me.leolin:ShortcutBadger:1.1.2@aar'
+            compile 'me.leolin:ShortcutBadger:1.1.3@aar'
         }
 
 <br/>3. Add the codes below:
@@ -122,6 +122,10 @@ Please use version 1.1.0+
 
 CHANGE LOG
 ===================================
+1.1.3:<br/>
+Deprecate SamsungBadger and LGBadger, those devices can use DefaultBadger<br/>
+<br/>
+
 1.1.2:<br/>
 Add support for 'com.miui.mihome2'<br/>
 <br/>

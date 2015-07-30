@@ -14,7 +14,9 @@ import java.util.List;
 
 /**
  * @author Leo Lin
+ * Deprecated, Samesung devices will use DefaultBadger
  */
+@Deprecated
 public class SamsungHomeBadger extends ShortcutBadger {
     private static final String CONTENT_URI = "content://com.sec.badge/apps?notify=true";
     private static final String[] CONTENT_PROJECTION = new String[]{"_id","class"};

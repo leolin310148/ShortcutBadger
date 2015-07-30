@@ -9,7 +9,9 @@ import java.util.List;
 
 /**
  * @author Leo Lin
+ * Deprecated, LG devices will use DefaultBadger
  */
+@Deprecated
 public class LGHomeBadger extends ShortcutBadger {
 
     private static final String INTENT_ACTION = "android.intent.action.BADGE_COUNT_UPDATE";
