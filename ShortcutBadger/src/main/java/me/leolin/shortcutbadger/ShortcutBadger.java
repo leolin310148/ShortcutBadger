@@ -38,10 +38,15 @@ public abstract class ShortcutBadger {
 
     private static ShortcutBadger mShortcutBadger;
 
+    private static boolean mShowLogs = false;
+
     public static ShortcutBadger with(Context context) {
         return getShortcutBadger(context);
     }
 
+    public static void setShowLogs(boolean showLogs){
+        mShowLogs = showLogs;
+    }
 
     public static void setBadge(Context context, int badgeCount) throws ShortcutBadgeException {
         try {
@@ -56,7 +61,9 @@ public abstract class ShortcutBadger {
         if (mShortcutBadger != null) {
             return mShortcutBadger;
         }
-        Log.d(LOG_TAG, "Finding badger");
+        if (mShowLogs) {
+            Log.d(LOG_TAG, "Finding badger");
+        }
 
         //find the home launcher Package
         try {
@@ -79,14 +86,17 @@ public abstract class ShortcutBadger {
                 }
             }
         } catch (Exception e) {
-            Log.e(LOG_TAG, e.getMessage(), e);
+            if (mShowLogs) {
+                Log.e(LOG_TAG, e.getMessage(), e);
+            }
         }
 
         if (mShortcutBadger == null) {
             mShortcutBadger = new DefaultBadger(context);
         }
-
-        Log.d(LOG_TAG, "Returning badger:" + mShortcutBadger.getClass().getCanonicalName());
+        if (mShowLogs) {
+            Log.d(LOG_TAG, "Returning badger:" + mShortcutBadger.getClass().getCanonicalName());
+        }
         return mShortcutBadger;
     }
 
@@ -117,7 +127,9 @@ public abstract class ShortcutBadger {
         try {
             executeBadge(count);
         } catch (Exception e) {
-            Log.e(LOG_TAG, e.getMessage(), e);
+            if (mShowLogs) {
+                Log.e(LOG_TAG, e.getMessage(), e);
+            }
         }
     }
 
