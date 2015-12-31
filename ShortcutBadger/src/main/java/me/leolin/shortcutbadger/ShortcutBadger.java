@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * @author Leo Lin
  */
-public class ShortcutBadger {
+public final class ShortcutBadger {
 
     private static final String LOG_TAG = ShortcutBadger.class.getSimpleName();
 
