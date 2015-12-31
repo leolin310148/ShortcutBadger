@@ -4,6 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import me.leolin.shortcutbadger.ShortcutBadger;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * @author Leo Lin
  */
@@ -28,5 +31,10 @@ public class SonyHomeBadger extends ShortcutBadger {
         intent.putExtra(INTENT_EXTRA_MESSAGE, String.valueOf(badgeCount));
         intent.putExtra(INTENT_EXTRA_SHOW_MESSAGE, badgeCount > 0);
         mContext.sendBroadcast(intent);
+    }
+
+    @Override
+    public List<String> getSupportLaunchers() {
+        return Arrays.asList("com.sonyericsson.home");
     }
 }

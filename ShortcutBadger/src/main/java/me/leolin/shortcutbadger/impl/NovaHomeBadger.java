@@ -1,19 +1,17 @@
 package me.leolin.shortcutbadger.impl;
 
-import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
 import android.net.Uri;
-
 import me.leolin.shortcutbadger.ShortcutBadgeException;
 import me.leolin.shortcutbadger.ShortcutBadger;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Shortcut Badger support for Nova Launcher.
- *
  * TeslaUnread must be installed.
- *
  * User: Gernot Pansy
  * Date: 2014/11/03
  * Time: 7:15
@@ -44,5 +42,10 @@ public class NovaHomeBadger extends ShortcutBadger {
 
             throw new ShortcutBadgeException(ex.getMessage());
         }
+    }
+
+    @Override
+    public List<String> getSupportLaunchers() {
+        return Arrays.asList("com.teslacoilsw.launcher");
     }
 }
