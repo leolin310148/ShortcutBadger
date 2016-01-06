@@ -52,7 +52,7 @@ public abstract class ShortcutBadger {
 
     }
 
-    private static ShortcutBadger getShortcutBadger(Context context) {
+    public static ShortcutBadger getShortcutBadger(Context context) {
         if (mShortcutBadger != null) {
             return mShortcutBadger;
         }
