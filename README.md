@@ -91,14 +91,17 @@ USAGE
 <br/>3. Add the codes below:
 
         int badgeCount = 1;
-        ShortcutBadger.applyCount(context, badgeCount);
+        ShortcutBadger.applyCount(context, badgeCount); //for 1.1.4
+        ShortcutBadger.with(getApplicationContext()).count(badgeCount); //for 1.1.3
         
 <br/>4. If you want to remove the badge
         
-        ShortcutBadger.removeCount(context);
+        ShortcutBadger.removeCount(context); //for 1.1.4
+        ShortcutBadger.with(getApplicationContext()).remove();  //for 1.1.3
 or
         
-        ShortcutBadger.applyCount(context, 0);
+        ShortcutBadger.applyCount(context, 0); //for 1.1.4
+        ShortcutBadger.with(getApplicationContext()).count(0); //for 1.1.3
 <br/>
 <br/>
 <br/>
