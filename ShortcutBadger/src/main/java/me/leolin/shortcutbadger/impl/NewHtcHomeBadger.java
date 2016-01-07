@@ -3,6 +3,8 @@ package me.leolin.shortcutbadger.impl;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+
+import me.leolin.shortcutbadger.Badger;
 import me.leolin.shortcutbadger.ShortcutBadgeException;
 import me.leolin.shortcutbadger.ShortcutBadger;
 
@@ -12,7 +14,7 @@ import java.util.List;
 /**
  * @author Leo Lin
  */
-public class NewHtcHomeBadger extends ShortcutBadger {
+public class NewHtcHomeBadger implements Badger {
 
     public static final String INTENT_UPDATE_SHORTCUT = "com.htc.launcher.action.UPDATE_SHORTCUT";
     public static final String INTENT_SET_NOTIFICATION = "com.htc.launcher.action.SET_NOTIFICATION";
@@ -21,23 +23,18 @@ public class NewHtcHomeBadger extends ShortcutBadger {
     public static final String EXTRA_COMPONENT = "com.htc.launcher.extra.COMPONENT";
     public static final String EXTRA_COUNT = "com.htc.launcher.extra.COUNT";
 
-    public NewHtcHomeBadger(Context context) {
-        super(context);
-    }
-
     @Override
-    protected void executeBadge(int badgeCount) throws ShortcutBadgeException {
+    public void executeBadge(Context context, ComponentName componentName, int badgeCount) throws ShortcutBadgeException {
 
         Intent intent1 = new Intent(INTENT_SET_NOTIFICATION);
-        ComponentName localComponentName = new ComponentName(getContextPackageName(), getEntryActivityName());
-        intent1.putExtra(EXTRA_COMPONENT, localComponentName.flattenToShortString());
+        intent1.putExtra(EXTRA_COMPONENT, componentName.flattenToShortString());
         intent1.putExtra(EXTRA_COUNT, badgeCount);
-        mContext.sendBroadcast(intent1);
+        context.sendBroadcast(intent1);
 
         Intent intent = new Intent(INTENT_UPDATE_SHORTCUT);
-        intent.putExtra(PACKAGENAME, getContextPackageName());
+        intent.putExtra(PACKAGENAME, componentName.getPackageName());
         intent.putExtra(COUNT, badgeCount);
-        mContext.sendBroadcast(intent);
+        context.sendBroadcast(intent);
     }
 
     @Override

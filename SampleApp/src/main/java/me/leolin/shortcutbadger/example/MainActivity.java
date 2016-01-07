@@ -11,18 +11,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import me.leolin.shortcutbadger.ShortcutBadger;
+import me.leolin.shortcutbadger.impl.ApexHomeBadger;
 
 
 public class MainActivity extends Activity {
-
-    private EditText numInput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        numInput = (EditText) findViewById(R.id.numInput);
+        final EditText numInput = (EditText) findViewById(R.id.numInput);
 
         Button button = (Button) findViewById(R.id.btnSetBadge);
         button.setOnClickListener(new View.OnClickListener() {
@@ -35,10 +34,19 @@ public class MainActivity extends Activity {
                     Toast.makeText(getApplicationContext(), "Error input", Toast.LENGTH_SHORT).show();
                 }
 
-//                    ShortcutBadger.setBadge(getApplicationContext(), badgeCount);
-                ShortcutBadger.with(getApplicationContext()).count(badgeCount);
+                boolean success = ShortcutBadger.applyCount(MainActivity.this, badgeCount);
 
-                Toast.makeText(getApplicationContext(), "Set count=" + badgeCount, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Set count=" + badgeCount + ", success=" + success, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        Button removeBadgeBtn = (Button) findViewById(R.id.btnRemoveBadge);
+        removeBadgeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                boolean success = ShortcutBadger.removeCount(MainActivity.this);
+
+                Toast.makeText(getApplicationContext(), "success=" + success, Toast.LENGTH_SHORT).show();
             }
         });
 
