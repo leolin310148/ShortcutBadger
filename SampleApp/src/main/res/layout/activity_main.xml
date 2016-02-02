@@ -27,5 +27,11 @@
             android:text="Set badge"
             android:layout_centerVertical="true" android:layout_centerHorizontal="true"/>
 
+    <Button android:id="@+id/btnRemoveBadge"
+        android:layout_below="@id/btnSetBadge"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="Remove badge"
+        android:layout_centerVertical="true" android:layout_centerHorizontal="true"/>
+
 
 </RelativeLayout>

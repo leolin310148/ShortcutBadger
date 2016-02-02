@@ -1,10 +1,13 @@
 package me.leolin.shortcutbadger.impl;
 
+import android.content.ComponentName;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
+
+import me.leolin.shortcutbadger.Badger;
 import me.leolin.shortcutbadger.ShortcutBadgeException;
 import me.leolin.shortcutbadger.ShortcutBadger;
 import me.leolin.shortcutbadger.util.CloseHelper;
@@ -17,27 +20,23 @@ import java.util.List;
  * Deprecated, Samesung devices will use DefaultBadger
  */
 @Deprecated
-public class SamsungHomeBadger extends ShortcutBadger {
+public class SamsungHomeBadger implements Badger {
     private static final String CONTENT_URI = "content://com.sec.badge/apps?notify=true";
     private static final String[] CONTENT_PROJECTION = new String[]{"_id","class"};
 
-    public SamsungHomeBadger(Context context) {
-        super(context);
-    }
-
     @Override
-    protected void executeBadge(int badgeCount) throws ShortcutBadgeException {
+    public void executeBadge(Context context, ComponentName componentName, int badgeCount) throws ShortcutBadgeException {
         Uri mUri = Uri.parse(CONTENT_URI);
-        ContentResolver contentResolver = mContext.getContentResolver();
+        ContentResolver contentResolver = context.getContentResolver();
         Cursor cursor = null;
         try {
-            cursor = contentResolver.query(mUri, CONTENT_PROJECTION, "package=?", new String[]{getContextPackageName()}, null);
+            cursor = contentResolver.query(mUri, CONTENT_PROJECTION, "package=?", new String[]{componentName.getPackageName()}, null);
             if (cursor != null) {
-                String entryActivityName = getEntryActivityName();
+                String entryActivityName = componentName.getClassName();
                 boolean entryActivityExist = false;
                 while (cursor.moveToNext()) {
                     int id = cursor.getInt(0);
-                    ContentValues contentValues = getContentValues(badgeCount, false);
+                    ContentValues contentValues = getContentValues(componentName, badgeCount, false);
                     contentResolver.update(mUri, contentValues, "_id=?", new String[]{String.valueOf(id)});
                     if (entryActivityName.equals(cursor.getString(cursor.getColumnIndex("class")))) {
                         entryActivityExist = true;
@@ -45,7 +44,7 @@ public class SamsungHomeBadger extends ShortcutBadger {
                 }
 
                 if (!entryActivityExist) {
-                    ContentValues contentValues = getContentValues(badgeCount, true);
+                    ContentValues contentValues = getContentValues(componentName, badgeCount, true);
                     contentResolver.insert(mUri, contentValues);
                 }
             }
@@ -54,11 +53,11 @@ public class SamsungHomeBadger extends ShortcutBadger {
         }
     }
 
-    private ContentValues getContentValues(int badgeCount, boolean isInsert) {
+    private ContentValues getContentValues(ComponentName componentName, int badgeCount, boolean isInsert) {
         ContentValues contentValues = new ContentValues();
         if (isInsert) {
-            contentValues.put("package", getContextPackageName());
-            contentValues.put("class", getEntryActivityName());
+            contentValues.put("package", componentName.getPackageName());
+            contentValues.put("class", componentName.getClassName());
         }
 
         contentValues.put("badgecount", badgeCount);

@@ -1,7 +1,10 @@
 package me.leolin.shortcutbadger.impl;
 
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+
+import me.leolin.shortcutbadger.Badger;
 import me.leolin.shortcutbadger.ShortcutBadgeException;
 import me.leolin.shortcutbadger.ShortcutBadger;
 
@@ -12,18 +15,14 @@ import java.util.List;
 /**
  * @author leolin
  */
-public class XiaomiHomeBadger extends ShortcutBadger {
+public class XiaomiHomeBadger implements Badger {
 
     public static final String INTENT_ACTION = "android.intent.action.APPLICATION_MESSAGE_UPDATE";
     public static final String EXTRA_UPDATE_APP_COMPONENT_NAME = "android.intent.extra.update_application_component_name";
     public static final String EXTRA_UPDATE_APP_MSG_TEXT = "android.intent.extra.update_application_message_text";
 
-    public XiaomiHomeBadger(Context context) {
-        super(context);
-    }
-
     @Override
-    protected void executeBadge(int badgeCount) throws ShortcutBadgeException {
+    public void executeBadge(Context context, ComponentName componentName, int badgeCount) throws ShortcutBadgeException {
         try {
             Class miuiNotificationClass = Class.forName("android.app.MiuiNotification");
             Object miuiNotification = miuiNotificationClass.newInstance();
@@ -33,9 +32,9 @@ public class XiaomiHomeBadger extends ShortcutBadger {
         } catch (Exception e) {
             Intent localIntent = new Intent(
                     INTENT_ACTION);
-            localIntent.putExtra(EXTRA_UPDATE_APP_COMPONENT_NAME, getContextPackageName() + "/" + getEntryActivityName());
+            localIntent.putExtra(EXTRA_UPDATE_APP_COMPONENT_NAME, componentName.getPackageName() + "/" + componentName.getClassName());
             localIntent.putExtra(EXTRA_UPDATE_APP_MSG_TEXT, String.valueOf(badgeCount == 0 ? "" : badgeCount));
-            mContext.sendBroadcast(localIntent);
+            context.sendBroadcast(localIntent);
         }
     }
 

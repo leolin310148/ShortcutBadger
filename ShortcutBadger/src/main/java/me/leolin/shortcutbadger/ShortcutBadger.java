@@ -17,11 +17,11 @@ import java.util.List;
 /**
  * @author Leo Lin
  */
-public abstract class ShortcutBadger {
+public final class ShortcutBadger {
 
     private static final String LOG_TAG = ShortcutBadger.class.getSimpleName();
 
-    private static final List<Class<? extends ShortcutBadger>> BADGERS = new LinkedList<Class<? extends ShortcutBadger>>();
+    private static final List<Class<? extends Badger>> BADGERS = new LinkedList<Class<? extends Badger>>();
 
     static {
         BADGERS.add(AdwHomeBadger.class);
@@ -36,26 +36,61 @@ public abstract class ShortcutBadger {
 //        BADGERS.add(SamsungHomeBadger.class);
     }
 
-    private static ShortcutBadger mShortcutBadger;
+    private static Badger sShortcutBadger;
+    private static ComponentName sComponentName;
 
-    public static ShortcutBadger with(Context context) {
-        return getShortcutBadger(context);
+    /**
+     * Tries to update the notification count
+     * @param context Caller context
+     * @param badgeCount Desired badge count
+     * @return true in case of success, false otherwise
+     */
+    public static boolean applyCount(Context context, int badgeCount) {
+        try {
+            applyCountOrThrow(context, badgeCount);
+            return true;
+        } catch (ShortcutBadgeException e) {
+            Log.e(LOG_TAG, "Unable to execute badge:" + e.getMessage());
+            return false;
+        }
     }
 
+    /**
+     * Tries to update the notification count, throw a {@link ShortcutBadgeException} if it fails
+     * @param context Caller context
+     * @param badgeCount Desired badge count
+     */
+    public static void applyCountOrThrow(Context context, int badgeCount) throws ShortcutBadgeException {
+        if (sShortcutBadger == null)
+            initBadger(context);
 
-    public static void setBadge(Context context, int badgeCount) throws ShortcutBadgeException {
         try {
-            getShortcutBadger(context).executeBadge(badgeCount);
+            sShortcutBadger.executeBadge(context, sComponentName, badgeCount);
         } catch (Throwable e) {
             throw new ShortcutBadgeException("Unable to execute badge:" + e.getMessage());
         }
-
     }
 
-    private static ShortcutBadger getShortcutBadger(Context context) {
-        if (mShortcutBadger != null) {
-            return mShortcutBadger;
-        }
+    /**
+     * Tries to remove the notification count
+     * @param context Caller context
+     * @return true in case of success, false otherwise
+     */
+    public static boolean removeCount(Context context) {
+        return applyCount(context, 0);
+    }
+
+    /**
+     * Tries to remove the notification count, throw a {@link ShortcutBadgeException} if it fails
+     * @param context Caller context
+     */
+    public static void removeCountOrThrow(Context context) throws ShortcutBadgeException {
+        applyCountOrThrow(context, 0);
+    }
+
+    private static void initBadger(Context context) {
+        sComponentName = context.getPackageManager().getLaunchIntentForPackage(context.getPackageName()).getComponent();
+
         Log.d(LOG_TAG, "Finding badger");
 
         //find the home launcher Package
@@ -66,15 +101,14 @@ public abstract class ShortcutBadger {
             String currentHomePackage = resolveInfo.activityInfo.packageName;
 
             if (Build.MANUFACTURER.equalsIgnoreCase("Xiaomi")) {
-                mShortcutBadger = new XiaomiHomeBadger(context);
-                return mShortcutBadger;
+                sShortcutBadger = new XiaomiHomeBadger();
+                return;
             }
 
-            for (Class<? extends ShortcutBadger> badger : BADGERS) {
-                Constructor<? extends ShortcutBadger> constructor = badger.getConstructor(Context.class);
-                ShortcutBadger shortcutBadger = constructor.newInstance(context);
+            for (Class<? extends Badger> badger : BADGERS) {
+                Badger shortcutBadger = badger.newInstance();
                 if (shortcutBadger.getSupportLaunchers().contains(currentHomePackage)) {
-                    mShortcutBadger = shortcutBadger;
+                    sShortcutBadger = shortcutBadger;
                     break;
                 }
             }
@@ -82,46 +116,15 @@ public abstract class ShortcutBadger {
             Log.e(LOG_TAG, e.getMessage(), e);
         }
 
-        if (mShortcutBadger == null) {
-            mShortcutBadger = new DefaultBadger(context);
-        }
+        if (sShortcutBadger == null)
+            sShortcutBadger = new DefaultBadger();
 
-        Log.d(LOG_TAG, "Returning badger:" + mShortcutBadger.getClass().getCanonicalName());
-        return mShortcutBadger;
+
+        Log.d(LOG_TAG, "Current badger:" + sShortcutBadger.getClass().getCanonicalName());
     }
 
-
+    // Avoid anybody to instantiate this class
     private ShortcutBadger() {
-    }
 
-    protected Context mContext;
-
-    protected ShortcutBadger(Context context) {
-        this.mContext = context;
-    }
-
-    protected abstract void executeBadge(int badgeCount) throws ShortcutBadgeException;
-
-    protected abstract List<String> getSupportLaunchers();
-
-    protected String getEntryActivityName() {
-        ComponentName componentName = mContext.getPackageManager().getLaunchIntentForPackage(mContext.getPackageName()).getComponent();
-        return componentName.getClassName();
-    }
-
-    protected String getContextPackageName() {
-        return mContext.getPackageName();
-    }
-
-    public void count(int count) {
-        try {
-            executeBadge(count);
-        } catch (Exception e) {
-            Log.e(LOG_TAG, e.getMessage(), e);
-        }
-    }
-
-    public void remove() {
-        count(0);
     }
 }
