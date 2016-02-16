@@ -85,7 +85,7 @@ USAGE
 <br/>2. Add dependencies for ShortcutBadger, it's available from maven now.
         
         dependencies {
-            compile 'me.leolin:ShortcutBadger:1.1.3@aar'
+            compile 'me.leolin:ShortcutBadger:1.1.4@aar'
         }
 
 <br/>3. Add the codes below:
@@ -125,6 +125,10 @@ Please use version 1.1.0+
 
 CHANGE LOG
 ===================================
+1.1.4:<br/>
+Changed `ShortcutBadger.setBadge(context, badgeCount)` to `ShortcutBadger.applyCount(context, badgeCount);`<br/>
+<br/>
+
 1.1.3:<br/>
 Deprecate SamsungBadger and LGBadger, those devices can use DefaultBadger<br/>
 <br/>
