@@ -89,12 +89,11 @@ public final class ShortcutBadger {
     }
 
     private static void initBadger(Context context) {
-        sComponentName = context.getPackageManager().getLaunchIntentForPackage(context.getPackageName()).getComponent();
-
-        Log.d(LOG_TAG, "Finding badger");
-
         //find the home launcher Package
         try {
+            sComponentName = context.getPackageManager().getLaunchIntentForPackage(context.getPackageName()).getComponent();
+
+            Log.d(LOG_TAG, "Finding badger");
             Intent intent = new Intent(Intent.ACTION_MAIN);
             intent.addCategory(Intent.CATEGORY_HOME);
             ResolveInfo resolveInfo = context.getPackageManager().resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY);
