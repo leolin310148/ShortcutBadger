@@ -82,6 +82,27 @@ public final class ShortcutBadger {
     }
 
     /**
+     * Increment the badge count by 1
+     * @param context Caller context
+     * @return If setting badge count is succeeded
+     */
+    public static boolean incrementBadgeCount(Context context)
+    {
+        return applyCount(context, getBadgeCount(context) + 1);
+    }
+
+    /**
+     * Decrement the badge count by 1
+     * @param context Caller context
+     * @return If setting badge count is succeeded
+     */
+    public static boolean decrementBadgeCount(Context context)
+    {
+        int badgeCount = getBadgeCount(context);
+        return applyCount(context, badgeCount > 0 ? badgeCount - 1 : 0);
+    }
+
+    /**
      * Gets current badge count
      * @param context Caller context
      * @return Current badge count
