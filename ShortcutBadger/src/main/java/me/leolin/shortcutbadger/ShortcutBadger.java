@@ -7,11 +7,20 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Build;
 import android.util.Log;
-import me.leolin.shortcutbadger.impl.*;
 
-import java.lang.reflect.Constructor;
 import java.util.LinkedList;
 import java.util.List;
+
+import me.leolin.shortcutbadger.impl.AdwHomeBadger;
+import me.leolin.shortcutbadger.impl.ApexHomeBadger;
+import me.leolin.shortcutbadger.impl.AsusHomeLauncher;
+import me.leolin.shortcutbadger.impl.DefaultBadger;
+import me.leolin.shortcutbadger.impl.NewHtcHomeBadger;
+import me.leolin.shortcutbadger.impl.NovaHomeBadger;
+import me.leolin.shortcutbadger.impl.SolidHomeBadger;
+import me.leolin.shortcutbadger.impl.SonyHomeBadger;
+import me.leolin.shortcutbadger.impl.XiaomiHomeBadger;
+import me.leolin.shortcutbadger.util.PreferenceHelper;
 
 
 /**
@@ -66,9 +75,20 @@ public final class ShortcutBadger {
 
         try {
             sShortcutBadger.executeBadge(context, sComponentName, badgeCount);
+            PreferenceHelper.setBadgeCount(context, badgeCount);
         } catch (Throwable e) {
             throw new ShortcutBadgeException("Unable to execute badge:" + e.getMessage());
         }
+    }
+
+    /**
+     * Gets current badge count
+     * @param context Caller context
+     * @return Current badge count
+     */
+    public static int getBadgeCount(Context context)
+    {
+        return PreferenceHelper.getBadgeCount(context);
     }
 
     /**
