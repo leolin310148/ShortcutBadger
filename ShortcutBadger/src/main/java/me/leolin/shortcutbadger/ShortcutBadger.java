@@ -99,7 +99,10 @@ public final class ShortcutBadger {
     public static boolean decrementBadgeCount(Context context)
     {
         int badgeCount = getBadgeCount(context);
-        return applyCount(context, badgeCount > 0 ? badgeCount - 1 : 0);
+        if (badgeCount > 0)
+            return applyCount(context, badgeCount - 1);
+        else
+            return removeCount(context);
     }
 
     /**
