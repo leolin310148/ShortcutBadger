@@ -27,20 +27,11 @@ public class NovaHomeBadger implements Badger {
 
     @Override
     public void executeBadge(Context context, ComponentName componentName, int badgeCount) throws ShortcutBadgeException {
-        try {
-            ContentValues contentValues = new ContentValues();
-            contentValues.put(TAG, componentName.getPackageName() + "/" + componentName.getClassName());
-            contentValues.put(COUNT, badgeCount);
-            context.getContentResolver().insert(Uri.parse(CONTENT_URI), contentValues);
-        } catch (IllegalArgumentException ex) {
-            /* Fine, TeslaUnread is not installed. */
-        } catch (Exception ex) {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(TAG, componentName.getPackageName() + "/" + componentName.getClassName());
+        contentValues.put(COUNT, badgeCount);
+        context.getContentResolver().insert(Uri.parse(CONTENT_URI), contentValues);
 
-            /* Some other error, possibly because the format
-            of the ContentValues are incorrect. */
-
-            throw new ShortcutBadgeException(ex.getMessage());
-        }
     }
 
     @Override
