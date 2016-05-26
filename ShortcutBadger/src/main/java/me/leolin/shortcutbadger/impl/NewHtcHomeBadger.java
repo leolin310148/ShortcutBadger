@@ -7,6 +7,7 @@ import android.content.Intent;
 import me.leolin.shortcutbadger.Badger;
 import me.leolin.shortcutbadger.ShortcutBadgeException;
 import me.leolin.shortcutbadger.ShortcutBadger;
+import me.leolin.shortcutbadger.util.BroadcastHelper;
 
 import java.util.Arrays;
 import java.util.List;
@@ -29,12 +30,17 @@ public class NewHtcHomeBadger implements Badger {
         Intent intent1 = new Intent(INTENT_SET_NOTIFICATION);
         intent1.putExtra(EXTRA_COMPONENT, componentName.flattenToShortString());
         intent1.putExtra(EXTRA_COUNT, badgeCount);
-        context.sendBroadcast(intent1);
 
         Intent intent = new Intent(INTENT_UPDATE_SHORTCUT);
         intent.putExtra(PACKAGENAME, componentName.getPackageName());
         intent.putExtra(COUNT, badgeCount);
-        context.sendBroadcast(intent);
+
+        if(BroadcastHelper.canResolveBroadcast(context, intent1) || BroadcastHelper.canResolveBroadcast(context, intent)) {
+            context.sendBroadcast(intent1);
+            context.sendBroadcast(intent);
+        } else {
+            throw new ShortcutBadgeException("unable to resolve intent: " + intent.toString());
+        }
     }
 
     @Override
