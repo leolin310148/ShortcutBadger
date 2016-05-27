@@ -19,7 +19,7 @@ public interface Badger {
 
     /**
      * Called to let {@link ShortcutBadger} knows which launchers are supported by this badger. It should return a
-     * {@link List<String>} containing supported launchers package names
+     * @return List containing supported launchers package names
      */
     List<String> getSupportLaunchers();
 }
