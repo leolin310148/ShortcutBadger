@@ -20,6 +20,7 @@
 
     <!--for sony-->
     <uses-permission android:name="com.sonyericsson.home.permission.BROADCAST_BADGE"/>
+    <uses-permission android:name="com.sonymobile.home.permission.PROVIDER_INSERT_BADGE"/>
 
     <!--for apex-->
     <uses-permission android:name="com.anddoes.launcher.permission.UPDATE_COUNT"/>
