@@ -125,6 +125,10 @@ Please use version 1.1.0+
 
 CHANGE LOG
 ===================================
+1.1.6:<br/>
+add support for new Sony Launchers. <br/>
+<br/>
+
 1.1.5:<br/>
 `applyCount` will return if the Broadcast has been sent successfully. <br/>
 <br/>
