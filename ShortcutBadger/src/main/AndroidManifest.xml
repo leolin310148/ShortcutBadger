@@ -27,5 +27,11 @@
 
     <!--for solid-->
     <uses-permission android:name="com.majeur.launcher.permission.UPDATE_BADGE"/>
+    
+    <!--for huawei-->
+    <uses-permission android:name="com.huawei.android.launcher.permission.CHANGE_BADGE" />
+    <uses-permission android:name="com.huawei.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="com.huawei.android.launcher.permission.WRITE_SETTINGS" />
+
 
 </manifest>
