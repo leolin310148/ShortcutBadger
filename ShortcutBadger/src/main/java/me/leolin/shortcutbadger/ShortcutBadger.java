@@ -32,6 +32,7 @@ public final class ShortcutBadger {
         BADGERS.add(SonyHomeBadger.class);
         BADGERS.add(XiaomiHomeBadger.class);
         BADGERS.add(AsusHomeLauncher.class);
+        BADGERS.add(HuaweiHomeBadger.class);
 //        BADGERS.add(LGHomeBadger.class);
 //        BADGERS.add(SamsungHomeBadger.class);
     }
