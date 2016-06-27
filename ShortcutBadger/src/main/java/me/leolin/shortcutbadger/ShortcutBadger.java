@@ -51,7 +51,7 @@ public final class ShortcutBadger {
             applyCountOrThrow(context, badgeCount);
             return true;
         } catch (ShortcutBadgeException e) {
-            Log.e(LOG_TAG, "Unable to execute badge:" + e.getMessage());
+            Log.e(LOG_TAG, "Unable to execute badge: " + e.getMessage());
             return false;
         }
     }
@@ -68,7 +68,7 @@ public final class ShortcutBadger {
         try {
             sShortcutBadger.executeBadge(context, sComponentName, badgeCount);
         } catch (Throwable e) {
-            throw new ShortcutBadgeException("Unable to execute badge:" + e.getMessage());
+            throw new ShortcutBadgeException("Unable to execute badge: " + e.getMessage());
         }
     }
 
@@ -120,7 +120,7 @@ public final class ShortcutBadger {
             sShortcutBadger = new DefaultBadger();
 
 
-        Log.d(LOG_TAG, "Current badger:" + sShortcutBadger.getClass().getCanonicalName());
+        Log.d(LOG_TAG, "Current badger: " + sShortcutBadger.getClass().getCanonicalName());
     }
 
     // Avoid anybody to instantiate this class
