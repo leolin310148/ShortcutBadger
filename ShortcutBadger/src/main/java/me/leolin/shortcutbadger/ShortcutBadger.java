@@ -32,6 +32,7 @@ public final class ShortcutBadger {
         BADGERS.add(SonyHomeBadger.class);
         BADGERS.add(XiaomiHomeBadger.class);
         BADGERS.add(AsusHomeLauncher.class);
+        BADGERS.add(HuaweiHomeBadger.class);
 //        BADGERS.add(LGHomeBadger.class);
 //        BADGERS.add(SamsungHomeBadger.class);
     }
@@ -89,21 +90,15 @@ public final class ShortcutBadger {
     }
 
     private static void initBadger(Context context) {
-        sComponentName = context.getPackageManager().getLaunchIntentForPackage(context.getPackageName()).getComponent();
-
-        Log.d(LOG_TAG, "Finding badger");
-
         //find the home launcher Package
         try {
+            sComponentName = context.getPackageManager().getLaunchIntentForPackage(context.getPackageName()).getComponent();
+
+            Log.d(LOG_TAG, "Finding badger");
             Intent intent = new Intent(Intent.ACTION_MAIN);
             intent.addCategory(Intent.CATEGORY_HOME);
             ResolveInfo resolveInfo = context.getPackageManager().resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY);
             String currentHomePackage = resolveInfo.activityInfo.packageName;
-
-            if (Build.MANUFACTURER.equalsIgnoreCase("Xiaomi")) {
-                sShortcutBadger = new XiaomiHomeBadger();
-                return;
-            }
 
             for (Class<? extends Badger> badger : BADGERS) {
                 Badger shortcutBadger = badger.newInstance();
@@ -111,6 +106,11 @@ public final class ShortcutBadger {
                     sShortcutBadger = shortcutBadger;
                     break;
                 }
+            }
+
+            if (sShortcutBadger == null && Build.MANUFACTURER.equalsIgnoreCase("Xiaomi")) {
+                sShortcutBadger = new XiaomiHomeBadger();
+                return;
             }
         } catch (Exception e) {
             Log.e(LOG_TAG, e.getMessage(), e);
