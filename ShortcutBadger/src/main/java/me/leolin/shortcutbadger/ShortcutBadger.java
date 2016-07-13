@@ -19,7 +19,7 @@ import java.util.List;
  */
 public final class ShortcutBadger {
 
-    private static final String LOG_TAG = ShortcutBadger.class.getSimpleName();
+    private static final String LOG_TAG = "ShortcutBadger";
 
     private static final List<Class<? extends Badger>> BADGERS = new LinkedList<Class<? extends Badger>>();
 
@@ -50,7 +50,7 @@ public final class ShortcutBadger {
             applyCountOrThrow(context, badgeCount);
             return true;
         } catch (ShortcutBadgeException e) {
-            Log.e(LOG_TAG, "Unable to execute badge:" + e.getMessage());
+            Log.e(LOG_TAG, "Unable to execute badge", e);
             return false;
         }
     }
@@ -61,13 +61,17 @@ public final class ShortcutBadger {
      * @param badgeCount Desired badge count
      */
     public static void applyCountOrThrow(Context context, int badgeCount) throws ShortcutBadgeException {
-        if (sShortcutBadger == null)
-            initBadger(context);
+        if (sShortcutBadger == null) {
+            boolean launcherReady = initBadger(context);
+
+            if (!launcherReady)
+                throw new ShortcutBadgeException("No default launcher available");
+        }
 
         try {
             sShortcutBadger.executeBadge(context, sComponentName, badgeCount);
-        } catch (Throwable e) {
-            throw new ShortcutBadgeException("Unable to execute badge:" + e.getMessage());
+        } catch (Exception e) {
+            throw new ShortcutBadgeException("Unable to execute badge", e);
         }
     }
 
@@ -88,38 +92,37 @@ public final class ShortcutBadger {
         applyCountOrThrow(context, 0);
     }
 
-    private static void initBadger(Context context) {
-        //find the home launcher Package
-        try {
-            sComponentName = context.getPackageManager().getLaunchIntentForPackage(context.getPackageName()).getComponent();
+    // Initialize Badger if a launcher is availalble (eg. set as default on the device)
+    // Returns true if a launcher is available, in this case, the Badger will be set and sShortcutBadger will be non null.
+    private static boolean initBadger(Context context) {
 
-            Log.d(LOG_TAG, "Finding badger");
-            Intent intent = new Intent(Intent.ACTION_MAIN);
-            intent.addCategory(Intent.CATEGORY_HOME);
-            ResolveInfo resolveInfo = context.getPackageManager().resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY);
-            String currentHomePackage = resolveInfo.activityInfo.packageName;
+        sComponentName = context.getPackageManager().getLaunchIntentForPackage(context.getPackageName()).getComponent();
 
-            for (Class<? extends Badger> badger : BADGERS) {
-                Badger shortcutBadger = badger.newInstance();
-                if (shortcutBadger.getSupportLaunchers().contains(currentHomePackage)) {
-                    sShortcutBadger = shortcutBadger;
-                    break;
-                }
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        ResolveInfo resolveInfo = context.getPackageManager().resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY);
+
+        if (resolveInfo == null || resolveInfo.activityInfo.name.toLowerCase().contains("resolver"))
+            return false;
+
+        String currentHomePackage = resolveInfo.activityInfo.packageName;
+
+        for (Class<? extends Badger> badger : BADGERS) {
+            Badger shortcutBadger = badger.newInstance();
+            if (shortcutBadger.getSupportLaunchers().contains(currentHomePackage)) {
+                sShortcutBadger = shortcutBadger;
+                break;
             }
-
-            if (sShortcutBadger == null && Build.MANUFACTURER.equalsIgnoreCase("Xiaomi")) {
-                sShortcutBadger = new XiaomiHomeBadger();
-                return;
-            }
-        } catch (Exception e) {
-            Log.e(LOG_TAG, e.getMessage(), e);
         }
 
-        if (sShortcutBadger == null)
-            sShortcutBadger = new DefaultBadger();
+        if (sShortcutBadger == null) {
+            if (Build.MANUFACTURER.equalsIgnoreCase("Xiaomi"))
+                sShortcutBadger = new XiaomiHomeBadger();
+            else
+                sShortcutBadger = new DefaultBadger();
+        }
 
-
-        Log.d(LOG_TAG, "Current badger:" + sShortcutBadger.getClass().getCanonicalName());
+        return true;
     }
 
     // Avoid anybody to instantiate this class
