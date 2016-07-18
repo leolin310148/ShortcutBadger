@@ -9,7 +9,7 @@ buildscript {
         POM_NAME = 'Shortcutbadger'
         POM_PACKAGING = 'aar'
         POM_ARTIFACT_ID = 'shortcutbadger'
-        VERSION_NAME = '1.1.7'
+        VERSION_NAME = '1.1.8'
         VERSION_CODE = 1
         GROUP = 'me.leolin'
     }

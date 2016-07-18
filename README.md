@@ -132,6 +132,10 @@ Please use version 1.1.0+
 
 CHANGE LOG
 ===================================
+1.1.8:<br/>
+Remove SolidBadger, now solid launcher will use default badger.
+
+
 1.1.7:<br/>
 add huawei launcher support. <br/>
 <br/>
