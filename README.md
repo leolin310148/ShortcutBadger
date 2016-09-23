@@ -132,6 +132,9 @@ Please use version 1.1.0+
 
 CHANGE LOG
 ===================================
+1.1.9:<br/>
+Add SamsungBadger back for more Samsung devices support.
+
 1.1.8:<br/>
 Remove SolidBadger, now solid launcher will use default badger.
 
