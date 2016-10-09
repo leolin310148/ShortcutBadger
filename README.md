@@ -6,54 +6,54 @@ The ShortcutBadger makes your Android App show the count of unread messages as a
 # Support launchers:<br/>
 
 <table>
-<tr>
+    <tr>
         <td width="130">
-                <h3>Sony</h3>
-                <br>
-                <img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_sony.png"/>
+            <h3>Sony</h3>
+            <br>
+            <img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_sony.png"/>
         </td>
         <td width="130">
-                <h3>Samsung</h3>
-                <br>
-                <img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_samsung.png"/>
+            <h3>Samsung</h3>
+            <br>
+            <img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_samsung.png"/>
         </td>
         <td width="130">
-                <h3>LG</h3>
-                <br>
-                <img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_lg.png"/>
+            <h3>LG</h3>
+            <br>
+            <img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_lg.png"/>
         </td>
         <td width="130">
-                <h3>HTC</h3>
-                <br>
-                <img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_htc.png"/>
+            <h3>HTC</h3>
+            <br>
+            <img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_htc.png"/>
         </td>
-</tr>
-<tr>        
+    </tr>
+    <tr>
         <td width="130">
-                <h3>Xiaomi</h3>
-                <br>
-                <img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_xiaomi.png"/>
-        </td>
-        <td width="130">
-                <h3>ASUS</h3>
-                <br>
-                <img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_asus.png"/>
+            <h3>Xiaomi</h3>
+            <br>
+            <img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_xiaomi.png"/>
         </td>
         <td width="130">
-                <h3>ADW</h3>
-                <br>
-                <img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_adw.png"/>
+            <h3>ASUS</h3>
+            <br>
+            <img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_asus.png"/>
         </td>
         <td width="130">
-                <h3>APEX</h3>
-                <br>
-                <img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_apex.png"/>
+            <h3>ADW</h3>
+            <br>
+            <img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_adw.png"/>
         </td>
-<tr>        
         <td width="130">
-                <h3>NOVA</h3>
-                <br>
-                <img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_nova.png"/>
+            <h3>APEX</h3>
+            <br>
+            <img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_apex.png"/>
+        </td>
+    <tr>
+        <td width="130">
+            <h3>NOVA</h3>
+            <br>
+            <img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_nova.png"/>
         </td>
         <td width="130">
             <h3>Huawei</h3>
@@ -62,25 +62,25 @@ The ShortcutBadger makes your Android App show the count of unread messages as a
             <br>
             (1.1.7+)
         </td>
-          <td width="130">
+        <td width="130">
             <h3>ZUK</h3>
             <br>
             <img src="https://raw.github.com/linwoain/ShortcutBadger/master/screenshots/ss_zuk.png"/>
-          
+            <br>
+            (1.1.10+)
         </td>
-</tr>
-
-<tr>
-<td width="130">
-<h3>Android</h3>
-<h5>(before 4.4)</h5>
-<h5>(Deprecated since 1.1.0)</h5>
-<br>
-<img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_android.png"/>
-</td>
-</tr>
-
+    </tr>
+    <tr>
+        <td width="130">
+            <h3>Android</h3>
+            <h5>(before 4.4)</h5>
+            <h5>(Deprecated since 1.1.0)</h5>
+            <br>
+            <img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_android.png"/>
+        </td>
+    </tr>
 </table> 
+
 
 
 Nova launcher with TeslaUnread,Apex launcher,Adw Launcher provided by [notz](https://github.com/notz)</br/>
@@ -98,7 +98,7 @@ USAGE
 <br/>2. Add dependencies for ShortcutBadger, it's available from maven now.
         
         dependencies {
-            compile 'me.leolin:ShortcutBadger:1.1.6@aar'
+            compile 'me.leolin:ShortcutBadger:1.1.10@aar'
         }
 
 <br/>3. Add the codes below:
@@ -138,6 +138,9 @@ Please use version 1.1.0+
 
 CHANGE LOG
 ===================================
+1.1.10:<br/>
+Add ZUK Launcher Support
+
 1.1.9:<br/>
 Add SamsungBadger back for more Samsung devices support.
 
