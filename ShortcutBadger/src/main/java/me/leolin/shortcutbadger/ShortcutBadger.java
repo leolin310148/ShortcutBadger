@@ -35,6 +35,7 @@ public final class ShortcutBadger {
         BADGERS.add(HuaweiHomeBadger.class);
 //        BADGERS.add(LGHomeBadger.class);
         BADGERS.add(SamsungHomeBadger.class);
+        BADGERS.add(ZukHomeBadger.class);
     }
 
     private static Badger sShortcutBadger;
@@ -127,6 +128,8 @@ public final class ShortcutBadger {
         if (sShortcutBadger == null) {
             if (Build.MANUFACTURER.equalsIgnoreCase("Xiaomi"))
                 sShortcutBadger = new XiaomiHomeBadger();
+            else if (Build.MANUFACTURER.equalsIgnoreCase("ZUK"))
+                sShortcutBadger = new ZukHomeBadger();
             else
                 sShortcutBadger = new DefaultBadger();
         }
