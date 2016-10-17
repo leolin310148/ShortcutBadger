@@ -8,12 +8,11 @@ import android.content.Intent;
 import android.content.pm.ProviderInfo;
 import android.net.Uri;
 
-import me.leolin.shortcutbadger.Badger;
-import me.leolin.shortcutbadger.ShortcutBadgeException;
-import me.leolin.shortcutbadger.ShortcutBadger;
-
 import java.util.Arrays;
 import java.util.List;
+
+import me.leolin.shortcutbadger.Badger;
+import me.leolin.shortcutbadger.ShortcutBadgeException;
 
 
 /**
@@ -38,13 +37,12 @@ public class SonyHomeBadger implements Badger {
 
     @Override
     public void executeBadge(Context context, ComponentName componentName,
-            int badgeCount) throws ShortcutBadgeException {
+                             int badgeCount) throws ShortcutBadgeException {
         if (sonyBadgeContentProviderExists(context)) {
             executeBadgeByContentProvider(context, componentName, badgeCount);
         } else {
             executeBadgeByBroadcast(context, componentName, badgeCount);
         }
-
     }
 
     @Override
@@ -53,7 +51,7 @@ public class SonyHomeBadger implements Badger {
     }
 
     private static void executeBadgeByBroadcast(Context context, ComponentName componentName,
-            int badgeCount) {
+                                                int badgeCount) {
         Intent intent = new Intent(INTENT_ACTION);
         intent.putExtra(INTENT_EXTRA_PACKAGE_NAME, componentName.getPackageName());
         intent.putExtra(INTENT_EXTRA_ACTIVITY_NAME, componentName.getClassName());
@@ -70,7 +68,7 @@ public class SonyHomeBadger implements Badger {
      * @param badgeCount    the badge count
      */
     private void executeBadgeByContentProvider(Context context, ComponentName componentName,
-            int badgeCount) {
+                                               int badgeCount) {
         if (badgeCount < 0) {
             return;
         }
@@ -118,8 +116,7 @@ public class SonyHomeBadger implements Badger {
      */
     private static boolean sonyBadgeContentProviderExists(Context context) {
         boolean exists = false;
-        ProviderInfo info = context.getPackageManager()
-                .resolveContentProvider(SONY_HOME_PROVIDER_NAME, 0);
+        ProviderInfo info = context.getPackageManager().resolveContentProvider(SONY_HOME_PROVIDER_NAME, 0);
         if (info != null) {
             exists = true;
         }
