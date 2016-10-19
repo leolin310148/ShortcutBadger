@@ -36,15 +36,8 @@
     <!--for ZUK-->
     <uses-permission android:name="android.permission.READ_APP_BADGE"/>
 
-    <!--for lenovo-->
-    <uses-permission android:name="com.lenovo.launcher.permission.BADGE_READ"/>
-    <uses-permission android:name="com.lenovo.launcher.permission.BADGE_WRITE"/>
-
     <!--for OPPO-->
     <uses-permission android:name="com.oppo.launcher.permission.READ_SETTINGS"/>
     <uses-permission android:name="com.oppo.launcher.permission.WRITE_SETTINGS"/>
-
-    <!--for vivo-->
-    <uses-permission android:name="com.bbk.launcher2.permission.READ_SETTINGS"/>
 
 </manifest>
