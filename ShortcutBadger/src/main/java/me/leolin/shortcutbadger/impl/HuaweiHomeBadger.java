@@ -23,7 +23,9 @@ public class HuaweiHomeBadger implements Badger {
     public void executeBadge(Context context, ComponentName componentName, int badgeCount) throws ShortcutBadgeException {
         String launcherClassName = componentName.getClassName();
         if (launcherClassName == null) {
-            Log.d(LOG_TAG, "Main activity is null");
+            if (Log.isLoggable(LOG_TAG, Log.DEBUG)) {
+                Log.d(LOG_TAG, "Main activity is null");
+            }
             return;
         }
         Bundle localBundle = new Bundle();

@@ -64,7 +64,9 @@ public final class ShortcutBadger {
             applyCountOrThrow(context, badgeCount);
             return true;
         } catch (ShortcutBadgeException e) {
-            Log.e(LOG_TAG, "Unable to execute badge", e);
+            if (Log.isLoggable(LOG_TAG, Log.ERROR)) {
+                Log.e(LOG_TAG, "Unable to execute badge", e);
+            }
             return false;
         }
     }
