@@ -112,8 +112,13 @@ public final class ShortcutBadger {
     // Initialize Badger if a launcher is availalble (eg. set as default on the device)
     // Returns true if a launcher is available, in this case, the Badger will be set and sShortcutBadger will be non null.
     private static boolean initBadger(Context context) {
+        Intent launchIntent = context.getPackageManager().getLaunchIntentForPackage(context.getPackageName());
+        if (launchIntent == null) {
+            Log.e(LOG_TAG, "Unable to find launch intent for package", context.getPackageName());
+            return false;
+        }
 
-        sComponentName = context.getPackageManager().getLaunchIntentForPackage(context.getPackageName()).getComponent();
+        sComponentName = launchIntent.getComponent();
 
         Intent intent = new Intent(Intent.ACTION_MAIN);
         intent.addCategory(Intent.CATEGORY_HOME);
