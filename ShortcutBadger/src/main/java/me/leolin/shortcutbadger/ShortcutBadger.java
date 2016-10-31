@@ -116,7 +116,7 @@ public final class ShortcutBadger {
     private static boolean initBadger(Context context) {
         Intent launchIntent = context.getPackageManager().getLaunchIntentForPackage(context.getPackageName());
         if (launchIntent == null) {
-            Log.e(LOG_TAG, "Unable to find launch intent for package", context.getPackageName());
+            Log.e(LOG_TAG, "Unable to find launch intent for package " + context.getPackageName());
             return false;
         }
 

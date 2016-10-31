@@ -25,7 +25,7 @@ import me.leolin.shortcutbadger.util.CloseHelper;
  * Created by NingSo on 2016/10/14.上午10:09
  *
  * @author: NingSo
- * @Email: ningso.ping@gmail.com
+ * Email: ningso.ping@gmail.com
  * <p>
  * OPPO R9 not supported
  * Version number 6 applies only to chat-type apps
