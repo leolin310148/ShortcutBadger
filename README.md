@@ -3,7 +3,7 @@ ShortcutBadger: [![Maven Central](https://maven-badges.herokuapp.com/maven-centr
 
 The ShortcutBadger makes your Android App show the count of unread messages as a badge on your App shortcut!
 
-# Support launchers:<br/>
+# Supported launchers:<br/>
 
 <table>
     <tr>
@@ -72,26 +72,26 @@ The ShortcutBadger makes your Android App show the count of unread messages as a
         <td width="130">
             <h3>OPPO</h3>
             <br>
-            <img src="https://raw.github.com/linwoain/ShortcutBadger/master/screenshots/ss_oppo.png"/>
+            <img src="screenshots/ss_oppo.png?raw=true"/>
             <br>
             (1.1.10+)
         </td>
     </tr>
-    <tr>
-        <td width="130">
-            <h3>Android</h3>
-            <h5>(before 4.4)</h5>
-            <h5>(Deprecated since 1.1.0)</h5>
-            <br>
-            <img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_android.png"/>
-        </td>
-    </tr>
+    
 </table> 
 
+* Nova launcher with TeslaUnread,Apex launcher,Adw Launcher provided by [notz](https://github.com/notz)
+* Solid launcher provided by [MajeurAndroid](https://github.com/MajeurAndroid)
 
+## IsBadgeWorking? 
 
-Nova launcher with TeslaUnread,Apex launcher,Adw Launcher provided by [notz](https://github.com/notz)</br/>
-Solid launcher provided by [MajeurAndroid](https://github.com/MajeurAndroid)
+A tool for to checking your device / launcher / android version and test/report if Shortcutbadger is working or not
+
+You can download it from google play
+[https://play.google.com/store/apps/details?id=me.leolin.isbadgeworking](https://play.google.com/store/apps/details?id=me.leolin.isbadgeworking)
+or from the github repo
+[https://github.com/leolin310148/IsBadgeWorking.Android/releases](https://github.com/leolin310148/IsBadgeWorking.Android/releases)
+
 
 
 USAGE
