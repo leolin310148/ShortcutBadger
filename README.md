@@ -87,11 +87,9 @@ The ShortcutBadger makes your Android App show the count of unread messages as a
 
 A tool for to checking your device / launcher / android version and test/report if Shortcutbadger is working or not
 
-You can download it from google play
-[https://play.google.com/store/apps/details?id=me.leolin.isbadgeworking](https://play.google.com/store/apps/details?id=me.leolin.isbadgeworking)
-or from the github repo
-[https://github.com/leolin310148/IsBadgeWorking.Android/releases](https://github.com/leolin310148/IsBadgeWorking.Android/releases)
-
+You can download it from 
+* google play [https://play.google.com/store/apps/details?id=me.leolin.isbadgeworking](https://play.google.com/store/apps/details?id=me.leolin.isbadgeworking)
+* the github repo [https://github.com/leolin310148/IsBadgeWorking.Android/releases](https://github.com/leolin310148/IsBadgeWorking.Android/releases)
 
 
 USAGE
