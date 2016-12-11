@@ -143,6 +143,11 @@ public final class ShortcutBadger {
             }
         }
 
+        // After Android 5.1, samsung uses default badger
+        if (Build.MANUFACTURER.equalsIgnoreCase("Samsung") && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1){
+            sShortcutBadger = new DefaultBadger();
+        }
+
         if (sShortcutBadger == null) {
             if (Build.MANUFACTURER.equalsIgnoreCase("Xiaomi"))
                 sShortcutBadger = new XiaomiHomeBadger();
