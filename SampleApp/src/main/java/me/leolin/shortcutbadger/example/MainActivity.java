@@ -10,8 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import me.leolin.shortcutbadger.ShortcutBadger;
-import me.leolin.shortcutbadger.impl.ApexHomeBadger;
 
 
 public class MainActivity extends Activity {

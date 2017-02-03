@@ -32,6 +32,8 @@ The ShortcutBadger makes your Android App show the count of unread messages as a
         <td width="130">
             <h3>Xiaomi</h3>
             <br>
+            (Not Fully Support)
+            <br>
             <img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_xiaomi.png"/>
         </td>
         <td width="130">
@@ -58,6 +60,8 @@ The ShortcutBadger makes your Android App show the count of unread messages as a
         <td width="130">
             <h3>Huawei</h3>
             <br>
+            (Not Fully Support)
+            <br>
             <img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_huawei.png"/>
             <br>
             (1.1.7+)
@@ -71,6 +75,8 @@ The ShortcutBadger makes your Android App show the count of unread messages as a
         </td>
         <td width="130">
             <h3>OPPO</h3>
+            <br>
+            (Not Fully Support)
             <br>
             <img src="screenshots/ss_oppo.png?raw=true"/>
             <br>
@@ -103,7 +109,7 @@ USAGE
 <br/>2. Add dependencies for ShortcutBadger, it's available from maven now.
         
         dependencies {
-            compile "me.leolin:ShortcutBadger:1.1.10@aar"
+            compile "me.leolin:ShortcutBadger:1.1.12@aar"
         }
 
 <br/>3. Add the codes below:
@@ -143,6 +149,16 @@ Please use version 1.1.0+
 
 CHANGE LOG
 ===================================
+1.1.12:<br/>
+Handling Samsung badger for old devices and new devices.
+<br/>
+Try to support newer Xiaomi (Not tested.)
+<br/>
+Try to support Vivo (Not tested.)
+
+1.1.11:<br/>
+Add OPPO Launcher Support
+
 1.1.10:<br/>
 Add ZUK Launcher Support
 
