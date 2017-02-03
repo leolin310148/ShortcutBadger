@@ -6,26 +6,37 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
-
-import me.leolin.shortcutbadger.Badger;
-import me.leolin.shortcutbadger.ShortcutBadgeException;
-import me.leolin.shortcutbadger.ShortcutBadger;
-import me.leolin.shortcutbadger.util.CloseHelper;
+import android.os.Build;
 
 import java.util.Arrays;
 import java.util.List;
 
+import me.leolin.shortcutbadger.Badger;
+import me.leolin.shortcutbadger.ShortcutBadgeException;
+import me.leolin.shortcutbadger.util.CloseHelper;
+
 /**
  * @author Leo Lin
- * Deprecated, Samesung devices will use DefaultBadger
  */
-@Deprecated
 public class SamsungHomeBadger implements Badger {
     private static final String CONTENT_URI = "content://com.sec.badge/apps?notify=true";
-    private static final String[] CONTENT_PROJECTION = new String[]{"_id","class"};
+    private static final String[] CONTENT_PROJECTION = new String[]{"_id", "class"};
+
+    private DefaultBadger defaultBadger;
+
+    public SamsungHomeBadger() {
+        if (Build.VERSION.SDK_INT >= 21) {
+            defaultBadger = new DefaultBadger();
+        }
+    }
 
     @Override
     public void executeBadge(Context context, ComponentName componentName, int badgeCount) throws ShortcutBadgeException {
+        if (defaultBadger != null) {
+            defaultBadger.executeBadge(context, componentName, badgeCount);
+            return;
+        }
+
         Uri mUri = Uri.parse(CONTENT_URI);
         ContentResolver contentResolver = context.getContentResolver();
         Cursor cursor = null;
