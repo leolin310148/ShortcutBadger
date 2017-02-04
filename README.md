@@ -32,9 +32,9 @@ The ShortcutBadger makes your Android App show the count of unread messages as a
         <td width="130">
             <h3>Xiaomi</h3>
             <br>
-            (Not Fully Support)
-            <br>
             <img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_xiaomi.png"/>
+            <br>
+            (1.1.13+)
         </td>
         <td width="130">
             <h3>ASUS</h3>
