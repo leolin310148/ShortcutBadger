@@ -109,7 +109,7 @@ USAGE
 <br/>2. Add dependencies for ShortcutBadger, it's available from maven now.
         
         dependencies {
-            compile "me.leolin:ShortcutBadger:1.1.12@aar"
+            compile "me.leolin:ShortcutBadger:1.1.13@aar"
         }
 
 <br/>3. Add the codes below:
@@ -149,6 +149,9 @@ Please use version 1.1.0+
 
 CHANGE LOG
 ===================================
+1.1.13:<br/>
+Fix XiaomiBadger (tested with RedMi Note4)
+
 1.1.12:<br/>
 Handling Samsung badger for old devices and new devices.
 <br/>
