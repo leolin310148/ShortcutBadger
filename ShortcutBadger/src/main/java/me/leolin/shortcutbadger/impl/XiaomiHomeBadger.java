@@ -49,16 +49,15 @@ public class XiaomiHomeBadger implements Badger {
             localIntent.putExtra(EXTRA_UPDATE_APP_MSG_TEXT, String.valueOf(badgeCount == 0 ? "" : badgeCount));
             if (BroadcastHelper.canResolveBroadcast(context, localIntent)) {
                 context.sendBroadcast(localIntent);
-            } else {
-                if (Build.MANUFACTURER.equalsIgnoreCase("Xiaomi")) {
-                    tryNewMiuiBadge(context, badgeCount);
-                }
             }
+        }
+        if (Build.MANUFACTURER.equalsIgnoreCase("Xiaomi")) {
+            tryNewMiuiBadge(context, badgeCount);
         }
     }
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-    private void tryNewMiuiBadge(Context context, int badgeCount) {
+    private void tryNewMiuiBadge(Context context, int badgeCount) throws ShortcutBadgeException {
         if (resolveInfo == null) {
             Intent intent = new Intent(Intent.ACTION_MAIN);
             intent.addCategory(Intent.CATEGORY_HOME);
@@ -69,17 +68,19 @@ public class XiaomiHomeBadger implements Badger {
             NotificationManager mNotificationManager = (NotificationManager) context
                     .getSystemService(Context.NOTIFICATION_SERVICE);
             Notification.Builder builder = new Notification.Builder(context)
-                    .setContentTitle(context.getString(resolveInfo.labelRes)).setContentText(context.getString(resolveInfo.labelRes)).setSmallIcon(resolveInfo.getIconResource());
+                    .setContentTitle("")
+                    .setContentText("")
+                    .setSmallIcon(resolveInfo.getIconResource());
             Notification notification = builder.build();
             try {
                 Field field = notification.getClass().getDeclaredField("extraNotification");
                 Object extraNotification = field.get(notification);
                 Method method = extraNotification.getClass().getDeclaredMethod("setMessageCount", int.class);
                 method.invoke(extraNotification, badgeCount);
+                mNotificationManager.notify(0, notification);
             } catch (Exception e) {
-                e.printStackTrace();
+                throw new ShortcutBadgeException("not able to set badge", e);
             }
-            mNotificationManager.notify(0, notification);
         }
     }
 
