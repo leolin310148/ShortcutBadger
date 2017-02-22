@@ -11,14 +11,13 @@ import android.net.Uri;
 import java.util.Arrays;
 import java.util.List;
 
-import me.leolin.shortcutbadger.Badger;
 import me.leolin.shortcutbadger.ShortcutBadgeException;
 
 
 /**
  * @author Leo Lin
  */
-public class SonyHomeBadger implements Badger {
+public class SonyHomeBadger  extends AbsBadger {
 
     private static final String INTENT_ACTION = "com.sonyericsson.home.action.UPDATE_BADGE";
     private static final String INTENT_EXTRA_PACKAGE_NAME = "com.sonyericsson.home.intent.extra.badge.PACKAGE_NAME";

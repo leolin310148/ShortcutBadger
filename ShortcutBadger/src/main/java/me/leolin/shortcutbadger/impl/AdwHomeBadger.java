@@ -7,14 +7,12 @@ import android.content.Intent;
 import java.util.Arrays;
 import java.util.List;
 
-import me.leolin.shortcutbadger.Badger;
 import me.leolin.shortcutbadger.ShortcutBadgeException;
-import me.leolin.shortcutbadger.util.BroadcastHelper;
 
 /**
  * @author Gernot Pansy
  */
-public class AdwHomeBadger implements Badger {
+public class AdwHomeBadger extends AbsBadger {
 
     public static final String INTENT_UPDATE_COUNTER = "org.adw.launcher.counter.SEND";
     public static final String PACKAGENAME = "PNAME";
@@ -28,7 +26,7 @@ public class AdwHomeBadger implements Badger {
         intent.putExtra(PACKAGENAME, componentName.getPackageName());
         intent.putExtra(CLASSNAME, componentName.getClassName());
         intent.putExtra(COUNT, badgeCount);
-        if (BroadcastHelper.canResolveBroadcast(context, intent)) {
+        if (canResolveBroadcast(context, intent)) {
             context.sendBroadcast(intent);
         } else {
             throw new ShortcutBadgeException("unable to resolve intent: " + intent.toString());

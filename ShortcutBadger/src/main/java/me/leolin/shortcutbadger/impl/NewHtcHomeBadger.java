@@ -4,18 +4,15 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 
-import me.leolin.shortcutbadger.Badger;
-import me.leolin.shortcutbadger.ShortcutBadgeException;
-import me.leolin.shortcutbadger.ShortcutBadger;
-import me.leolin.shortcutbadger.util.BroadcastHelper;
-
 import java.util.Arrays;
 import java.util.List;
+
+import me.leolin.shortcutbadger.ShortcutBadgeException;
 
 /**
  * @author Leo Lin
  */
-public class NewHtcHomeBadger implements Badger {
+public class NewHtcHomeBadger  extends AbsBadger {
 
     public static final String INTENT_UPDATE_SHORTCUT = "com.htc.launcher.action.UPDATE_SHORTCUT";
     public static final String INTENT_SET_NOTIFICATION = "com.htc.launcher.action.SET_NOTIFICATION";
@@ -35,7 +32,7 @@ public class NewHtcHomeBadger implements Badger {
         intent.putExtra(PACKAGENAME, componentName.getPackageName());
         intent.putExtra(COUNT, badgeCount);
 
-        if(BroadcastHelper.canResolveBroadcast(context, intent1) || BroadcastHelper.canResolveBroadcast(context, intent)) {
+        if(canResolveBroadcast(context, intent1) || canResolveBroadcast(context, intent)) {
             context.sendBroadcast(intent1);
             context.sendBroadcast(intent);
         } else {
