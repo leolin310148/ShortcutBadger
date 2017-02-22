@@ -10,7 +10,6 @@ import android.os.Bundle;
 import java.util.Collections;
 import java.util.List;
 
-import me.leolin.shortcutbadger.Badger;
 import me.leolin.shortcutbadger.ShortcutBadgeException;
 
 /**
@@ -18,7 +17,7 @@ import me.leolin.shortcutbadger.ShortcutBadgeException;
  * 需在设置 -- 通知和状态栏 -- 应用角标管理 中开启应用
  */
 
-public class ZukHomeBadger implements Badger {
+public class ZukHomeBadger extends AbsBadger {
 
     private final Uri CONTENT_URI = Uri.parse("content://com.android.badge/badge");
 

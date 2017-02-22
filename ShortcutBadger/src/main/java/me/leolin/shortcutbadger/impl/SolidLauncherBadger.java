@@ -7,14 +7,12 @@ import android.content.Intent;
 import java.util.Arrays;
 import java.util.List;
 
-import me.leolin.shortcutbadger.Badger;
 import me.leolin.shortcutbadger.ShortcutBadgeException;
-import me.leolin.shortcutbadger.util.BroadcastHelper;
 
 /**
  * Created by Andy Zhang(zhangyong232@gmail.com) on 2017/2/22.
  */
-public class SolidLauncherBadger implements Badger {
+public class SolidLauncherBadger  extends AbsBadger {
 
     private static final String INTENT_ACTION = "com.majeur.launcher.intent.action.UPDATE_BADGE";
     private static final String EXTRA_PACKAGENAME = "com.majeur.launcher.intent.extra.BADGE_PACKAGE";
@@ -32,7 +30,7 @@ public class SolidLauncherBadger implements Badger {
         intent.putExtra(EXTRA_CLASS, className);
         intent.putExtra(EXTRA_COUNT, badgeCount);
 
-        if (BroadcastHelper.canResolveBroadcast(context, intent)) {
+        if (canResolveBroadcast(context, intent)) {
             context.sendBroadcast(intent);
         } else {
             throw new ShortcutBadgeException("unable to resolve intent: " + intent.toString());

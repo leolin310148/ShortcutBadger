@@ -16,9 +16,7 @@ import java.lang.reflect.Method;
 import java.util.Collections;
 import java.util.List;
 
-import me.leolin.shortcutbadger.Badger;
 import me.leolin.shortcutbadger.ShortcutBadgeException;
-import me.leolin.shortcutbadger.util.BroadcastHelper;
 import me.leolin.shortcutbadger.util.CloseHelper;
 
 /**
@@ -31,7 +29,7 @@ import me.leolin.shortcutbadger.util.CloseHelper;
  * Version number 6 applies only to chat-type apps
  */
 
-public class OPPOHomeBader implements Badger {
+public class OPPOHomeBader  extends AbsBadger {
 
     private static final String PROVIDER_CONTENT_URI = "content://com.android.badge/badge";
     private static final String INTENT_ACTION = "com.oppo.unsettledevent";
@@ -51,7 +49,7 @@ public class OPPOHomeBader implements Badger {
         intent.putExtra(INTENT_EXTRA_PACKAGENAME, componentName.getPackageName());
         intent.putExtra(INTENT_EXTRA_BADGE_COUNT, badgeCount);
         intent.putExtra(INTENT_EXTRA_BADGE_UPGRADENUMBER, badgeCount);
-        if (BroadcastHelper.canResolveBroadcast(context, intent)) {
+        if (canResolveBroadcast(context, intent)) {
             context.sendBroadcast(intent);
         } else {
             int version = getSupportVersion();

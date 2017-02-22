@@ -8,13 +8,12 @@ import android.os.Bundle;
 import java.util.Arrays;
 import java.util.List;
 
-import me.leolin.shortcutbadger.Badger;
 import me.leolin.shortcutbadger.ShortcutBadgeException;
 
 /**
  * @author Jason Ling
  */
-public class HuaweiHomeBadger implements Badger {
+public class HuaweiHomeBadger  extends AbsBadger{
 
     @Override
     public void executeBadge(Context context, ComponentName componentName, int badgeCount) throws ShortcutBadgeException {

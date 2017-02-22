@@ -15,15 +15,13 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
 
-import me.leolin.shortcutbadger.Badger;
 import me.leolin.shortcutbadger.ShortcutBadgeException;
-import me.leolin.shortcutbadger.util.BroadcastHelper;
 
 
 /**
  * @author leolin
  */
-public class XiaomiHomeBadger implements Badger {
+public class XiaomiHomeBadger  extends AbsBadger {
 
     public static final String INTENT_ACTION = "android.intent.action.APPLICATION_MESSAGE_UPDATE";
     public static final String EXTRA_UPDATE_APP_COMPONENT_NAME = "android.intent.extra.update_application_component_name";
@@ -47,7 +45,7 @@ public class XiaomiHomeBadger implements Badger {
                     INTENT_ACTION);
             localIntent.putExtra(EXTRA_UPDATE_APP_COMPONENT_NAME, componentName.getPackageName() + "/" + componentName.getClassName());
             localIntent.putExtra(EXTRA_UPDATE_APP_MSG_TEXT, String.valueOf(badgeCount == 0 ? "" : badgeCount));
-            if (BroadcastHelper.canResolveBroadcast(context, localIntent)) {
+            if (canResolveBroadcast(context, localIntent)) {
                 context.sendBroadcast(localIntent);
             }
         }

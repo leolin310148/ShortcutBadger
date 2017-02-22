@@ -8,7 +8,6 @@ import android.net.Uri;
 import java.util.Arrays;
 import java.util.List;
 
-import me.leolin.shortcutbadger.Badger;
 import me.leolin.shortcutbadger.ShortcutBadgeException;
 
 /**
@@ -18,7 +17,7 @@ import me.leolin.shortcutbadger.ShortcutBadgeException;
  * Date: 2014/11/03
  * Time: 7:15
  */
-public class NovaHomeBadger implements Badger {
+public class NovaHomeBadger  extends AbsBadger {
 
     private static final String CONTENT_URI = "content://com.teslacoilsw.notifier/unread_count";
     private static final String COUNT = "count";

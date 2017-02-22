@@ -11,14 +11,13 @@ import android.os.Build;
 import java.util.Arrays;
 import java.util.List;
 
-import me.leolin.shortcutbadger.Badger;
 import me.leolin.shortcutbadger.ShortcutBadgeException;
 import me.leolin.shortcutbadger.util.CloseHelper;
 
 /**
  * @author Leo Lin
  */
-public class SamsungHomeBadger implements Badger {
+public class SamsungHomeBadger  extends AbsBadger {
     private static final String CONTENT_URI = "content://com.sec.badge/apps?notify=true";
     private static final String[] CONTENT_PROJECTION = new String[]{"_id", "class"};
 

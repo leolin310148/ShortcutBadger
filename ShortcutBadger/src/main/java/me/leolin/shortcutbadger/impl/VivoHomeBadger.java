@@ -7,13 +7,12 @@ import android.content.Intent;
 import java.util.Arrays;
 import java.util.List;
 
-import me.leolin.shortcutbadger.Badger;
 import me.leolin.shortcutbadger.ShortcutBadgeException;
 
 /**
  * @author leolin
  */
-public class VivoHomeBadger implements Badger {
+public class VivoHomeBadger  extends AbsBadger {
 
     @Override
     public void executeBadge(Context context, ComponentName componentName, int badgeCount) throws ShortcutBadgeException {
