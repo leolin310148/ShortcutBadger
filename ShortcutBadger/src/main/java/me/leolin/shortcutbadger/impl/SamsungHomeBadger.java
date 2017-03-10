@@ -32,35 +32,34 @@ public class SamsungHomeBadger implements Badger {
 
     @Override
     public void executeBadge(Context context, ComponentName componentName, int badgeCount) throws ShortcutBadgeException {
-        if (defaultBadger != null) {
+        if (defaultBadger != null && defaultBadger.isSupported(context)) {
             defaultBadger.executeBadge(context, componentName, badgeCount);
-            return;
-        }
+        } else {
+            Uri mUri = Uri.parse(CONTENT_URI);
+            ContentResolver contentResolver = context.getContentResolver();
+            Cursor cursor = null;
+            try {
+                cursor = contentResolver.query(mUri, CONTENT_PROJECTION, "package=?", new String[]{componentName.getPackageName()}, null);
+                if (cursor != null) {
+                    String entryActivityName = componentName.getClassName();
+                    boolean entryActivityExist = false;
+                    while (cursor.moveToNext()) {
+                        int id = cursor.getInt(0);
+                        ContentValues contentValues = getContentValues(componentName, badgeCount, false);
+                        contentResolver.update(mUri, contentValues, "_id=?", new String[]{String.valueOf(id)});
+                        if (entryActivityName.equals(cursor.getString(cursor.getColumnIndex("class")))) {
+                            entryActivityExist = true;
+                        }
+                    }
 
-        Uri mUri = Uri.parse(CONTENT_URI);
-        ContentResolver contentResolver = context.getContentResolver();
-        Cursor cursor = null;
-        try {
-            cursor = contentResolver.query(mUri, CONTENT_PROJECTION, "package=?", new String[]{componentName.getPackageName()}, null);
-            if (cursor != null) {
-                String entryActivityName = componentName.getClassName();
-                boolean entryActivityExist = false;
-                while (cursor.moveToNext()) {
-                    int id = cursor.getInt(0);
-                    ContentValues contentValues = getContentValues(componentName, badgeCount, false);
-                    contentResolver.update(mUri, contentValues, "_id=?", new String[]{String.valueOf(id)});
-                    if (entryActivityName.equals(cursor.getString(cursor.getColumnIndex("class")))) {
-                        entryActivityExist = true;
+                    if (!entryActivityExist) {
+                        ContentValues contentValues = getContentValues(componentName, badgeCount, true);
+                        contentResolver.insert(mUri, contentValues);
                     }
                 }
-
-                if (!entryActivityExist) {
-                    ContentValues contentValues = getContentValues(componentName, badgeCount, true);
-                    contentResolver.insert(mUri, contentValues);
-                }
+            } finally {
+                CloseHelper.close(cursor);
             }
-        } finally {
-            CloseHelper.close(cursor);
         }
     }
 
