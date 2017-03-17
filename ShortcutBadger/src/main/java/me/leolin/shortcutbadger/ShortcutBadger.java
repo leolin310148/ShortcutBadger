@@ -32,8 +32,12 @@ import me.leolin.shortcutbadger.impl.ZukHomeBadger;
 public final class ShortcutBadger {
 
     private static final String LOG_TAG = "ShortcutBadger";
+    private static final int SUPPORTED_CHECK_ATTEMPTS = 3;
 
     private static final List<Class<? extends Badger>> BADGERS = new LinkedList<Class<? extends Badger>>();
+
+    private volatile static Boolean sIsBadgeCounterSupported;
+    private volatile static Object sCounterSupportedLock = new Object();
 
     static {
         BADGERS.add(AdwHomeBadger.class);
@@ -110,6 +114,50 @@ public final class ShortcutBadger {
      */
     public static void removeCountOrThrow(Context context) throws ShortcutBadgeException {
         applyCountOrThrow(context, 0);
+    }
+
+    /**
+     * Whether this platform launcher supports shortcut badges. Doing this check causes the side
+     * effect of resetting the counter if it's supported, so this method should be followed by
+     * a call that actually sets the counter to the desired value, if the counter is supported.
+     */
+    public static boolean isBadgeCounterSupported(Context context) {
+        // Checking outside synchronized block to avoid synchronization in the common case (flag
+        // already set), and improve perf.
+        if (sIsBadgeCounterSupported == null) {
+            synchronized (sCounterSupportedLock) {
+                // Checking again inside synch block to avoid setting the flag twice.
+                if (sIsBadgeCounterSupported == null) {
+                    String lastErrorMessage = null;
+                    for (int i = 0; i < SUPPORTED_CHECK_ATTEMPTS; i++) {
+                        try {
+                            Log.i(LOG_TAG, "Checking if platform supports badge counters, attempt "
+                                    + String.format("%d/%d.", i + 1, SUPPORTED_CHECK_ATTEMPTS));
+                            if (initBadger(context)) {
+                                sShortcutBadger.executeBadge(context, sComponentName, 0);
+                                sIsBadgeCounterSupported = true;
+                                Log.i(LOG_TAG, "Badge counter is supported in this platform.");
+                                break;
+                            } else {
+                                lastErrorMessage = "Failed to initialize the badge counter.";
+                            }
+                        } catch (Exception e) {
+                            // Keep retrying as long as we can. No need to dump the stack trace here
+                            // because this error will be the norm, not exception, for unsupported
+                            // platforms. So we just save the last error message to display later.
+                            lastErrorMessage = e.getMessage();
+                        }
+                    }
+
+                    if (sIsBadgeCounterSupported == null) {
+                        Log.w(LOG_TAG, "Badge counter seems not supported for this platform: "
+                                + lastErrorMessage);
+                        sIsBadgeCounterSupported = false;
+                    }
+                }
+            }
+        }
+        return sIsBadgeCounterSupported;
     }
 
     // Initialize Badger if a launcher is availalble (eg. set as default on the device)
