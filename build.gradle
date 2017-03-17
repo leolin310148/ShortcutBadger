@@ -7,6 +7,16 @@ buildscript {
     }
     ext {
         POM_NAME = 'Shortcutbadger'
+        POM_DESCRIPTION = 'The ShortcutBadger makes your Android App show the count of unread messages as a badge on your App shortcut!'
+        POM_URL = 'https://github.com/leolin310148/ShortcutBadger'
+        POM_SCM_URL = 'https://github.com/leolin310148/ShortcutBadger'
+        POM_SCM_CONNECTION = 'https://github.com/leolin310148/ShortcutBadger.git'
+        POM_SCM_DEV_CONNECTION = 'https://github.com/leolin310148/ShortcutBadger.git'
+        POM_LICENCE_NAME = 'The Apache Software License, Version 2.0'
+        POM_LICENCE_URL = 'http://www.apache.org/licenses/LICENSE-2.0'
+        POM_LICENCE_DIST = 'repo'
+        POM_DEVELOPER_ID = 'leolin310148'
+        POM_DEVELOPER_NAME = 'Leo Lin'
         POM_PACKAGING = 'aar'
         POM_ARTIFACT_ID = 'shortcutbadger'
         VERSION_NAME = '1.1.8'
