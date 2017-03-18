@@ -34,7 +34,6 @@ The ShortcutBadger makes your Android App show the count of unread messages as a
             <br>
             <img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_xiaomi.png"/>
             <br>
-            (1.1.13+)
         </td>
         <td width="130">
             <h3>ASUS</h3>
@@ -88,6 +87,9 @@ The ShortcutBadger makes your Android App show the count of unread messages as a
 
 * Nova launcher with TeslaUnread,Apex launcher,Adw Launcher provided by [notz](https://github.com/notz)
 * Solid launcher provided by [MajeurAndroid](https://github.com/MajeurAndroid)
+
+## About Xiaomi devices
+Xiaomi devices required extra setup with notifications, please read [wiki](https://github.com/leolin310148/ShortcutBadger/wiki/Xiaomi-Device-Support)
 
 ## IsBadgeWorking? 
 
