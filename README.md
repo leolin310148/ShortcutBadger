@@ -149,6 +149,10 @@ Please use version 1.1.0+
 
 CHANGE LOG
 ===================================
+1.1.14:<br/>
+* Fix for specific class of Samsung devices: with android 5, but without support of DefaultBadger
+* Remove Xiaomi from Badger and add Notification Support for Xiaomi devices. 
+
 1.1.13:<br/>
 Fix XiaomiBadger (tested with RedMi Note4)
 
