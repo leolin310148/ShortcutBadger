@@ -1,37 +1,50 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:paddingTop="@dimen/activity_vertical_margin"
-                android:paddingBottom="@dimen/activity_vertical_margin"
-                tools:context=".MainActivity">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:paddingBottom="@dimen/activity_vertical_margin"
+              android:paddingLeft="@dimen/activity_horizontal_margin"
+              android:paddingRight="@dimen/activity_horizontal_margin"
+              android:paddingTop="@dimen/activity_vertical_margin"
+              tools:context=".MainActivity">
 
     <TextView
-            android:id="@+id/textViewHomePackage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"/>
+        android:id="@+id/textViewHomePackage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"/>
 
     <EditText
-            android:id="@+id/numInput"
-            android:layout_below="@id/textViewHomePackage"
-            android:inputType="numberDecimal"
-            android:layout_width="match_parent" android:layout_height="wrap_content"
-            />
+        android:id="@+id/numInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        />
 
-    <Button android:id="@+id/btnSetBadge"
-            android:layout_below="@id/numInput"
-            android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:text="Set badge"
-            android:layout_centerVertical="true" android:layout_centerHorizontal="true"/>
+    <Button
+        android:id="@+id/btnSetBadge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="Set badge"/>
 
-    <Button android:id="@+id/btnRemoveBadge"
-        android:layout_below="@id/btnSetBadge"
-        android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:text="Remove badge"
-        android:layout_centerVertical="true" android:layout_centerHorizontal="true"/>
+    <Button
+        android:id="@+id/btnSetBadgeByNotification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="Launch Notification"/>
+
+    <Button
+        android:id="@+id/btnRemoveBadge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="Remove badge"/>
 
 
-</RelativeLayout>
+</LinearLayout>

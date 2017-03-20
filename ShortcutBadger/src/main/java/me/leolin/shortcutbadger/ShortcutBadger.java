@@ -1,5 +1,6 @@
 package me.leolin.shortcutbadger;
 
+import android.app.Notification;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +9,8 @@ import android.content.pm.ResolveInfo;
 import android.os.Build;
 import android.util.Log;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -22,7 +25,6 @@ import me.leolin.shortcutbadger.impl.OPPOHomeBader;
 import me.leolin.shortcutbadger.impl.SamsungHomeBadger;
 import me.leolin.shortcutbadger.impl.SonyHomeBadger;
 import me.leolin.shortcutbadger.impl.VivoHomeBadger;
-import me.leolin.shortcutbadger.impl.XiaomiHomeBadger;
 import me.leolin.shortcutbadger.impl.ZukHomeBadger;
 
 
@@ -37,7 +39,7 @@ public final class ShortcutBadger {
     private static final List<Class<? extends Badger>> BADGERS = new LinkedList<Class<? extends Badger>>();
 
     private volatile static Boolean sIsBadgeCounterSupported;
-    private volatile static Object sCounterSupportedLock = new Object();
+    private final static Object sCounterSupportedLock = new Object();
 
     static {
         BADGERS.add(AdwHomeBadger.class);
@@ -45,7 +47,6 @@ public final class ShortcutBadger {
         BADGERS.add(NewHtcHomeBadger.class);
         BADGERS.add(NovaHomeBadger.class);
         BADGERS.add(SonyHomeBadger.class);
-        BADGERS.add(XiaomiHomeBadger.class);
         BADGERS.add(AsusHomeBadger.class);
         BADGERS.add(HuaweiHomeBadger.class);
         BADGERS.add(OPPOHomeBader.class);
@@ -160,6 +161,26 @@ public final class ShortcutBadger {
         return sIsBadgeCounterSupported;
     }
 
+    /**
+     * @param context      Caller context
+     * @param notification
+     * @param badgeCount
+     */
+    public static void applyNotification(Context context, Notification notification, int badgeCount) {
+        if (Build.MANUFACTURER.equalsIgnoreCase("Xiaomi")) {
+            try {
+                Field field = notification.getClass().getDeclaredField("extraNotification");
+                Object extraNotification = field.get(notification);
+                Method method = extraNotification.getClass().getDeclaredMethod("setMessageCount", int.class);
+                method.invoke(extraNotification, badgeCount);
+            } catch (Exception e) {
+                if (Log.isLoggable(LOG_TAG, Log.DEBUG)) {
+                    Log.d(LOG_TAG, "Unable to execute badge", e);
+                }
+            }
+        }
+    }
+
     // Initialize Badger if a launcher is availalble (eg. set as default on the device)
     // Returns true if a launcher is available, in this case, the Badger will be set and sShortcutBadger will be non null.
     private static boolean initBadger(Context context) {
@@ -193,9 +214,7 @@ public final class ShortcutBadger {
         }
 
         if (sShortcutBadger == null) {
-            if (Build.MANUFACTURER.equalsIgnoreCase("Xiaomi"))
-                sShortcutBadger = new XiaomiHomeBadger();
-            else if (Build.MANUFACTURER.equalsIgnoreCase("ZUK"))
+            if (Build.MANUFACTURER.equalsIgnoreCase("ZUK"))
                 sShortcutBadger = new ZukHomeBadger();
             else if (Build.MANUFACTURER.equalsIgnoreCase("OPPO"))
                 sShortcutBadger = new OPPOHomeBader();
