@@ -118,7 +118,7 @@ USAGE
 <br/>2. Add dependencies for ShortcutBadger, it's available from maven now.
         
         dependencies {
-            compile "me.leolin:ShortcutBadger:1.1.14@aar"
+            compile "me.leolin:ShortcutBadger:1.1.15@aar"
         }
 
 <br/>3. Add the codes below:
@@ -158,6 +158,9 @@ Please use version 1.1.0+
 
 CHANGE LOG
 ===================================
+1.1.15:<br/>
+* Add EverythingLauncher Support.
+
 1.1.14:<br/>
 * Fix for specific class of Samsung devices: with android 5, but without support of DefaultBadger
 * Remove Xiaomi from Badger and add Notification Support for Xiaomi devices. 
