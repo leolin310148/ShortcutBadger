@@ -118,7 +118,7 @@ USAGE
 <br/>2. Add dependencies for ShortcutBadger, it's available from maven now.
         
         dependencies {
-            compile "me.leolin:ShortcutBadger:1.1.13@aar"
+            compile "me.leolin:ShortcutBadger:1.1.14@aar"
         }
 
 <br/>3. Add the codes below:
