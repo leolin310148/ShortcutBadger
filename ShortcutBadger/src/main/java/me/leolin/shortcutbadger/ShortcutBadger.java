@@ -26,6 +26,7 @@ import me.leolin.shortcutbadger.impl.OPPOHomeBader;
 import me.leolin.shortcutbadger.impl.SamsungHomeBadger;
 import me.leolin.shortcutbadger.impl.SonyHomeBadger;
 import me.leolin.shortcutbadger.impl.VivoHomeBadger;
+import me.leolin.shortcutbadger.impl.ZTEHomeBadger;
 import me.leolin.shortcutbadger.impl.ZukHomeBadger;
 
 
@@ -54,6 +55,7 @@ public final class ShortcutBadger {
         BADGERS.add(SamsungHomeBadger.class);
         BADGERS.add(ZukHomeBadger.class);
         BADGERS.add(VivoHomeBadger.class);
+        BADGERS.add(ZTEHomeBadger.class);
         BADGERS.add(EverythingMeHomeBadger.class);
     }
 
@@ -222,6 +224,8 @@ public final class ShortcutBadger {
                 sShortcutBadger = new OPPOHomeBader();
             else if (Build.MANUFACTURER.equalsIgnoreCase("VIVO"))
                 sShortcutBadger = new VivoHomeBadger();
+            else if (Build.MANUFACTURER.equalsIgnoreCase("ZTE"))
+                sShortcutBadger = new ZTEHomeBadger();
             else
                 sShortcutBadger = new DefaultBadger();
         }
