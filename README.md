@@ -82,15 +82,21 @@ The ShortcutBadger makes your Android App show the count of unread messages as a
             (1.1.10+)
         </td>
     </tr>
-     <tr>
+    <tr>
         <td width="130">
             <h3>EverythingMe</h3>
-                <br>
-                <img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_evme.png"/>
+            <br>
+            <img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_evme.png"/>
         </td>
-     </tr>
-    
-</table> 
+        <td width="130">
+            <h3>ZTE</h3>
+            <br>
+            <img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_zte.png"/>
+            <br>
+            (1.1.17+)
+        </td>
+    </tr>
+</table>
 
 * Nova launcher with TeslaUnread,Apex launcher,Adw Launcher provided by [notz](https://github.com/notz)
 * Solid launcher provided by [MajeurAndroid](https://github.com/MajeurAndroid)
@@ -158,6 +164,9 @@ Please use version 1.1.0+
 
 CHANGE LOG
 ===================================
+1.1.17:<br/>
+* Add ZTE Support
+
 1.1.16:<br/>
 * improve Sony Launcher support. 
 
