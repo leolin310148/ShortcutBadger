@@ -105,20 +105,20 @@ The ShortcutBadger makes your Android App show the count of unread messages as a
     </tr>
 </table>
 
-* Nova launcher with TeslaUnread,Apex launcher,Adw Launcher provided by [notz](https://github.com/notz)
+* Nova launcher with TeslaUnread, Apex launcher, ADW Launcher provided by [notz](https://github.com/notz)
 * Solid launcher provided by [MajeurAndroid](https://github.com/MajeurAndroid)
 * KISS Launcher provided by [alexander255](https://github.com/alexander255)
 
 ## About Xiaomi devices
-Xiaomi devices required extra setup with notifications, please read [wiki](https://github.com/leolin310148/ShortcutBadger/wiki/Xiaomi-Device-Support)
+Xiaomi devices require extra setup with notifications, please read [wiki](https://github.com/leolin310148/ShortcutBadger/wiki/Xiaomi-Device-Support).
 
 ## IsBadgeWorking? 
 
-A tool for to checking your device / launcher / android version and test/report if Shortcutbadger is working or not
+A tool for displaying your device, launcher & android version and testing whether ShortcutBadger
+works or not may be downloaded from
 
-You can download it from 
-* google play [https://play.google.com/store/apps/details?id=me.leolin.isbadgeworking](https://play.google.com/store/apps/details?id=me.leolin.isbadgeworking)
-* the github repo [https://github.com/leolin310148/IsBadgeWorking.Android/releases](https://github.com/leolin310148/IsBadgeWorking.Android/releases)
+* Google Play [https://play.google.com/store/apps/details?id=me.leolin.isbadgeworking](https://play.google.com/store/apps/details?id=me.leolin.isbadgeworking)
+* The GitHub repository [https://github.com/leolin310148/IsBadgeWorking.Android/releases](https://github.com/leolin310148/IsBadgeWorking.Android/releases)
 
 
 USAGE
@@ -160,97 +160,99 @@ DEVELOP BY
 [Leo Lin](https://github.com/leolin310148) - leolin310148@gmail.com
 
 
-ABOUT Google Play Developer Term Violation
+ABOUT Google Play Developer Term Violations
 ===================================
-If you receive mail from Google contains message like :<br/> 
+If you receive a message from Google containing something like this:<br/> 
 
         REASON FOR WARNING: Violation of section 4.4 of the Developer Distribution Agreement.
         
-Please use version 1.1.0+
+please use version 1.1.0+!
 
 
 
 CHANGE LOG
 ===================================
-1.1.17:<br/>
+1.1.17:
+
 * Add ZTE Support
 
-1.1.16:<br/>
-* improve Sony Launcher support. 
+1.1.16:
 
-1.1.15:<br/>
+* Improve Sony Launcher support. 
+
+1.1.15:
+
 * Add EverythingLauncher Support.
 
-1.1.14:<br/>
+1.1.14:
+
 * Fix for specific class of Samsung devices: with android 5, but without support of DefaultBadger
 * Remove Xiaomi from Badger and add Notification Support for Xiaomi devices. 
 
-1.1.13:<br/>
-Fix XiaomiBadger (tested with RedMi Note4)
+1.1.13:
 
-1.1.12:<br/>
-Handling Samsung badger for old devices and new devices.
-<br/>
-Try to support newer Xiaomi (Not tested.)
-<br/>
-Try to support Vivo (Not tested.)
+* Fix XiaomiBadger (tested with RedMi Note4)
 
-1.1.11:<br/>
-Add OPPO Launcher Support
+1.1.12:
 
-1.1.10:<br/>
-Add ZUK Launcher Support
+* Handling Samsung badger for old devices and new devices.
+* Try to support newer Xiaomi (Not tested.)
+* Try to support Vivo (Not tested.)
 
-1.1.9:<br/>
-Add SamsungBadger back for more Samsung devices support.
+1.1.11:
 
-1.1.8:<br/>
-Remove SolidBadger, now solid launcher will use default badger.
+* Add OPPO Launcher Support
 
+1.1.10:
 
-1.1.7:<br/>
-add huawei launcher support. <br/>
-<br/>
+* Add ZUK Launcher Support
 
-1.1.6:<br/>
-add support for new Sony Launchers. <br/>
-<br/>
+1.1.9:
 
-1.1.5:<br/>
-`applyCount` will return if the Broadcast has been sent successfully. <br/>
-<br/>
+* Add SamsungBadger back for more Samsung devices support.
 
-1.1.4:<br/>
-Changed `ShortcutBadger.setBadge(context, badgeCount)` to `ShortcutBadger.applyCount(context, badgeCount);`<br/>
-<br/>
+1.1.8:
 
-1.1.3:<br/>
-Deprecate SamsungBadger and LGBadger, those devices can use DefaultBadger<br/>
-<br/>
+* Remove SolidBadger, now solid launcher will use default badger.
 
-1.1.2:<br/>
-Add support for 'com.miui.mihome2'<br/>
-<br/>
+1.1.7:
+* Add Huawei launcher support.
 
-1.1.1:<br/>
-Add DefaultBadger because some launchers use android.intent.action.BADGE_COUNT_UPDATE to update count.
-<br/>
-Since the ShortcutBadgerException is helpless. So change api to set badge and never have to handle the exception again. 
-<br/>
-<br/>
+* 1.1.6:
+* Add support for new Sony Launchers.
 
-1.1.0:<br/>
-Remove Android Launcher support due to  Google Play Developer Term Violation since 4.4 
-<br/>
-<br/>
+1.1.5:
 
-1.0.10:<br/>
-Add Asus launcher support.
-<br/>
-<br/>
+* `applyCount` will return if the Broadcast has been sent successfully.
 
-1.0.9:<br/>
-Add xiaomi launcher support.
+1.1.4:
+
+* Changed `ShortcutBadger.setBadge(context, badgeCount)` to `ShortcutBadger.applyCount(context, badgeCount);`
+
+1.1.3:
+
+* Deprecate SamsungBadger and LGBadger, those devices can use DefaultBadger.
+
+1.1.2:
+
+* Add support for `com.miui.mihome2`
+
+1.1.1:
+
+* Add DefaultBadger because some launchers use android.intent.action.BADGE_COUNT_UPDATE to update count.
+* Since the ShortcutBadgerException is helpless. So change api to set badge and never have to handle the exception again.
+
+1.1.0:
+
+* Remove Android Launcher support due to Google Play Developer Term Violation since 4.4.
+
+1.0.10:
+
+* Add Asus launcher support.
+
+1.0.9:
+
+* Add Xiaomi launcher support.
 
 
 LICENSE
@@ -270,4 +272,4 @@ LICENSE
         WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
         See the License for the specific language governing permissions and
         limitations under the License.
-<br/>       
+<br/>
