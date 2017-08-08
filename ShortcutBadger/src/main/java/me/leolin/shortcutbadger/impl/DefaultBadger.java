@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import me.leolin.shortcutbadger.Badger;
@@ -35,7 +36,7 @@ public class DefaultBadger implements Badger {
 
     @Override
     public List<String> getSupportLaunchers() {
-        return new ArrayList<String>(0);
+        return Collections.singletonList("fr.neamar.kiss");
     }
 
     boolean isSupported(Context context) {
