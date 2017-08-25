@@ -13,7 +13,7 @@ import java.util.List;
 public class BroadcastHelper {
 	public static boolean canResolveBroadcast(Context context, Intent intent) {
 		PackageManager packageManager = context.getPackageManager();
-		List<ResolveInfo> receivers = packageManager.queryBroadcastReceivers(intent, 0);
+		List<ResolveInfo> receivers = packageManager.queryBroadcastReceivers(intent, PackageManager.MATCH_DEFAULT_ONLY);
 		return receivers != null && receivers.size() > 0;
 	}
 }
