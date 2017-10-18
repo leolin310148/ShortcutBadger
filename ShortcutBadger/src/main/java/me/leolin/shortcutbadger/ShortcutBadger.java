@@ -199,22 +199,21 @@ public final class ShortcutBadger {
 
         Intent intent = new Intent(Intent.ACTION_MAIN);
         intent.addCategory(Intent.CATEGORY_HOME);
-        ResolveInfo resolveInfo = context.getPackageManager().resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY);
+        List<ResolveInfo> resolveInfos = context.getPackageManager().queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
 
-        if (resolveInfo == null || resolveInfo.activityInfo.name.toLowerCase().contains("resolver"))
-            return false;
+        for (ResolveInfo resolveInfo : resolveInfos) {
+            String currentHomePackage = resolveInfo.activityInfo.packageName;
 
-        String currentHomePackage = resolveInfo.activityInfo.packageName;
-
-        for (Class<? extends Badger> badger : BADGERS) {
-            Badger shortcutBadger = null;
-            try {
-                shortcutBadger = badger.newInstance();
-            } catch (Exception ignored) {
-            }
-            if (shortcutBadger != null && shortcutBadger.getSupportLaunchers().contains(currentHomePackage)) {
-                sShortcutBadger = shortcutBadger;
-                break;
+            for (Class<? extends Badger> badger : BADGERS) {
+                Badger shortcutBadger = null;
+                try {
+                    shortcutBadger = badger.newInstance();
+                } catch (Exception ignored) {
+                }
+                if (shortcutBadger != null && shortcutBadger.getSupportLaunchers().contains(currentHomePackage)) {
+                    sShortcutBadger = shortcutBadger;
+                    break;
+                }
             }
         }
 
