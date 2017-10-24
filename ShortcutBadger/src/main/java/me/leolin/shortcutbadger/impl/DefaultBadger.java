@@ -16,7 +16,7 @@ import me.leolin.shortcutbadger.util.BroadcastHelper;
  * @author leolin
  */
 public class DefaultBadger implements Badger {
-    private static final String INTENT_ACTION = "android.intent.action.BADGE_COUNT_UPDATE";
+    private static final String INTENT_ACTION = "android.intent.action.BADGE_COUNT_UPDATE"";
     private static final String INTENT_EXTRA_BADGE_COUNT = "badge_count";
     private static final String INTENT_EXTRA_PACKAGENAME = "badge_count_package_name";
     private static final String INTENT_EXTRA_ACTIVITY_NAME = "badge_count_class_name";
@@ -36,7 +36,11 @@ public class DefaultBadger implements Badger {
 
     @Override
     public List<String> getSupportLaunchers() {
-        return Collections.singletonList("fr.neamar.kiss");
+        return Arrays.asList(
+                "fr.neamar.kiss",
+                "com.quaap.launchtime",
+                "com.quaap.launchtime_official"
+        );
     }
 
     boolean isSupported(Context context) {
