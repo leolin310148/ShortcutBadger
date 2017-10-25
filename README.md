@@ -107,7 +107,7 @@ The ShortcutBadger makes your Android App show the count of unread messages as a
         <td width="130">
             <h3>LaunchTime</h3>
             <br>
-            <img src="https://github.com/leolin310148/ShortcutBadger/blob/master/screenshots/ss_launchtime.png"/>
+            <img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_launchtime.png"/>
         </td>
     </tr>
 </table>
