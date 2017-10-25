@@ -36,7 +36,11 @@ public class DefaultBadger implements Badger {
 
     @Override
     public List<String> getSupportLaunchers() {
-        return Collections.singletonList("fr.neamar.kiss");
+        return Arrays.asList(
+                "fr.neamar.kiss",
+                "com.quaap.launchtime",
+                "com.quaap.launchtime_official"
+        );
     }
 
     boolean isSupported(Context context) {
