@@ -4,8 +4,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
 
 import me.leolin.shortcutbadger.Badger;

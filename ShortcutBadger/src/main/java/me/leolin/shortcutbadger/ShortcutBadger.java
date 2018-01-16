@@ -215,6 +215,9 @@ public final class ShortcutBadger {
                     break;
                 }
             }
+            if (sShortcutBadger != null) {
+                break;
+            }
         }
 
         if (sShortcutBadger == null) {
