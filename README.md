@@ -68,7 +68,7 @@ The ShortcutBadger makes your Android App show the count of unread messages as a
         <td width="130">
             <h3>ZUK</h3>
             <br>
-            <img src="https://raw.github.com/linwoain/ShortcutBadger/master/screenshots/ss_zuk.png"/>
+            <img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_zuk.png"/>
             <br>
             (1.1.10+)
         </td>
