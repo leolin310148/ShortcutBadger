@@ -69,6 +69,16 @@ public class MainActivity extends Activity {
             }
         });
 
+        Button isBadgeSupportedBtn = (Button) findViewById(R.id.btnIsBadgeSupported);
+        isBadgeSupportedBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                boolean success = ShortcutBadger.isBadgeCounterSupported(MainActivity.this);
+
+                Toast.makeText(getApplicationContext(), "isBadgeCounterSupported=" + success, Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
         //find the home launcher Package
         Intent intent = new Intent(Intent.ACTION_MAIN);
