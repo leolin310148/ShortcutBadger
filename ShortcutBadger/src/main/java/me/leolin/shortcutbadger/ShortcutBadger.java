@@ -221,16 +221,7 @@ public final class ShortcutBadger {
         }
 
         if (sShortcutBadger == null) {
-            if (Build.MANUFACTURER.equalsIgnoreCase("ZUK"))
-                sShortcutBadger = new ZukHomeBadger();
-            else if (Build.MANUFACTURER.equalsIgnoreCase("OPPO"))
-                sShortcutBadger = new OPPOHomeBader();
-            else if (Build.MANUFACTURER.equalsIgnoreCase("VIVO"))
-                sShortcutBadger = new VivoHomeBadger();
-            else if (Build.MANUFACTURER.equalsIgnoreCase("ZTE"))
-                sShortcutBadger = new ZTEHomeBadger();
-            else
-                sShortcutBadger = new DefaultBadger();
+            sShortcutBadger = new DefaultBadger();
         }
 
         return true;
