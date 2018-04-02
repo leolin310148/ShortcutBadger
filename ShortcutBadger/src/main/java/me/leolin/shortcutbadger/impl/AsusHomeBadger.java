@@ -29,7 +29,7 @@ public class AsusHomeBadger implements Badger {
         intent.putExtra(INTENT_EXTRA_ACTIVITY_NAME, componentName.getClassName());
         intent.putExtra("badge_vip_count", 0);
 
-        BroadcastHelper.sendIntentExplicitly(context, intent);
+        BroadcastHelper.sendDefaultIntentExplicitly(context, intent);
     }
 
     @Override

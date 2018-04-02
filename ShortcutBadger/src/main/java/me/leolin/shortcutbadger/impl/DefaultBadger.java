@@ -3,6 +3,7 @@ package me.leolin.shortcutbadger.impl;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 
 import java.util.Arrays;
 import java.util.List;
@@ -27,7 +28,7 @@ public class DefaultBadger implements Badger {
         intent.putExtra(INTENT_EXTRA_PACKAGENAME, componentName.getPackageName());
         intent.putExtra(INTENT_EXTRA_ACTIVITY_NAME, componentName.getClassName());
 
-        BroadcastHelper.sendIntentExplicitly(context, intent);
+        BroadcastHelper.sendDefaultIntentExplicitly(context, intent);
     }
 
     @Override
@@ -41,6 +42,8 @@ public class DefaultBadger implements Badger {
 
     boolean isSupported(Context context) {
         Intent intent = new Intent(INTENT_ACTION);
-        return BroadcastHelper.resolveBroadcast(context, intent).size() > 0;
+        return BroadcastHelper.resolveBroadcast(context, intent).size() > 0
+                || (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O
+                    && BroadcastHelper.resolveBroadcast(context, new Intent(IntentConstants.DEFAULT_OREO_INTENT_ACTION)).size() > 0);
     }
 }
