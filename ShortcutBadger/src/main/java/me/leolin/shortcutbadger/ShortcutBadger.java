@@ -11,6 +11,7 @@ import android.util.Log;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -26,6 +27,7 @@ import me.leolin.shortcutbadger.impl.OPPOHomeBader;
 import me.leolin.shortcutbadger.impl.SamsungHomeBadger;
 import me.leolin.shortcutbadger.impl.SonyHomeBadger;
 import me.leolin.shortcutbadger.impl.VivoHomeBadger;
+import me.leolin.shortcutbadger.impl.YandexLauncherBadger;
 import me.leolin.shortcutbadger.impl.ZTEHomeBadger;
 import me.leolin.shortcutbadger.impl.ZukHomeBadger;
 
@@ -58,6 +60,7 @@ public final class ShortcutBadger {
         BADGERS.add(VivoHomeBadger.class);
         BADGERS.add(ZTEHomeBadger.class);
         BADGERS.add(EverythingMeHomeBadger.class);
+        BADGERS.add(YandexLauncherBadger.class);
     }
 
     private static Badger sShortcutBadger;
@@ -201,6 +204,13 @@ public final class ShortcutBadger {
         intent.addCategory(Intent.CATEGORY_HOME);
         List<ResolveInfo> resolveInfos = context.getPackageManager().queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
 
+        // Huawei's queryIntentActivities method may not return default launcher as first in the list.
+        // Default activity then should be placed on top of the list.
+        if (Build.MANUFACTURER.equalsIgnoreCase("HUAWEI")) {
+            ResolveInfo resolveInfoDefault = context.getPackageManager().resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY);
+            validateListForHuawei(resolveInfoDefault, resolveInfos);
+        }
+
         for (ResolveInfo resolveInfo : resolveInfos) {
             String currentHomePackage = resolveInfo.activityInfo.packageName;
 
@@ -234,6 +244,23 @@ public final class ShortcutBadger {
         }
 
         return true;
+    }
+
+    /**
+     * Making sure the default Home activity is on top of the returned list
+     * @param defaultActivity       default Home activity
+     * @param resolveInfos          list of all Home activities in the system
+     */
+    private static void validateListForHuawei(ResolveInfo defaultActivity, List<ResolveInfo> resolveInfos) {
+        int indexToSwapWith = 0;
+        for (int i = 0, resolveInfosSize = resolveInfos.size(); i < resolveInfosSize; i++) {
+            ResolveInfo resolveInfo = resolveInfos.get(i);
+            String currentActivityName = resolveInfo.activityInfo.packageName;
+            if (currentActivityName.equals(defaultActivity.activityInfo.packageName)) {
+                indexToSwapWith = i;
+            }
+        }
+        Collections.swap(resolveInfos, 0, indexToSwapWith);
     }
 
     // Avoid anybody to instantiate this class

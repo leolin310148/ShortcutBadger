@@ -73,11 +73,15 @@ public class MainActivity extends Activity {
         //find the home launcher Package
         Intent intent = new Intent(Intent.ACTION_MAIN);
         intent.addCategory(Intent.CATEGORY_HOME);
+        String currentHomePackage = "none";
         ResolveInfo resolveInfo = getPackageManager().resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY);
-        String currentHomePackage = resolveInfo.activityInfo.packageName;
 
+        // in case of duplicate apps (Xiaomi), calling resolveActivity from one will return null
+        if (resolveInfo != null) {
+            currentHomePackage = resolveInfo.activityInfo.packageName;
+        }
         TextView textViewHomePackage = (TextView) findViewById(R.id.textViewHomePackage);
-        textViewHomePackage.setText("launcher:" + currentHomePackage);
+        textViewHomePackage.setText(String.format("launcher:%s", currentHomePackage));
     }
 
 
