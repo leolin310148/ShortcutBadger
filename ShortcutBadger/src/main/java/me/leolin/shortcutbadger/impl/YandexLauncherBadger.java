@@ -1,9 +1,10 @@
 package me.leolin.shortcutbadger.impl;
 
 import android.content.ComponentName;
-import android.content.ContentValues;
 import android.content.Context;
 import android.net.Uri;
+import android.os.Build;
+import android.os.Bundle;
 
 import java.util.Collections;
 import java.util.List;
@@ -17,7 +18,9 @@ import me.leolin.shortcutbadger.ShortcutBadgeException;
  */
 public class YandexLauncherBadger implements Badger {
 
-    private static final String CONTENT_URI = "content://com.yandex.launcher.badges";
+    private static final String AUTHORITY = "com.yandex.launcher.badges_external";
+    private static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY);
+    private static final String METHOD_TO_CALL = "setBadgeNumber";
 
     private static final String COLUMN_CLASS = "class";
     private static final String COLUMN_PACKAGE = "package";
@@ -25,12 +28,13 @@ public class YandexLauncherBadger implements Badger {
 
     @Override
     public void executeBadge(Context context, ComponentName componentName, int badgeCount) throws ShortcutBadgeException {
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(COLUMN_CLASS, componentName.getClassName());
-        contentValues.put(COLUMN_PACKAGE, componentName.getPackageName());
-        contentValues.put(COLUMN_BADGES_COUNT, badgeCount);
-
-        context.getContentResolver().insert(Uri.parse(CONTENT_URI), contentValues);
+        Bundle extras = new Bundle();
+        extras.putString(COLUMN_CLASS, componentName.getClassName());
+        extras.putString(COLUMN_PACKAGE, componentName.getPackageName());
+        extras.putString(COLUMN_BADGES_COUNT, String.valueOf(badgeCount));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            context.getContentResolver().call(CONTENT_URI, METHOD_TO_CALL, null, extras);
+        }
     }
 
     @Override

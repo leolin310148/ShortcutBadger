@@ -43,9 +43,4 @@
     <!--for EvMe-->
     <uses-permission android:name="me.everything.badger.permission.BADGE_COUNT_READ"/>
     <uses-permission android:name="me.everything.badger.permission.BADGE_COUNT_WRITE"/>
-
-    <!--for Yandex.Launcher-->
-    <uses-permission android:name="com.yandex.launcher.permission.READ_SETTINGS"/>
-    <uses-permission android:name="com.yandex.launcher.permission.WRITE_BADGE_SETTINGS"/>
-
 </manifest>
