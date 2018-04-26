@@ -18,6 +18,8 @@ import me.leolin.shortcutbadger.ShortcutBadgeException;
  */
 public class YandexLauncherBadger implements Badger {
 
+    public static final String PACKAGE_NAME = "com.yandex.launcher";
+
     private static final String AUTHORITY = "com.yandex.launcher.badges_external";
     private static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY);
     private static final String METHOD_TO_CALL = "setBadgeNumber";
@@ -37,8 +39,20 @@ public class YandexLauncherBadger implements Badger {
         }
     }
 
+    public static boolean isVersionSupported(Context context) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            try {
+                context.getContentResolver().call(CONTENT_URI, "", null, null);
+                return true;
+            } catch (IllegalArgumentException e) {
+                return false;
+            }
+        }
+        return false;
+    }
+
     @Override
     public List<String> getSupportLaunchers() {
-        return Collections.singletonList("com.yandex.launcher");
+        return Collections.singletonList(PACKAGE_NAME);
     }
 }

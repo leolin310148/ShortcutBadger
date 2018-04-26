@@ -204,12 +204,9 @@ public final class ShortcutBadger {
         intent.addCategory(Intent.CATEGORY_HOME);
         List<ResolveInfo> resolveInfos = context.getPackageManager().queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
 
-        // Huawei's queryIntentActivities method may not return default launcher as first in the list.
-        // Default activity then should be placed on top of the list.
-        if (Build.MANUFACTURER.equalsIgnoreCase("HUAWEI")) {
-            ResolveInfo resolveInfoDefault = context.getPackageManager().resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY);
-            validateListForHuawei(resolveInfoDefault, resolveInfos);
-        }
+        //Turns out framework does not guarantee to put DEFAULT Activity on top of the list.
+        ResolveInfo resolveInfoDefault = context.getPackageManager().resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY);
+        validateInfoList(resolveInfoDefault, resolveInfos);
 
         for (ResolveInfo resolveInfo : resolveInfos) {
             String currentHomePackage = resolveInfo.activityInfo.packageName;
@@ -221,7 +218,9 @@ public final class ShortcutBadger {
                 } catch (Exception ignored) {
                 }
                 if (shortcutBadger != null && shortcutBadger.getSupportLaunchers().contains(currentHomePackage)) {
-                    sShortcutBadger = shortcutBadger;
+                    if (isLauncherVersionSupported(context, currentHomePackage)) {
+                        sShortcutBadger = shortcutBadger;
+                    }
                     break;
                 }
             }
@@ -247,11 +246,22 @@ public final class ShortcutBadger {
     }
 
     /**
+     * Making sure that launcher version that yet doesn't support badges mechanism
+     * is <b>NOT</b> used by <b><i>sShortcutBadger</i></b>.
+     */
+    private static boolean isLauncherVersionSupported(Context context, String currentHomePackage) {
+        if (!YandexLauncherBadger.PACKAGE_NAME.equals(currentHomePackage)) {
+            return true;
+        }
+        return YandexLauncherBadger.isVersionSupported(context);
+    }
+
+    /**
      * Making sure the default Home activity is on top of the returned list
      * @param defaultActivity       default Home activity
      * @param resolveInfos          list of all Home activities in the system
      */
-    private static void validateListForHuawei(ResolveInfo defaultActivity, List<ResolveInfo> resolveInfos) {
+    private static void validateInfoList(ResolveInfo defaultActivity, List<ResolveInfo> resolveInfos) {
         int indexToSwapWith = 0;
         for (int i = 0, resolveInfosSize = resolveInfos.size(); i < resolveInfosSize; i++) {
             ResolveInfo resolveInfo = resolveInfos.get(i);

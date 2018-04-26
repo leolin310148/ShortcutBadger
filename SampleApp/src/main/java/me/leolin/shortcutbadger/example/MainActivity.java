@@ -81,7 +81,7 @@ public class MainActivity extends Activity {
             currentHomePackage = resolveInfo.activityInfo.packageName;
         }
         TextView textViewHomePackage = (TextView) findViewById(R.id.textViewHomePackage);
-        textViewHomePackage.setText(String.format("launcher:%s", currentHomePackage));
+        textViewHomePackage.setText("launcher:" + currentHomePackage);
     }
 
 
