@@ -22,9 +22,9 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final EditText numInput = (EditText) findViewById(R.id.numInput);
+        final EditText numInput = findViewById(R.id.numInput);
 
-        Button button = (Button) findViewById(R.id.btnSetBadge);
+        Button button = findViewById(R.id.btnSetBadge);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -41,7 +41,7 @@ public class MainActivity extends Activity {
             }
         });
 
-        Button launchNotification = (Button) findViewById(R.id.btnSetBadgeByNotification);
+        Button launchNotification = findViewById(R.id.btnSetBadgeByNotification);
         launchNotification.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,7 +59,7 @@ public class MainActivity extends Activity {
             }
         });
 
-        Button removeBadgeBtn = (Button) findViewById(R.id.btnRemoveBadge);
+        Button removeBadgeBtn = findViewById(R.id.btnRemoveBadge);
         removeBadgeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,7 +76,7 @@ public class MainActivity extends Activity {
         ResolveInfo resolveInfo = getPackageManager().resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY);
         String currentHomePackage = resolveInfo.activityInfo.packageName;
 
-        TextView textViewHomePackage = (TextView) findViewById(R.id.textViewHomePackage);
+        TextView textViewHomePackage = findViewById(R.id.textViewHomePackage);
         textViewHomePackage.setText("launcher:" + currentHomePackage);
     }
 

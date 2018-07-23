@@ -179,6 +179,9 @@ please use version 1.1.0+!
 
 CHANGE LOG
 ===================================
+1.1.20:
+
+* Renamed default broadcast action; added Android Oreo support.
 
 1.1.19:
 

@@ -48,9 +48,10 @@ public class XiaomiHomeBadger implements Badger {
                     INTENT_ACTION);
             localIntent.putExtra(EXTRA_UPDATE_APP_COMPONENT_NAME, componentName.getPackageName() + "/" + componentName.getClassName());
             localIntent.putExtra(EXTRA_UPDATE_APP_MSG_TEXT, String.valueOf(badgeCount == 0 ? "" : badgeCount));
-            if (BroadcastHelper.canResolveBroadcast(context, localIntent)) {
-                context.sendBroadcast(localIntent);
-            }
+
+            try {
+                BroadcastHelper.sendIntentExplicitly(context, localIntent);
+            } catch (ShortcutBadgeException ignored) {}
         }
         if (Build.MANUFACTURER.equalsIgnoreCase("Xiaomi")) {
             tryNewMiuiBadge(context, badgeCount);
