@@ -23,16 +23,12 @@ public class AdwHomeBadger implements Badger {
 
     @Override
     public void executeBadge(Context context, ComponentName componentName, int badgeCount) throws ShortcutBadgeException {
-
         Intent intent = new Intent(INTENT_UPDATE_COUNTER);
         intent.putExtra(PACKAGENAME, componentName.getPackageName());
         intent.putExtra(CLASSNAME, componentName.getClassName());
         intent.putExtra(COUNT, badgeCount);
-        if (BroadcastHelper.canResolveBroadcast(context, intent)) {
-            context.sendBroadcast(intent);
-        } else {
-            throw new ShortcutBadgeException("unable to resolve intent: " + intent.toString());
-        }
+
+        BroadcastHelper.sendIntentExplicitly(context, intent);
     }
 
     @Override
