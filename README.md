@@ -178,7 +178,19 @@ please use version 1.1.0+!
 
 
 CHANGE LOG
-===================================
+==========
+
+1.1.23:
+
+* Added Yandex Launcher support. Fixed issue with incorrect default launcher resolve
+
+1.1.22:
+
+* Improve Oreo support (Thanks to [AlexStarc](https://github.com/AlexStarc))
+
+1.1.20:
+
+* Renamed default broadcast action; added Android Oreo support.
 
 1.1.19:
 
@@ -194,7 +206,7 @@ CHANGE LOG
 
 1.1.16:
 
-* Improve Sony Launcher support. 
+* Improve Sony Launcher support.
 
 1.1.15:
 
@@ -203,7 +215,7 @@ CHANGE LOG
 1.1.14:
 
 * Fix for specific class of Samsung devices: with android 5, but without support of DefaultBadger
-* Remove Xiaomi from Badger and add Notification Support for Xiaomi devices. 
+* Remove Xiaomi from Badger and add Notification Support for Xiaomi devices.
 
 1.1.13:
 
@@ -232,9 +244,11 @@ CHANGE LOG
 * Remove SolidBadger, now solid launcher will use default badger.
 
 1.1.7:
+
 * Add Huawei launcher support.
 
-* 1.1.6:
+1.1.6:
+
 * Add support for new Sony Launchers.
 
 1.1.5:

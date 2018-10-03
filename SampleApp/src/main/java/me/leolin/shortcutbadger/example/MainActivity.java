@@ -80,7 +80,7 @@ public class MainActivity extends Activity {
         if (resolveInfo != null) {
             currentHomePackage = resolveInfo.activityInfo.packageName;
         }
-        TextView textViewHomePackage = (TextView) findViewById(R.id.textViewHomePackage);
+        TextView textViewHomePackage = findViewById(R.id.textViewHomePackage);
         textViewHomePackage.setText("launcher:" + currentHomePackage);
     }
 
