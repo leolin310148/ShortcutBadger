@@ -2,9 +2,10 @@ buildscript {
     repositories {
         jcenter()
         mavenCentral()
+        google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.1'
+        classpath 'com.android.tools.build:gradle:3.1.0'
     }
     ext {
         POM_NAME = 'ShortcutBadger'
@@ -32,14 +33,16 @@ subprojects {
         repositories {
             jcenter()
             mavenCentral()
+            google()
         }
         dependencies {
-            classpath 'com.android.tools.build:gradle:2.3.1'
+            classpath 'com.android.tools.build:gradle:3.1.3'
         }
     }
     repositories {
         jcenter()
         mavenCentral()
+        google()
     }
 
 }

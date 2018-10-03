@@ -23,16 +23,12 @@ public class ApexHomeBadger implements Badger {
 
     @Override
     public void executeBadge(Context context, ComponentName componentName, int badgeCount) throws ShortcutBadgeException {
-
         Intent intent = new Intent(INTENT_UPDATE_COUNTER);
         intent.putExtra(PACKAGENAME, componentName.getPackageName());
         intent.putExtra(COUNT, badgeCount);
         intent.putExtra(CLASS, componentName.getClassName());
-        if (BroadcastHelper.canResolveBroadcast(context, intent)) {
-            context.sendBroadcast(intent);
-        } else {
-            throw new ShortcutBadgeException("unable to resolve intent: " + intent.toString());
-        }
+
+        BroadcastHelper.sendIntentExplicitly(context, intent);
     }
 
     @Override
