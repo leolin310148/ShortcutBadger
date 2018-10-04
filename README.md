@@ -109,6 +109,13 @@ The ShortcutBadger makes your Android App show the count of unread messages as a
             <br>
             <img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_launchtime.png"/>
         </td>
+        <td width="260" colspan="2">
+                    <h3>Yandex Launcher</h3>
+                    <br>
+                    <img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_yandex.png"/>
+                    <br>
+                    (1.1.23+)
+        </td>
     </tr>
 </table>
 
