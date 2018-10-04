@@ -21,6 +21,6 @@ android {
 
 
 dependencies {
-//    compile 'me.leolin:ShortcutBadger:1.0.+@aar'
-    compile project(':ShortcutBadger')
+//    implementation 'me.leolin:ShortcutBadger:1.0.+@aar'
+    implementation project(':ShortcutBadger')
 }
