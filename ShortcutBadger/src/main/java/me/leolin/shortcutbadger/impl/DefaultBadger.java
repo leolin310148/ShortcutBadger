@@ -23,6 +23,12 @@ public class DefaultBadger implements Badger {
 
     @Override
     public void executeBadge(Context context, ComponentName componentName, int badgeCount) throws ShortcutBadgeException {
+        // The broadcast of "android.intent.action.BADGE_COUNT_UPDATE" is successfull on Samsung
+        // devices running Android 8, but it has no effect on badges. So we must check explicitly:
+        if (Build.MANUFACTURER.equalsIgnoreCase("Samsung") && Build.VERSION.SDK_INT >= 26) {
+            throw new ShortcutBadgeException("ShortcutBadger is not supported on Samsung devices running Android 8 (or newer)");
+        }
+
         Intent intent = new Intent(INTENT_ACTION);
         intent.putExtra(INTENT_EXTRA_BADGE_COUNT, badgeCount);
         intent.putExtra(INTENT_EXTRA_PACKAGENAME, componentName.getPackageName());

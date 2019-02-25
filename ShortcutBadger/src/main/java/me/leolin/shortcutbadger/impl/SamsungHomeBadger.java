@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Build;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import me.leolin.shortcutbadger.Badger;
@@ -25,7 +26,8 @@ public class SamsungHomeBadger implements Badger {
     private DefaultBadger defaultBadger;
 
     public SamsungHomeBadger() {
-        if (Build.VERSION.SDK_INT >= 21) {
+        // Use default badger on Android 5.0 to Android 7.1, but not on Android 8 and newer:
+        if (Build.VERSION.SDK_INT >= 21 && Build.VERSION.SDK_INT < 26) {
             defaultBadger = new DefaultBadger();
         }
     }
@@ -77,9 +79,14 @@ public class SamsungHomeBadger implements Badger {
 
     @Override
     public List<String> getSupportLaunchers() {
-        return Arrays.asList(
-                "com.sec.android.app.launcher",
-                "com.sec.android.app.twlauncher"
-        );
+        if (Build.VERSION.SDK_INT >= 26) {
+            // Not supported on Android 8 (and newer)
+            return Collections.emptyList();
+        } else {
+            return Arrays.asList(
+                    "com.sec.android.app.launcher",
+                    "com.sec.android.app.twlauncher"
+            );
+        }
     }
 }
