@@ -109,6 +109,13 @@ The ShortcutBadger makes your Android App show the count of unread messages as a
             <br>
             <img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_launchtime.png"/>
         </td>
+        <td width="260" colspan="2">
+                    <h3>Yandex Launcher</h3>
+                    <br>
+                    <img src="https://raw.github.com/leolin310148/ShortcutBadger/master/screenshots/ss_yandex.png"/>
+                    <br>
+                    (1.1.23+)
+        </td>
     </tr>
 </table>
 
@@ -179,6 +186,11 @@ please use version 1.1.0+!
 
 CHANGE LOG
 ==========
+
+1.1.23:
+
+* Added Yandex Launcher support. Fixed issue with incorrect default launcher resolve
+
 1.1.22:
 
 * Improve Oreo support (Thanks to [AlexStarc](https://github.com/AlexStarc))
@@ -201,7 +213,7 @@ CHANGE LOG
 
 1.1.16:
 
-* Improve Sony Launcher support. 
+* Improve Sony Launcher support.
 
 1.1.15:
 
@@ -210,7 +222,7 @@ CHANGE LOG
 1.1.14:
 
 * Fix for specific class of Samsung devices: with android 5, but without support of DefaultBadger
-* Remove Xiaomi from Badger and add Notification Support for Xiaomi devices. 
+* Remove Xiaomi from Badger and add Notification Support for Xiaomi devices.
 
 1.1.13:
 

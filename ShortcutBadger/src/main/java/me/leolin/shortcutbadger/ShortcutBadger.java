@@ -11,6 +11,7 @@ import android.util.Log;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -26,6 +27,7 @@ import me.leolin.shortcutbadger.impl.OPPOHomeBader;
 import me.leolin.shortcutbadger.impl.SamsungHomeBadger;
 import me.leolin.shortcutbadger.impl.SonyHomeBadger;
 import me.leolin.shortcutbadger.impl.VivoHomeBadger;
+import me.leolin.shortcutbadger.impl.YandexLauncherBadger;
 import me.leolin.shortcutbadger.impl.ZTEHomeBadger;
 import me.leolin.shortcutbadger.impl.ZukHomeBadger;
 
@@ -58,6 +60,7 @@ public final class ShortcutBadger {
         BADGERS.add(VivoHomeBadger.class);
         BADGERS.add(ZTEHomeBadger.class);
         BADGERS.add(EverythingMeHomeBadger.class);
+        BADGERS.add(YandexLauncherBadger.class);
     }
 
     private static Badger sShortcutBadger;
@@ -201,6 +204,10 @@ public final class ShortcutBadger {
         intent.addCategory(Intent.CATEGORY_HOME);
         List<ResolveInfo> resolveInfos = context.getPackageManager().queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
 
+        //Turns out framework does not guarantee to put DEFAULT Activity on top of the list.
+        ResolveInfo resolveInfoDefault = context.getPackageManager().resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY);
+        validateInfoList(resolveInfoDefault, resolveInfos);
+
         for (ResolveInfo resolveInfo : resolveInfos) {
             String currentHomePackage = resolveInfo.activityInfo.packageName;
 
@@ -211,7 +218,9 @@ public final class ShortcutBadger {
                 } catch (Exception ignored) {
                 }
                 if (shortcutBadger != null && shortcutBadger.getSupportLaunchers().contains(currentHomePackage)) {
-                    sShortcutBadger = shortcutBadger;
+                    if (isLauncherVersionSupported(context, currentHomePackage)) {
+                        sShortcutBadger = shortcutBadger;
+                    }
                     break;
                 }
             }
@@ -234,6 +243,34 @@ public final class ShortcutBadger {
         }
 
         return true;
+    }
+
+    /**
+     * Making sure that launcher version that yet doesn't support badges mechanism
+     * is <b>NOT</b> used by <b><i>sShortcutBadger</i></b>.
+     */
+    private static boolean isLauncherVersionSupported(Context context, String currentHomePackage) {
+        if (!YandexLauncherBadger.PACKAGE_NAME.equals(currentHomePackage)) {
+            return true;
+        }
+        return YandexLauncherBadger.isVersionSupported(context);
+    }
+
+    /**
+     * Making sure the default Home activity is on top of the returned list
+     * @param defaultActivity       default Home activity
+     * @param resolveInfos          list of all Home activities in the system
+     */
+    private static void validateInfoList(ResolveInfo defaultActivity, List<ResolveInfo> resolveInfos) {
+        int indexToSwapWith = 0;
+        for (int i = 0, resolveInfosSize = resolveInfos.size(); i < resolveInfosSize; i++) {
+            ResolveInfo resolveInfo = resolveInfos.get(i);
+            String currentActivityName = resolveInfo.activityInfo.packageName;
+            if (currentActivityName.equals(defaultActivity.activityInfo.packageName)) {
+                indexToSwapWith = i;
+            }
+        }
+        Collections.swap(resolveInfos, 0, indexToSwapWith);
     }
 
     // Avoid anybody to instantiate this class

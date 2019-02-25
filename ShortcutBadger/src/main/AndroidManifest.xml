@@ -43,5 +43,4 @@
     <!--for EvMe-->
     <uses-permission android:name="me.everything.badger.permission.BADGE_COUNT_READ"/>
     <uses-permission android:name="me.everything.badger.permission.BADGE_COUNT_WRITE"/>
-
 </manifest>
