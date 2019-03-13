@@ -72,7 +72,7 @@ public class XiaomiHomeBadger implements Badger {
             Notification.Builder builder = new Notification.Builder(context)
                     .setContentTitle("")
                     .setContentText("")
-                    .setSmallIcon(resolveInfo.getIconResource());
+                    .setSmallIcon(context.getApplicationInfo().icon);
             Notification notification = builder.build();
             try {
                 Field field = notification.getClass().getDeclaredField("extraNotification");
