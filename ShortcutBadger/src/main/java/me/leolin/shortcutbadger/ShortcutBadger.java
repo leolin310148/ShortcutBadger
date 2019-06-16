@@ -250,10 +250,13 @@ public final class ShortcutBadger {
      * is <b>NOT</b> used by <b><i>sShortcutBadger</i></b>.
      */
     private static boolean isLauncherVersionSupported(Context context, String currentHomePackage) {
-        if (!YandexLauncherBadger.PACKAGE_NAME.equals(currentHomePackage)) {
+        if (YandexLauncherBadger.PACKAGE_NAME.equals(currentHomePackage)) {
+            return YandexLauncherBadger.isVersionSupported(context);
+        } else if (ZTEHomeBadger.PACKAGE_NAME_MFV.equals(currentHomePackage)) {
+            return ZTEHomeBadger.isMFVLauncher(currentHomePackage);
+        } else {
             return true;
         }
-        return YandexLauncherBadger.isVersionSupported(context);
     }
 
     /**
