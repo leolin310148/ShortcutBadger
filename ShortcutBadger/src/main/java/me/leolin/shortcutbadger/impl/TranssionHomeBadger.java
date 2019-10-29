@@ -22,7 +22,7 @@ public class TranssionHomeBadger implements Badger {
     @Override
     public void executeBadge(Context context, ComponentName componentName, int badgeCount) throws ShortcutBadgeException {
         Intent intent = new Intent(ACTION_UNREAD_CHANGED);
-        intent.putExtra(EXTRA_UNREAD_COMPONENT,new ComponentName("com.google.android.apps.messaging", "com.google.android.apps.messaging.ui.ConversationListActivity"));
+        intent.putExtra(EXTRA_UNREAD_COMPONENT,componentName);
         intent.putExtra(EXTRA_UNREAD_NUMBER, badgeCount);
         context.sendBroadcast(intent);
     }
