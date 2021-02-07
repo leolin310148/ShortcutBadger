@@ -262,6 +262,9 @@ public final class ShortcutBadger {
      * @param resolveInfos          list of all Home activities in the system
      */
     private static void validateInfoList(ResolveInfo defaultActivity, List<ResolveInfo> resolveInfos) {
+        if (resolveInfos == null || resolveInfos.isEmpty()) {
+            return;
+        }
         int indexToSwapWith = 0;
         for (int i = 0, resolveInfosSize = resolveInfos.size(); i < resolveInfosSize; i++) {
             ResolveInfo resolveInfo = resolveInfos.get(i);
