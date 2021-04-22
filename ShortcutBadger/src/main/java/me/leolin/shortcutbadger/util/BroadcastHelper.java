@@ -2,6 +2,7 @@ package me.leolin.shortcutbadger.util;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Build;
@@ -31,12 +32,15 @@ public class BroadcastHelper {
             throw new ShortcutBadgeException("unable to resolve intent: " + intent.toString());
         }
 
-        for (ResolveInfo info : resolveInfos) {
+        for (ResolveInfo resolveInfo : resolveInfos) {
             Intent actualIntent = new Intent(intent);
 
-            if (info != null) {
-                actualIntent.setPackage(info.resolvePackageName);
-                context.sendBroadcast(actualIntent);
+            if (resolveInfo != null) {
+                ActivityInfo activityInfo = resolveInfo.activityInfo;
+                if (activityInfo != null) {
+                    actualIntent.setPackage(activityInfo.packageName);
+                    context.sendBroadcast(actualIntent);
+                }
             }
         }
     }
