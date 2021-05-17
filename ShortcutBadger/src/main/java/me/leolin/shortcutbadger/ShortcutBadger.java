@@ -262,15 +262,31 @@ public final class ShortcutBadger {
      * @param resolveInfos          list of all Home activities in the system
      */
     private static void validateInfoList(ResolveInfo defaultActivity, List<ResolveInfo> resolveInfos) {
+        if (resolveInfos == null || resolveInfos.isEmpty()) {
+            return;
+        }
+        if (!hasPackageName(defaultActivity)) {
+            return;
+        }
         int indexToSwapWith = 0;
         for (int i = 0, resolveInfosSize = resolveInfos.size(); i < resolveInfosSize; i++) {
             ResolveInfo resolveInfo = resolveInfos.get(i);
+            if (!hasPackageName(resolveInfo)) {
+                continue;
+            }
             String currentActivityName = resolveInfo.activityInfo.packageName;
             if (currentActivityName.equals(defaultActivity.activityInfo.packageName)) {
                 indexToSwapWith = i;
             }
         }
         Collections.swap(resolveInfos, 0, indexToSwapWith);
+    }
+
+    private static boolean hasPackageName(ResolveInfo resolveInfo) {
+        if (resolveInfo == null || resolveInfo.activityInfo == null) {
+            return false;
+        }
+        return resolveInfo.activityInfo.packageName != null;
     }
 
     // Avoid anybody to instantiate this class
