@@ -40,6 +40,9 @@
     <uses-permission android:name="com.oppo.launcher.permission.READ_SETTINGS"/>
     <uses-permission android:name="com.oppo.launcher.permission.WRITE_SETTINGS"/>
 
+    <!--for VIVO-->
+    <uses-permission android:name="com.vivo.notification.permission.BADGE_ICON"/>
+
     <!--for EvMe-->
     <uses-permission android:name="me.everything.badger.permission.BADGE_COUNT_READ"/>
     <uses-permission android:name="me.everything.badger.permission.BADGE_COUNT_WRITE"/>
