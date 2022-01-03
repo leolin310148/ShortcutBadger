@@ -1,4 +1,5 @@
 ShortcutBadger: [![Maven Central](https://maven-badges.herokuapp.com/maven-central/me.leolin/ShortcutBadger/badge.svg)](https://maven-badges.herokuapp.com/maven-central/me.leolin/ShortcutBadger)
+[![Maintainability](https://cloud.quality-gate.com/dashboard/api/badge?projectName=leolin310148_ShortcutBadger&branchName=master)](https://cloud.quality-gate.com/dashboard/branches/129220#overview)
 ===================================
 
 The ShortcutBadger makes your Android App show the count of unread messages as a badge on your App shortcut!
