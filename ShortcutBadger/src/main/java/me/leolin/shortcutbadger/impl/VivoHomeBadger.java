@@ -21,6 +21,7 @@ public class VivoHomeBadger implements Badger {
         intent.putExtra("packageName", context.getPackageName());
         intent.putExtra("className", componentName.getClassName());
         intent.putExtra("notificationNum", badgeCount);
+        intent.addFlags(Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP);
         context.sendBroadcast(intent);
     }
 
