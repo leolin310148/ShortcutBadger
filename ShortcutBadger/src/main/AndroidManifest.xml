@@ -30,8 +30,6 @@
 
     <!--for huawei-->
     <uses-permission android:name="com.huawei.android.launcher.permission.CHANGE_BADGE"/>
-    <uses-permission android:name="com.huawei.android.launcher.permission.READ_SETTINGS"/>
-    <uses-permission android:name="com.huawei.android.launcher.permission.WRITE_SETTINGS"/>
 
     <!--for ZUK-->
     <uses-permission android:name="android.permission.READ_APP_BADGE"/>
@@ -39,6 +37,9 @@
     <!--for OPPO-->
     <uses-permission android:name="com.oppo.launcher.permission.READ_SETTINGS"/>
     <uses-permission android:name="com.oppo.launcher.permission.WRITE_SETTINGS"/>
+
+    <!-- for VIVO-->
+    <uses-permission android:name="com.vivo.notification.permission.BADGE_ICON" />
 
     <!--for EvMe-->
     <uses-permission android:name="me.everything.badger.permission.BADGE_COUNT_READ"/>
